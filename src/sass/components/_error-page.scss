@@ -1,0 +1,19 @@
+@use '../abstracts/' as *;
+
+.error-page {
+  display: grid;
+  justify-content: center;
+  min-height: 100dvh;
+  & > * {
+    display: grid;
+    place-items: center;
+  }
+  &__title {
+    font-size: fs(900);
+    font-family: $ff-secondary;
+    font-weight: $fw-600;
+    line-height: 1.2;
+    color: clr(neutral, 500);
+    position: relative;
+  }
+}

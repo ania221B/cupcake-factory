@@ -1,0 +1,8 @@
+@use '../abstracts/' as *;
+
+.page-title {
+  font-family: $ff-secondary;
+  font-size: fs(900);
+  font-weight: $fw-600;
+  color: clr(neutral, 500);
+}

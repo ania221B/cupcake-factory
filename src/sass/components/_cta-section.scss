@@ -1,0 +1,33 @@
+@use '../abstracts/' as *;
+
+.cta {
+  .container {
+    --flow-spacer: 2rem;
+    --max-width: $container-max-width-full-bleed;
+
+    padding-block: $padding-section;
+    padding-inline: $container-padding-inline;
+
+    display: grid;
+    justify-items: center;
+
+    p:not([class]) {
+      text-align: center;
+      max-width: 45ch;
+      margin-inline: auto;
+    }
+
+    button {
+      justify-self: stretch;
+    }
+
+    @include mq(medium) {
+      --max-width: #{$container-max-width-small};
+      border-radius: $br-medium;
+
+      button {
+        justify-self: center;
+      }
+    }
+  }
+}

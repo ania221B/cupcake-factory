@@ -1,0 +1,5 @@
+@use '../abstracts/' as *;
+
+.sr-only {
+  @extend %screen-reader-only;
+}

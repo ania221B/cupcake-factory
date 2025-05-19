@@ -1,0 +1,6 @@
+@use '../abstracts/' as *;
+
+.char-limit {
+  max-width: 35rem;
+  margin-inline: auto;
+}

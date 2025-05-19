@@ -1,0 +1,66 @@
+@use '../abstracts/' as *;
+
+.section {
+  padding-block: $padding-section;
+
+  &:not(.hero) .even-columns {
+    align-items: center;
+
+    > *:not(p, section):last-child {
+      width: max-content;
+      align-self: end;
+      justify-self: start;
+
+      @include mq(medium) {
+        justify-self: end;
+      }
+    }
+
+    > section {
+      align-self: stretch;
+    }
+  }
+
+  &__title {
+    font-size: fs(800);
+    font-family: $ff-secondary;
+    font-weight: $fw-600;
+    line-height: 1.2;
+    color: clr(neutral, 500);
+    position: relative;
+  }
+
+  &__title-small {
+    font-size: fs(650);
+  }
+  &__subtitle {
+    font-size: fs(300);
+    font-family: $ff-secondary;
+    color: clr(neutral, 300);
+  }
+}
+
+.connect-section {
+  .even-columns {
+    > *:last-child {
+      display: grid;
+      @include mq(medium) {
+        justify-self: end;
+      }
+    }
+
+    .social-list {
+      align-self: end;
+    }
+  }
+}
+
+.newsletter {
+  --flow-spacer: 1.5rem;
+}
+
+.contact-form {
+  .social-list {
+    justify-content: space-between;
+  }
+}

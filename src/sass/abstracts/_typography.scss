@@ -1,0 +1,54 @@
+@font-face {
+  font-family: 'Montserrat';
+  src: url(/src/assets/fonts/montserrat-regular-webfont.woff2) format('woff2'),
+    url(/src/assets/fonts/montserrat-regular-webfont.woff) format('woff');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Montserrat';
+  src: url(/src/assets/fonts/montserrat-semibold-webfont.woff2) format('woff2'),
+    url(/src/assets/fonts/montserrat-semibold-webfont.woff) format('woff');
+  font-weight: 600;
+}
+@font-face {
+  font-family: 'Montserrat';
+  src: url(/src/assets/fonts/montserrat-bold-webfont.woff2) format('woff2'),
+    url(/src/assets/fonts/montserrat-bold-webfont.woff) format('woff');
+  font-weight: 700;
+}
+@font-face {
+  font-family: 'Fraunces';
+  src: url(/src/assets/fonts/Fraunces72pt-Regular.woff2) format('woff2');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Fraunces';
+  src: url(/src/assets/fonts/Fraunces72pt-SemiBold.woff2) format('woff2');
+  font-weight: 600;
+}
+@font-face {
+  font-family: 'Fraunces';
+  src: url(/src/assets/fonts/Fraunces72pt-Bold.woff2) format('woff2');
+  font-weight: 700;
+}
+
+$ff-primary: 'Montserrat', sans-serif;
+$ff-secondary: 'Fraunces', serif;
+
+$font-sizes: (
+  100: clamp(0.741rem, 0.7vw, 0.8125rem),
+  200: clamp(0.8125rem, 0.8vw, 0.9375rem),
+  300: clamp(0.9375rem, 0.9vw, 1rem),
+  400: clamp(1rem, 1vw, 1.03125rem),
+  450: clamp(1.03125rem, 1.1vw, 1.125rem),
+  500: clamp(1.25rem, 1.5vw, 1.5rem),
+  600: clamp(1.5rem, 1.6vw, 1.5rem),
+  650: clamp(1.5rem, 2vw, 2rem),
+  700: clamp(1.75rem, 2.2vw, 2rem),
+  800: clamp(1.875rem, 3vw, 3rem),
+  900: clamp(2rem, 0.5rem + 5vw, 4.75rem),
+);
+
+$fw-400: 400;
+$fw-600: 600;
+$fw-700: 700;

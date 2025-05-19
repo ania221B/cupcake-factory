@@ -1,0 +1,37 @@
+@use '../abstracts/' as *;
+
+.testimonial-list {
+  display: grid;
+  grid-auto-flow: row;
+  gap: 2rem;
+  @include mq(medium) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  &__item {
+    display: grid;
+    gap: 2rem;
+    @include mq(medium) {
+      grid-template-columns: auto 1fr;
+    }
+  }
+  img {
+    width: 5rem;
+    height: 5rem;
+    border-radius: $br-circle;
+    background-color: clr(primary, 400);
+    margin: 0 auto;
+  }
+
+  blockquote p:first-of-type::before {
+    content: '\201C';
+  }
+
+  blockquote p:first-of-type::after {
+    content: '\201D';
+  }
+
+  blockquote p:nth-child(2) {
+    color: clr(neutral, 300);
+  }
+}

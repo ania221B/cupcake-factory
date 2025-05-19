@@ -1,0 +1,161 @@
+@use '../abstracts' as *;
+
+.btn {
+  background: 0;
+  border: 0;
+  cursor: pointer;
+
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1;
+  padding: 0.85em 1.5em;
+  border-radius: $br-small;
+  font-size: fs(300);
+  font-weight: $fw-600;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  letter-spacing: 0.125rem;
+  overflow: hidden;
+
+  &:not(.btn--menu) {
+    isolation: isolate;
+    z-index: 1;
+  }
+
+  &--menu {
+    @include mq(large) {
+      display: none;
+    }
+  }
+
+  &--close,
+  &--open {
+    font-size: fs(800);
+    font-weight: $fw-700;
+    z-index: 100000000;
+  }
+
+  &--open {
+    color: clr(secondary, 700);
+    &:hover,
+    &:focus {
+      color: clr(secondary, 400);
+    }
+  }
+
+  &--close {
+    color: clr(neutral, 300);
+    &:hover,
+    &:focus {
+      color: clr(neutral, 500);
+    }
+  }
+
+  &--accent {
+    background-color: clr(secondary, 700);
+    color: clr(neutral, 500);
+    position: relative;
+
+    --bg-clr: #{clr(secondary, 400)};
+  }
+
+  &--invisible {
+    padding: 0.75rem 0;
+    border-radius: 0;
+    color: clr(neutral, 300);
+    position: relative;
+    align-self: center;
+
+    &::after {
+      content: '';
+      width: 100%;
+      height: 0.125rem;
+      background-color: clr(secondary, 700);
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      opacity: 0;
+      transition: opacity 300ms ease-in-out;
+    }
+
+    &:focus,
+    &:hover {
+      color: clr(neutral, 500);
+
+      &::after {
+        opacity: 100%;
+      }
+    }
+
+    &-blog::after {
+      background-color: clr(primary, 200);
+    }
+  }
+
+  &--arrow {
+    justify-content: space-between;
+    align-items: center;
+
+    & > * + * {
+      margin-left: 0.75rem;
+    }
+  }
+
+  &--lines {
+    border: 0.0625rem solid clr(neutral, 500);
+    color: clr(neutral, 500);
+    position: relative;
+    z-index: 10;
+
+    --bg-clr: #{clr(primary, 500)};
+
+    &:focus,
+    &:hover {
+      border-color: var(--bg-clr);
+      color: clr(neutral, 100);
+    }
+  }
+
+  &--left {
+    align-self: flex-start;
+  }
+
+  &--card {
+    background-color: clr(primary, 300);
+    color: clr(neutral, 100);
+    border: 0.0625rem solid clr(primary, 400);
+
+    position: relative;
+    z-index: 1000;
+    --bg-clr: #{clr(primary, 500)};
+  }
+
+  &--video {
+    width: 5rem;
+    height: 5rem;
+    border-radius: var(--br-circle);
+    background-color: clr(primary, 500);
+    color: clr(primary, 100);
+    font-size: fs(700);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover,
+    &:focus {
+      background-color: clr(secondary, 700);
+    }
+  }
+
+  &--blog {
+    &-back {
+      align-self: flex-start;
+    }
+    &-next {
+      align-self: flex-end;
+    }
+  }
+}

@@ -1,0 +1,25 @@
+@use '../abstracts/' as *;
+
+.social-list {
+  margin: 0;
+  padding: 0;
+  margin-top: 2rem;
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+  a {
+    font-size: fs(600);
+    font-family: $ff-secondary;
+    color: clr(neutral, 300);
+    text-decoration: none;
+
+    &:focus,
+    &:hover {
+      color: clr(neutral, 500);
+    }
+  }
+
+  h3 {
+    font-size: fs(400);
+  }
+}

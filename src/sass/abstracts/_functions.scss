@@ -1,0 +1,43 @@
+@use 'sass:map';
+@use 'breakpoints' as *;
+@use 'color-palette' as *;
+@use 'typography' as *;
+@use 'sizes' as *;
+
+@function clr($color, $shade) {
+  @if map.has-key($colors, $color, $shade) {
+    @return map.get($colors, $color, $shade);
+  } @else {
+    @error '$colors does not have that color!';
+  }
+}
+
+@function fs($font-size) {
+  @if map.has-key($font-sizes, $font-size) {
+    @return map.get($font-sizes, $font-size);
+  } @else {
+    @error '$font-sizes does not have that size!';
+  }
+}
+
+@function size($size) {
+  @if map.has-key($sizes, $size) {
+    @return map.get($sizes, $size);
+  } @else {
+    @error '$sizes does not have that size!';
+  }
+}
+
+@function check-size($size, $name: 'breakpoint') {
+  @if (map.has-key($breakpoints, $size)) {
+    @return map.get($breakpoints, $size);
+  } @else if (meta.type-of($size) == number) {
+    @if (math.is-unitless($size)) {
+      @return 'The value of #{$size} you provided for #{$name} is a number but has no unit. Please use a unit';
+    } @else {
+      @return $size;
+    }
+  } @else {
+    @return 'The value of #{$size} you provided for #{$name} is not a key in the map. Please use a key from the map or a number with a unit';
+  }
+}

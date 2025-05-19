@@ -1,0 +1,46 @@
+@use '../abstracts/' as *;
+
+.label {
+  font-size: fs(300);
+  font-weight: $fw-700;
+
+  padding: 0.125em 1em;
+  letter-spacing: 0.0625rem;
+
+  position: absolute;
+  top: 1rem;
+  left: -0.5rem;
+
+  & + & {
+    top: 3rem; // fix this so that not a magic number
+  }
+
+  &::before {
+    content: '';
+    width: 0.5rem;
+    height: 0.5rem;
+
+    clip-path: polygon(100% 0, 0 0, 100% 100%);
+
+    position: absolute;
+    bottom: -0.5rem;
+    left: 0;
+  }
+}
+
+.bestseller-label {
+  background-color: clr(primary, 500);
+  color: clr(neutral, 100);
+  &::before {
+    background-color: clr(primary, 900);
+  }
+}
+
+.new-arrival-label,
+.sale-label {
+  background-color: clr(secondary, 500);
+  color: clr(neutral, 500);
+  &::before {
+    background-color: clr(secondary, 700);
+  }
+}

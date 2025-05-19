@@ -1,0 +1,12 @@
+@use '../abstracts/' as *;
+
+.fw-400 {
+  font-weight: $fw-400;
+}
+
+.fw-600 {
+  font-weight: $fw-600;
+}
+.fw-700 {
+  font-weight: $fw-700;
+}

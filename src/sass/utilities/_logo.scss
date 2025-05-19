@@ -1,0 +1,13 @@
+@use '../abstracts/' as *;
+
+.logo {
+  &__link {
+    font-family: $ff-secondary;
+    font-size: fs(600);
+    font-weight: $fw-600;
+    text-decoration: none;
+  }
+  & + p {
+    margin-top: 1rem;
+  }
+}

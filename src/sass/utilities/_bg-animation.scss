@@ -1,0 +1,19 @@
+@use '../abstracts/' as *;
+
+.bg-animation {
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0 auto auto 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-clr);
+    opacity: 0;
+    transition: opacity 300ms ease-in-out;
+    z-index: -1;
+  }
+  &:focus::after,
+  &:hover::after {
+    opacity: 100%;
+  }
+}

@@ -1,0 +1,81 @@
+@use '../abstracts/' as *;
+
+.page-nav {
+  @include mq(large) {
+    flex-basis: 100%;
+    margin-inline-start: 2rem;
+  }
+  &__slideout {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: transparent;
+
+    @include mq(large, max-width) {
+      flex-direction: column;
+      align-items: start;
+      justify-content: start;
+      gap: min(10dvh, 5rem);
+      background-color: clr(primary, 100);
+      padding-inline: calc($container-padding-inline * 2);
+      padding-block: calc($container-padding-inline * 3);
+      width: 90%;
+      height: 100vh;
+
+      position: fixed;
+      z-index: 10000;
+      inset: 0 0 0 100%;
+
+      &[data-state='is-open'] {
+        animation-name: openMenu;
+        animation-duration: 500ms;
+        animation-timing-function: ease-in-out;
+        animation-fill-mode: forwards;
+      }
+
+      &[data-state='is-closing'] {
+        animation-name: closeMenu;
+        animation-duration: 500ms;
+        animation-timing-function: ease-in-out;
+        animation-fill-mode: forwards;
+      }
+      &[data-state='is-closed'] {
+        display: none;
+      }
+    }
+  }
+
+  &__extras {
+    display: flex;
+    align-items: center;
+    & > * + * {
+      margin: 0 0 0 1rem;
+    }
+
+    @include mq(large, max-width) {
+      flex-direction: column;
+      align-items: start;
+      & > * + * {
+        margin: 1rem 0 0 0;
+      }
+    }
+  }
+}
+
+@keyframes openMenu {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translate(-100%);
+  }
+}
+
+@keyframes closeMenu {
+  0% {
+    transform: translate(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
