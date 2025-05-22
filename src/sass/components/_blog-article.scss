@@ -1,0 +1,122 @@
+@use '../abstracts/' as *;
+
+.articles {
+  display: grid;
+  gap: $grid-gap;
+}
+
+.blog-featured {
+  @include mq(medium) {
+    grid-template-columns: repeat(2, 1fr);
+    & > *:first-child {
+      grid-column: 1;
+      grid-row: span 2;
+    }
+
+    & > *:not(:first-child) {
+      grid-column: 2;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+
+      .article__img {
+        display: none;
+      }
+    }
+  }
+}
+
+.article {
+  --grid-gap: 1.5rem;
+  display: grid;
+  gap: var(--grid-gap);
+
+  &__img {
+    width: 100%;
+    height: 20rem;
+    border-radius: $br-medium;
+    background-color: clr(primary, 200);
+    padding: 0.75em; // delete later just for the text to not be in the corner
+  }
+
+  &__metadata {
+    font-size: fs(200);
+  }
+
+  &__metadata,
+  &__footer {
+    display: flex;
+    gap: var(--grid-gap);
+    align-items: center;
+  }
+
+  &__title {
+    font-family: $ff-secondary;
+    font-size: fs(600);
+  }
+
+  &__footer {
+    font-size: fs(300);
+    padding-block-start: var(--grid-gap);
+  }
+
+  &__footer-img {
+    width: 3rem;
+    height: 3rem;
+    background-color: clr(primary, 200);
+    border-radius: $br-circle;
+  }
+
+  .btn {
+    justify-self: start;
+  }
+}
+
+.blog-most-popular {
+  --card-base-width: 35rem;
+  margin-inline-start: 1rem;
+  counter-reset: article-items;
+
+  @include mq(medium) {
+    margin-inline-start: 1.5rem;
+  }
+
+  .article {
+    grid-template-columns: min-content minmax(0, 30rem);
+    grid-template-rows: auto 1fr;
+    gap: 0 2rem;
+    position: relative;
+
+    &::before {
+      counter-increment: article-items;
+      content: '0' counter(article-items);
+      display: block;
+      margin-inline-start: -1.5rem;
+      margin-block-end: -3rem;
+      font-size: 4rem;
+      font-weight: $fw-700;
+      line-height: 1;
+      color: clr(neutral, 100);
+      mix-blend-mode: difference; // might require replacing with text shadow or an overlay over the image
+      grid-column: 1;
+      grid-row: 1;
+      z-index: 2;
+    }
+
+    &__img {
+      grid-column: 1;
+      grid-row: 2 / 3;
+      width: 15rem;
+      height: 100%;
+    }
+
+    &__content {
+      grid-column: 2;
+      grid-row: 2 / 3;
+    }
+
+    &__metadata,
+    &__footer {
+      display: none;
+    }
+  }
+}
