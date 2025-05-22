@@ -6,7 +6,10 @@ function BlogRankingList ({ list }) {
   //   const isBlogPage = path === '/blog'
 
   return (
-    <ol className='articles grid-auto-fit margin-xl padding-0' role='list'>
+    <ol
+      className='articles blog-most-popular grid-auto-fit margin-xl padding-0'
+      role='list'
+    >
       {list.map(item => {
         return (
           <li key={item.id} className='flow'>
