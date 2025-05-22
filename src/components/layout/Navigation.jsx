@@ -13,10 +13,12 @@ function Navigation () {
   function openMenu () {
     setIsMenuOpen(true)
     navList.current.setAttribute('data-state', 'is-open')
+    document.body.classList.add('overlay')
   }
   function closeMenu () {
     setIsMenuOpen(false)
     navList.current.setAttribute('data-state', 'is-closing')
+    document.body.classList.remove('overlay')
   }
 
   function toggleMenu () {
