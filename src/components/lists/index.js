@@ -1,4 +1,5 @@
 export { default as BlogArticleList } from './BlogArticleList'
+export { default as BlogRankingList } from './BlogRankingList'
 export { default as FeatureList } from './FeatureList'
 export { default as ProductList } from './ProductList'
 export { default as SocialMediaList } from './SocialMediaList'
