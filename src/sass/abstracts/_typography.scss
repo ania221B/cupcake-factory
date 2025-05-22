@@ -45,7 +45,7 @@ $font-sizes: (
   600: clamp(1.5rem, 1.6vw, 1.5rem),
   650: clamp(1.5rem, 2vw, 2rem),
   700: clamp(1.75rem, 2.2vw, 2rem),
-  800: clamp(1.875rem, 3vw, 3rem),
+  800: clamp(1.875rem, 1.875rem + 1.5vw, 3rem),
   900: clamp(2rem, 0.5rem + 5vw, 4.75rem),
 );
 
