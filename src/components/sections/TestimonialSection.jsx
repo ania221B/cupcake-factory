@@ -5,8 +5,18 @@ import TestimonialList from '../lists/TestimonialList'
 function TestimonialSection () {
   const path = usePageLocation()
   const isStorePage = path === '/store'
+  const isHomePage = path === '/'
+
   return (
-    <section className='testimonials section bg-primary-100'>
+    <section
+      className={
+        isHomePage
+          ? 'testimonials section bg-primary-100'
+          : isStorePage
+          ? 'testimonials section deco deco--diamond'
+          : 'testimonials section'
+      }
+    >
       {isStorePage ? (
         <div className='container flow'>
           <SectionHeader title='What our customers think about the confectionery we make'>
