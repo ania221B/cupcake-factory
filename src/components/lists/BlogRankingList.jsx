@@ -7,7 +7,7 @@ function BlogRankingList ({ list }) {
 
   return (
     <ol
-      className='articles blog-most-popular grid-auto-fit margin-xl padding-0'
+      className='articles blog-most-popular grid-auto-fit margin-block-start-64 padding-0'
       role='list'
     >
       {list.map(item => {

@@ -2,7 +2,10 @@ import { testimonials } from '../../data'
 
 function TestimonialList () {
   return (
-    <ul className='testimonial-list margin-xl padding-0' role='list'>
+    <ul
+      className='testimonial-list margin-block-start-64 padding-0'
+      role='list'
+    >
       {testimonials.map(testimonial => {
         const { id, userName, quoteText, userImg, imgTitle } = testimonial
         return (

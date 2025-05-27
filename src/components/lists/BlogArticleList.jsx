@@ -9,8 +9,8 @@ function BlogArticleList ({ list }) {
     <ul
       className={
         isBlogPage
-          ? 'articles blog-featured margin-xl padding-0'
-          : 'articles grid-auto-fit margin-xl padding-0'
+          ? 'articles blog-featured margin-block-start-64 padding-0'
+          : 'articles grid-auto-fit margin-block-start-64 padding-0'
       }
       role='list'
     >
