@@ -37,9 +37,8 @@
   }
 
   &--diamond {
-    @include decoration(
-      $inset: -0.125rem 0 0 50%,
-      $transform: rotate(45deg) translateY(-50%)
-    );
+    @include decoration($inset: -0.5rem 0 0 0, $transform: rotate(45deg)) {
+      margin-inline: auto;
+    }
   }
 }
