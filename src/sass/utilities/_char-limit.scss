@@ -9,3 +9,16 @@
   max-width: 50rem;
   margin-inline: auto;
 }
+
+.char-limit-3 {
+  max-width: 65ch;
+  margin-inline: auto;
+  text-align: center;
+}
+
+@media (min-width: 50em) {
+  .char-limit-3 {
+    text-align: left;
+    margin-inline: initial;
+  }
+}
