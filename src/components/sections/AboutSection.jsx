@@ -4,8 +4,13 @@ import { Button, SectionHeader } from '../common'
 function AboutSection () {
   const path = usePageLocation()
   const isAboutPage = path === '/about'
+  const isHomePage = path === '/'
   return (
-    <section className='about section'>
+    <section
+      className={
+        isHomePage ? 'about section' : 'about section deco deco--diamond'
+      }
+    >
       <div className='container columns-one-one'>
         <SectionHeader
           subtitle='About Us'
