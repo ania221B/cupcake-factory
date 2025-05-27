@@ -1,0 +1,64 @@
+@use '../abstracts/' as *;
+
+.catalog-grid {
+  grid-column: 2 / -2;
+  display: grid;
+  grid-template-columns: 11rem 1fr;
+  /* 
+  Defines row sizes for consistent layout structure:
+  - auto: header adjusts naturally
+  - min-content: filtering/search area takes only needed space
+  - 1fr: product list fills remaining space, preventing layout shift
+*/
+  grid-template-rows: auto min-content 1fr;
+}
+
+.catalog-grid > header,
+.catalog-grid aside,
+.catalog-grid .search-menu,
+.catalog-grid .item-area {
+  grid-column: 1 / -1;
+}
+
+@media (min-width: 45em) {
+  //   .catalog-grid > * + * {
+  //     margin-block-start: 3em;
+  //   }
+
+  .catalog-grid > header {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+
+  .catalog-grid aside {
+    grid-column: 1;
+    grid-row: 2 / 4;
+  }
+
+  .catalog-grid .search-menu,
+  .catalog-grid .item-area {
+    grid-column: 2;
+  }
+
+  .catalog-grid .search-menu {
+    grid-row: 2;
+    margin-inline-start: 2em;
+  }
+
+  .catalog-grid .item-area {
+    grid-row: 3 / 4;
+    margin-block-start: $grid-gap;
+    margin-inline-start: $grid-gap;
+
+    display: grid;
+    grid-auto-flow: row;
+    align-content: start;
+  }
+}
+
+@media (max-width: 45em) {
+  .catalog-grid .search-form,
+  .catalog-grid .item-area {
+    margin-block-start: 2em;
+  }
+}
