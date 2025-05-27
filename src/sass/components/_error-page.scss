@@ -2,12 +2,21 @@
 
 .error-page {
   display: grid;
-  justify-content: center;
   min-height: 100dvh;
-  & > * {
-    display: grid;
-    place-items: center;
+
+  &--not-found {
+    justify-content: center;
+    & > * {
+      display: grid;
+      place-items: center;
+    }
   }
+
+  &--general {
+    place-items: center;
+    text-align: center;
+  }
+
   &__title {
     font-size: fs(900);
     font-family: $ff-secondary;

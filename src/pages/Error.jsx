@@ -1,12 +1,13 @@
 import { Link, useRouteError } from 'react-router-dom'
 import errorImage from '../assets/images/page-not-found.svg'
+import { Button } from '../components/common'
 
 function Error () {
   const error = useRouteError()
 
   if (error.status === 404) {
     return (
-      <section className='section error-page'>
+      <section className='section error-page error-page--not-found'>
         <div className='container'>
           <div className='img-container error-page__img'>
             <img src={errorImage} alt='' />
@@ -14,9 +15,14 @@ function Error () {
           <div className='flow text-center'>
             <h2 className='error-page__title'>Error!</h2>
             <p>Seems you lost your way. This page does not exist</p>
-            <Link to='/' className='btn'>
-              Back home
-            </Link>
+
+            <Button
+              buttonText='Back home'
+              path={'/'}
+              isLink={true}
+              isAccent={true}
+              hasArrow={true}
+            ></Button>
           </div>
         </div>
       </section>
@@ -24,12 +30,16 @@ function Error () {
   }
 
   return (
-    <section className='section'>
-      <div className='container'>
+    <section className='section error-page error-page--general'>
+      <div className='container flow'>
         <h2>Something went wrong</h2>
-        <Link to='/' className='btn'>
-          Back home
-        </Link>
+        <Button
+          buttonText='Back home'
+          path={'/'}
+          isLink={true}
+          isAccent={true}
+          hasArrow={true}
+        ></Button>
       </div>
     </section>
   )
