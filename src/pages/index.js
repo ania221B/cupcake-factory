@@ -1,4 +1,6 @@
 export { default as About } from './About'
+export { default as AllBlogArticles } from './AllBlogArticles'
+export { default as AllProducts } from './AllProducts'
 export { default as BaseLayout } from '../components/layout/BaseLayout'
 export { default as Blog } from './Blog'
 export { default as Contact } from './Contact'

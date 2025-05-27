@@ -9,6 +9,7 @@ function PopularPosts () {
         <SectionHeader title={'Most popular on the blog'}>
           <Button
             buttonText={'see all'}
+            path={'all-articles'}
             isLink={true}
             isLines={true}
             ariaLabel={'View all blog posts'}

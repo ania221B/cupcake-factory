@@ -14,7 +14,7 @@ function BlogSection () {
           {isBlogPage ? (
             <Button
               buttonText={'see all'}
-              // path={'blog'}
+              path={'all-articles'}
               isLink={true}
               isLines={true}
               ariaLabel={'View all blog posts'}

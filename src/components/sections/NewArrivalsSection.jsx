@@ -8,7 +8,7 @@ function NewArrivalsSection () {
   const path = usePageLocation()
   const isStorePage = path === '/store'
   return (
-    <section className='new-arrivals section bg-primary-100 deco deco--diamond'>
+    <section className='new-arrivals section deco deco--diamond'>
       <div className='container flow'>
         <SectionHeader
           title='New Arrivals'
@@ -18,7 +18,7 @@ function NewArrivalsSection () {
           {isStorePage ? (
             <Button
               buttonText={'See all'}
-              // path={'products'}
+              path={'all-products'}
               isLink={'true'}
               isLines={true}
               ariaLabel={'View all proudcts'}

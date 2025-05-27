@@ -1,5 +1,15 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import { About, BaseLayout, Blog, Contact, Error, Home, Store } from './pages'
+import {
+  About,
+  AllBlogArticles,
+  AllProducts,
+  BaseLayout,
+  Blog,
+  Contact,
+  Error,
+  Home,
+  Store
+} from './pages'
 
 const router = createBrowserRouter([
   {
@@ -13,11 +23,29 @@ const router = createBrowserRouter([
       },
       {
         path: 'store',
-        element: <Store></Store>
+        children: [
+          {
+            index: true,
+            element: <Store></Store>
+          },
+          {
+            path: 'all-products',
+            element: <AllProducts></AllProducts>
+          }
+        ]
       },
       {
         path: 'blog',
-        element: <Blog></Blog>
+        children: [
+          {
+            index: true,
+            element: <Blog></Blog>
+          },
+          {
+            path: 'all-articles',
+            element: <AllBlogArticles></AllBlogArticles>
+          }
+        ]
       },
       {
         path: 'about',
