@@ -1,0 +1,14 @@
+@use '../abstracts/' as *;
+
+.order-wrapper {
+  display: grid;
+  gap: $grid-gap;
+
+  .product-features {
+    padding-block-start: $grid-gap;
+  }
+
+  .btn {
+    justify-self: center;
+  }
+}

@@ -3,10 +3,10 @@ import ContactForm from './ContactForm'
 
 function ContactSection () {
   return (
-    <section className='contact-form section deco deco--diamond'>
-      <div className='container even-columns'>
+    <section className='contact section deco deco--diamond'>
+      <div className='container columns-one-one'>
         <div>
-          <header className='flow deco deco--separator-bottom'>
+          <header className='flow deco deco--separator-bottom padding-block-end-48'>
             <h2 className='section__title'>
               Don't hesitate to contact us for any questions!
             </h2>

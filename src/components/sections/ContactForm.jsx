@@ -1,62 +1,87 @@
+import { nanoid } from 'nanoid'
+import { contactSubjects } from '../../data'
 import { Button } from '../common'
 
 function ContactForm () {
   return (
-    <div className='form-container bg-primary-light'>
-      <form action='' method='POST'>
-        <div className='form-wrapper column flow--small'>
-          <div className='flow--x-small'>
-            <label htmlFor='fname'>
-              Name
-              <span>*</span>
-            </label>
-            <div className='flex-wrapper'>
-              <input type='text' id='fname' placeholder='First name' />
-              <input type='text' id='lname' placeholder='Last name' />
-            </div>
-          </div>
-
+    <form className='contact-form bg-primary-100' action='' method='POST'>
+      <fieldset className='flow'>
+        <legend>
+          Name
+          <span>*</span>
+        </legend>
+        <div className='form-control-wrapper'>
           <div>
-            <label htmlFor='email'>
-              Email
-              <span>*</span>
+            <label htmlFor='first-name' className='sr-only'>
+              First name
             </label>
-            <input type='email' id='email' placeholder='eg. mail@example.com' />
+            <input type='text' id='first-name' placeholder='First name' />
           </div>
-
           <div>
-            <label htmlFor='msg-subject'>
-              Subject
-              <span>*</span>
+            <label htmlFor='last-name' className='sr-only'>
+              Last Name
             </label>
-            <input
-              type='text'
-              id='msg-subject'
-              placeholder='eg. Course opening'
-            />
+            <input type='text' id='last-name' placeholder='Last name' />
           </div>
-
-          <div>
-            <label htmlFor='msg-body'>
-              Comment or Message
-              <span>*</span>
-            </label>
-            <textarea
-              name=''
-              id='msg-body'
-              cols='30'
-              rows='5'
-              placeholder='Start typing here...'
-            ></textarea>
-          </div>
-
-          {/* <button type='submit' className='btn btn--lines bg-animation'>
-            Submit
-          </button> */}
-          <Button buttonText={'submit'} type={'submit'} isLines={true}></Button>
         </div>
-      </form>
-    </div>
+      </fieldset>
+
+      <fieldset className='flow'>
+        <legend>
+          Email
+          <span>*</span>
+        </legend>
+        <div className='form-control-wrapper'>
+          <label htmlFor='email' className='sr-only'>
+            Email address
+          </label>
+          <input type='email' id='email' placeholder='eg. mail@example.com' />
+        </div>
+      </fieldset>
+
+      <fieldset className='flow'>
+        <legend>
+          Subject
+          <span>*</span>
+        </legend>
+        <div className='form-control-wrapper'>
+          <label htmlFor='msg-subject' className='sr-only'>
+            Subject
+          </label>
+          <select name='' id=''>
+            {contactSubjects.map(subject => {
+              const { value, label } = subject
+              return (
+                <option key={nanoid()} value={value}>
+                  {label}
+                </option>
+              )
+            })}
+          </select>
+        </div>
+      </fieldset>
+
+      <fieldset className='flow'>
+        <legend>
+          Message
+          <span>*</span>
+        </legend>
+        <div className='form-control-wrapper'>
+          <label htmlFor='msg-body' className='sr-only'>
+            Message text
+          </label>
+          <textarea
+            name=''
+            id='msg-body'
+            cols='30'
+            rows='5'
+            placeholder='Start typing here...'
+          ></textarea>
+        </div>
+      </fieldset>
+
+      <Button buttonText={'submit'} type={'submit'} isLines={true}></Button>
+    </form>
   )
 }
 export default ContactForm

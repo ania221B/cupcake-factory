@@ -59,8 +59,14 @@
   --flow-spacer: 1.5rem;
 }
 
-.contact-form {
+.contact {
+  header {
+    --flow-spacer: 1.5rem;
+  }
   .social-list {
-    justify-content: space-between;
+    // margin-top: $grid-gap;
+    @include mq(large, max-width) {
+      justify-content: space-between;
+    }
   }
 }
