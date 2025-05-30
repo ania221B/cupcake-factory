@@ -7,9 +7,10 @@ import { Link } from 'react-router-dom'
  * @param {string} ariaLabel - Accessible label for the button.
  * @param {string} type - The type of the button (default is 'button').
  * @param {string} path - The path for the link (if isLink is true).
+ * @param {function} onClick - Function executed on button click
  * @param {boolean} isLink - Whether the button is a link.
  * @param {boolean} hasArrow - Whether to display an arrow next to the text.
- * * @param {boolean} isAccent - Whether the button has accent styling.
+ *  @param {boolean} isAccent - Whether the button has accent styling.
  * @param {boolean} isLines - Whether the button has lines styling (thin outline, filled in on hover).
  * @param {boolean} isInvisible - Whether the button has invisible styling (just text and underline on hover).
  *
