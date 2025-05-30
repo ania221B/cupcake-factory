@@ -2,7 +2,7 @@ import { blogPreviews } from '../../data/blogPreviews'
 import { Button, SectionHeader } from '../common'
 import { BlogRankingList } from '../lists'
 
-function PopularPosts () {
+function PopularPostsSection () {
   return (
     <section className='blog section bg-primary-100 deco deco--diamond'>
       <div className='container flow'>
@@ -21,4 +21,4 @@ function PopularPosts () {
     </section>
   )
 }
-export default PopularPosts
+export default PopularPostsSection
