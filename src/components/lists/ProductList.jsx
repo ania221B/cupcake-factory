@@ -4,6 +4,17 @@ import ProductCard from '../ui/ProductCard'
 function ProductList ({ list }) {
   const path = usePageLocation()
   const isAllProductsPage = path === '/store/all-products'
+
+  if (!list.length) {
+    return (
+      <div className='flow'>
+        <h2 className='ff-secondary fs-700 fw-700'>No products to display</h2>
+        <p>
+          Try searching for something else, like <q>cake</q>.
+        </p>
+      </div>
+    )
+  }
   return (
     <ul
       className={
