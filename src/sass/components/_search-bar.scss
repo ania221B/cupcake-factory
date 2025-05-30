@@ -1,0 +1,66 @@
+@use '../abstracts/' as *;
+
+/* === SEARCH BAR ========= */
+
+.form__wrapper {
+  display: grid;
+  grid-auto-flow: row;
+  gap: 0.5em;
+
+  border-radius: $br-small;
+  padding-inline-start: 0;
+
+  &:focus-within {
+    outline: none;
+  }
+
+  label {
+    display: grid;
+    place-items: center;
+    font-weight: $fw-700;
+  }
+
+  input {
+    border: none;
+    border-radius: $br-small;
+    outline: 1px solid clr(neutral, 500);
+    padding-inline: 1em;
+    padding-block: 0.75em;
+    color: clr(primary, 300);
+
+    &:focus-visible {
+      outline: 2px solid clr(secondary, 700);
+    }
+  }
+
+  .btn {
+    border-radius: $br-small;
+  }
+
+  @include mq(50em) {
+    grid-template-columns: auto 1fr max-content;
+    gap: 0 0.5em;
+
+    padding-inline-start: 1em;
+    outline: 1px solid clr(neutral, 500);
+    border-radius: $br-small;
+
+    &:focus-within {
+      outline: 2px solid clr(secondary, 700);
+    }
+
+    input {
+      background-color: transparent;
+      outline: none;
+      color: clr(primary, 300);
+
+      &:focus-visible {
+        outline: none;
+      }
+    }
+
+    .btn {
+      border-radius: 0 $br-small $br-small 0;
+    }
+  }
+}
