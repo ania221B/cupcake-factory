@@ -3,7 +3,7 @@ import {
   BlogSection,
   CTASection,
   HeroSection,
-  PopularPosts,
+  PopularPostsSection,
   ProductFeatureSection
 } from '../components/sections'
 
@@ -12,7 +12,7 @@ function Blog () {
     <>
       <HeroSection title='Blog'></HeroSection>
       <BlogSection></BlogSection>
-      <PopularPosts></PopularPosts>
+      <PopularPostsSection></PopularPostsSection>
       <AboutSection></AboutSection>
       <ProductFeatureSection></ProductFeatureSection>
       <CTASection></CTASection>
