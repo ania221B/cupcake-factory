@@ -105,17 +105,20 @@
     margin-top: 0.75rem;
     display: grid;
     grid-template-columns: 1fr auto;
-    // outline: 2px solid purple;
+    gap: 0.75rem;
   }
 
   &__unit-price {
     grid-column: 1;
+    align-self: end;
 
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 0.75rem;
+    gap: 0.25rem;
 
     font-size: fs(200);
+    color: clr(neutral, 400);
   }
   &__price-current {
     grid-column: 2;
@@ -128,16 +131,25 @@
   }
 
   &__price-current dd {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+
     font-size: fs(700);
     font-weight: $fw-700;
     line-height: 1;
 
     margin-inline-start: auto;
-    //   color: rgba(var(--clr-primary-800));
+  }
+
+  &__discount {
+    align-self: end;
+    font-size: fs(300);
+    color: clr(neutral, 500);
+    font-weight: $fw-700;
   }
 
   &__sale-pricing {
-    // outline: 2px solid yellow;
     padding-block-start: 0.5rem;
     padding-block-end: 0;
     padding-inline: 0;
@@ -145,15 +157,24 @@
     grid-row: 2;
 
     > * {
-      display: flex;
-      align-items: center;
+      display: grid;
+      grid-template-columns: 1fr max-content;
+      align-items: end;
       gap: 0.75rem;
 
       font-size: fs(200);
+      color: clr(neutral, 400);
     }
   }
 
   &__btn {
     border-radius: $br-small;
+
+    &:disabled {
+      cursor: not-allowed;
+      background-color: clr(primary, 200);
+      color: clr(neutral, 400);
+      border: 0.0625rem solid rgba(clr(neutral, 300), 0.5);
+    }
   }
 }

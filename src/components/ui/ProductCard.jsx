@@ -1,4 +1,5 @@
 import { IoMdStar } from 'react-icons/io'
+import { useGlobalContext } from '../../context'
 
 function ProductCard ({ item }) {
   const {
@@ -14,8 +15,10 @@ function ProductCard ({ item }) {
     rating,
     bestseller,
     newArrival,
-    sale
+    sale,
+    availability
   } = item
+  const { formatPrice, calculateDiscount } = useGlobalContext()
   return (
     <article className='product-item'>
       <div className='product-item__img'>
@@ -47,31 +50,46 @@ function ProductCard ({ item }) {
           <div className='product-item__pricing'>
             <div className='product-item__unit-price'>
               <dt>Price per kg:</dt>
-              <dd>${pricePerKg}/kg</dd>
+              <dd>${formatPrice(pricePerKg)}/kg</dd>
             </div>
 
             <div className='product-item__price-current'>
               <dt className='sr-only'>Price:</dt>
-              <dd>${currentPrice}</dd>
+              {sale ? (
+                <dd className='clr-primary-500'>
+                  <span className='product-item__discount'>
+                    {calculateDiscount(currentPrice, regularPrice)}% off
+                  </span>
+                  <span>${formatPrice(currentPrice)}</span>
+                </dd>
+              ) : (
+                <dd>${formatPrice(currentPrice)}</dd>
+              )}
             </div>
 
             {sale && (
               <dl className='product-item__sale-pricing deco deco--separator deco--separator-top'>
                 <div className='product-item__price-lowest'>
-                  <dt>Lowest price:</dt>
-                  <dd>${lowestPrice30Days}</dd>
+                  <dt>Lowest price from 30 days before sale:</dt>
+                  <dd>${formatPrice(lowestPrice30Days)}</dd>
                 </div>
                 <div className='product-item__price-regular'>
                   <dt>Regular price:</dt>
-                  <dd>${regularPrice}</dd>
+                  <dd>${formatPrice(regularPrice)}</dd>
                 </div>
               </dl>
             )}
           </div>
         </dl>
-        <button className='product-item__btn btn btn--card bg-animation'>
-          Add to cart
-        </button>
+        {availability ? (
+          <button className='product-item__btn btn btn--card bg-animation'>
+            Add to cart
+          </button>
+        ) : (
+          <button className='product-item__btn btn btn--card' disabled>
+            Will be back soon
+          </button>
+        )}
       </div>
     </article>
   )
