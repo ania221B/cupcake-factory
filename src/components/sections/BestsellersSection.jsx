@@ -4,22 +4,13 @@ import { Button, SectionHeader } from '../common'
 import ProductList from '../lists/ProductList'
 
 function BestsellersSection () {
-  // const bestsellers = products.filter(product => product.bestseller === true)
-  const bestsellers = products.filter(
-    product => product.bestseller === true || product.sale === true
-  )
+  const bestsellers = products.filter(product => product.bestseller === true)
+
   const path = usePageLocation()
   const isStorePage = path === '/store'
-  // const isHomePage = path === '/'
+
   return (
-    <section
-      // className={
-      //   isHomePage
-      //     ? 'bestsellers section bg-primary-100 deco deco--diamond'
-      //     : 'bestsellers section deco deco--diamond'
-      // }
-      className='bestsellers section bg-primary-100 deco deco--diamond'
-    >
+    <section className='bestsellers section bg-primary-100 deco deco--diamond'>
       <div className='container flow'>
         <SectionHeader
           title='Bestsellers'
