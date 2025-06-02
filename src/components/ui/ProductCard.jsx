@@ -1,5 +1,6 @@
 import { IoMdStar } from 'react-icons/io'
 import { useGlobalContext } from '../../context'
+import Button from '../common/Button'
 
 function ProductCard ({ item }) {
   const {
@@ -82,13 +83,18 @@ function ProductCard ({ item }) {
           </div>
         </dl>
         {availability ? (
-          <button className='product-item__btn btn btn--card bg-animation'>
-            Add to cart
-          </button>
+          <Button
+            buttonText='Add to cart'
+            onClick={() => console.log('product added to cart')}
+            isItemCard={true}
+          ></Button>
         ) : (
-          <button className='product-item__btn btn btn--card' disabled>
-            Will be back soon
-          </button>
+          <Button
+            buttonText='Will be back soon'
+            onClick={() => console.log('product added to cart')}
+            isItemCard={true}
+            isInactive={true}
+          ></Button>
         )}
       </div>
     </article>
