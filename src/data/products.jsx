@@ -8,6 +8,7 @@ export const products = [
     imgTitle: 'Photo by',
     name: 'Chocolate Fudge Cake',
     description: 'Rich chocolate sponge with creamy ganache.',
+    type: 'cake',
     pricePerKg: 30,
     regularPrice: 25,
     lowestPrice30Days: 23,
@@ -15,7 +16,8 @@ export const products = [
     rating: 4.8,
     bestseller: true,
     newArrival: false,
-    sale: false
+    sale: false,
+    availability: true
   },
   {
     id: nanoid(),
@@ -24,6 +26,7 @@ export const products = [
     imgTitle: 'Photo by',
     name: 'Vanilla Cupcakes',
     description: 'Soft vanilla sponge with buttercream frosting.',
+    type: 'cake',
     pricePerKg: 20,
     regularPrice: 15,
     lowestPrice30Days: 14,
@@ -31,7 +34,8 @@ export const products = [
     rating: 4.6,
     bestseller: true,
     newArrival: false,
-    sale: false
+    sale: false,
+    availability: true
   },
   {
     id: nanoid(),
@@ -40,6 +44,7 @@ export const products = [
     imgTitle: 'Photo by',
     name: 'Almond Croissants',
     description: 'Flaky pastries with almond filling.',
+    type: 'pastry',
     pricePerKg: 18,
     regularPrice: 10,
     lowestPrice30Days: 9,
@@ -47,7 +52,8 @@ export const products = [
     rating: 4.7,
     bestseller: true,
     newArrival: false,
-    sale: false
+    sale: false,
+    availability: true
   },
   {
     id: nanoid(),
@@ -56,6 +62,7 @@ export const products = [
     imgTitle: 'Photo by',
     name: 'Red Velvet Cake',
     description: 'Classic red velvet sponge with cream cheese frosting.',
+    type: 'cake',
     pricePerKg: 35,
     regularPrice: 28,
     lowestPrice30Days: 26,
@@ -63,7 +70,27 @@ export const products = [
     rating: 4.9,
     bestseller: true,
     newArrival: false,
-    sale: false
+    sale: false,
+    availability: true
+  },
+  {
+    id: nanoid(),
+    imgMain: 'assets/courses-2-pexels-gustavo-fring.jpg',
+    imgSecondary: '',
+    imgTitle: 'Photo by',
+    name: 'Pistachio Eclairs',
+    description:
+      'Choux pastry filled with pistachio cream and glazed with white chocolate.',
+    type: 'pastry',
+    pricePerKg: 38,
+    regularPrice: 20,
+    lowestPrice30Days: 20,
+    currentPrice: 20,
+    rating: 4.5,
+    bestseller: false,
+    newArrival: true,
+    sale: false,
+    availability: false
   },
   {
     id: nanoid(),
@@ -72,6 +99,7 @@ export const products = [
     imgTitle: 'Photo by',
     name: 'Raspberry Tarts',
     description: 'Crispy pastry shells filled with raspberry cream.',
+    type: 'dessert',
     pricePerKg: 25,
     regularPrice: 12,
     lowestPrice30Days: 11,
@@ -79,7 +107,8 @@ export const products = [
     rating: 4.5,
     bestseller: false,
     newArrival: true,
-    sale: false
+    sale: false,
+    availability: true
   },
   {
     id: nanoid(),
@@ -89,6 +118,7 @@ export const products = [
     name: 'Carrot Cake',
     description:
       'Moist carrot cake with a hint of cinnamon and cream cheese frosting.',
+    type: 'cake',
     pricePerKg: 32,
     regularPrice: 26,
     lowestPrice30Days: 24,
@@ -96,7 +126,8 @@ export const products = [
     rating: 4.7,
     bestseller: false,
     newArrival: false,
-    sale: false
+    sale: false,
+    availability: true
   },
   {
     id: nanoid(),
@@ -106,6 +137,7 @@ export const products = [
     name: 'Macarons',
     description:
       'Assorted delicate almond meringue cookies with various fillings.',
+    type: 'cookie',
     pricePerKg: 40,
     regularPrice: 18,
     lowestPrice30Days: 16,
@@ -113,7 +145,8 @@ export const products = [
     rating: 4.8,
     bestseller: false,
     newArrival: true,
-    sale: false
+    sale: false,
+    availability: true
   },
   {
     id: nanoid(),
@@ -122,6 +155,7 @@ export const products = [
     imgTitle: 'Photo by',
     name: 'Lemon Drizzle Cake',
     description: 'Light sponge cake soaked in lemon syrup.',
+    type: 'cake',
     pricePerKg: 28,
     regularPrice: 22,
     lowestPrice30Days: 20,
@@ -129,7 +163,27 @@ export const products = [
     rating: 4.6,
     bestseller: false,
     newArrival: false,
-    sale: false
+    sale: false,
+    availability: true
+  },
+  {
+    id: nanoid(),
+    imgMain: 'assets/courses-5-pexels-gustavo-fring.jpg',
+    imgSecondary: '',
+    imgTitle: 'Photo by',
+    name: 'Hazelnut Cookies',
+    description:
+      'Crunchy cookies made with roasted hazelnuts and chocolate chips.',
+    type: 'cookie',
+    pricePerKg: 26,
+    regularPrice: 16,
+    lowestPrice30Days: 14,
+    currentPrice: 14,
+    rating: 4.6,
+    bestseller: true,
+    newArrival: false,
+    sale: true,
+    availability: true
   },
   {
     id: nanoid(),
@@ -138,6 +192,7 @@ export const products = [
     imgTitle: 'Photo by',
     name: 'Chocolate Chip Cookies',
     description: 'Crunchy cookies loaded with chocolate chips.',
+    type: 'cookie',
     pricePerKg: 15,
     regularPrice: 10,
     lowestPrice30Days: 9,
@@ -145,7 +200,8 @@ export const products = [
     rating: 4.4,
     bestseller: false,
     newArrival: false,
-    sale: false
+    sale: false,
+    availability: true
   },
   {
     id: nanoid(),
@@ -154,6 +210,7 @@ export const products = [
     imgSecondary: '',
     imgTitle: 'Photo by',
     description: 'Creamy cheesecake with a biscuit base.',
+    type: 'dessert',
     pricePerKg: 35,
     regularPrice: 29,
     lowestPrice30Days: 27,
@@ -161,6 +218,46 @@ export const products = [
     rating: 4.9,
     bestseller: false,
     newArrival: false,
-    sale: false
+    sale: false,
+    availability: true
+  },
+
+  {
+    id: nanoid(),
+    imgMain: 'assets/courses-3-pexels-gustavo-fring.jpg',
+    imgSecondary: '',
+    imgTitle: 'Photo by',
+    name: 'Blueberry Muffins',
+    description: 'Soft and fluffy muffins packed with fresh blueberries.',
+    type: 'dessert',
+    pricePerKg: 22,
+    regularPrice: 12,
+    lowestPrice30Days: 12,
+    currentPrice: 12,
+    rating: 4.3,
+    bestseller: false,
+    newArrival: false,
+    sale: false,
+    availability: false
+  },
+
+  {
+    id: nanoid(),
+    imgMain: 'assets/courses-4-pexels-gustavo-fring.jpg',
+    imgSecondary: '',
+    imgTitle: 'Photo by',
+    name: 'Strawberry Shortcake',
+    description:
+      'Layered sponge cake with whipped cream and fresh strawberries.',
+    type: 'cake',
+    pricePerKg: 34,
+    regularPrice: 24,
+    lowestPrice30Days: 19,
+    currentPrice: 19,
+    rating: 4.7,
+    bestseller: false,
+    newArrival: false,
+    sale: true,
+    availability: true
   }
 ]
