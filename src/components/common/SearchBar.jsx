@@ -1,11 +1,8 @@
-import { useState } from 'react'
 import Button from './Button'
-import { products } from '../../data'
 import { useGlobalContext } from '../../context'
 
 function SearchBar () {
-  const [inputText, setInputText] = useState('')
-  const { filterProducts } = useGlobalContext()
+  const { inputText, setInputText } = useGlobalContext()
 
   return (
     <search className='search-menu'>
@@ -25,8 +22,6 @@ function SearchBar () {
             type='submit'
             onClick={e => {
               e.preventDefault()
-              filterProducts(inputText)
-              setInputText('')
             }}
             isAccent={true}
           ></Button>
