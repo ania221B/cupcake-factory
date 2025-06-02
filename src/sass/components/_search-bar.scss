@@ -35,6 +35,10 @@
 
   .btn {
     border-radius: $br-small;
+    &:disabled {
+      cursor: not-allowed;
+      background-color: clr(secondary, 200);
+    }
   }
 
   @include mq(50em) {
@@ -61,6 +65,9 @@
 
     .btn {
       border-radius: 0 $br-small $br-small 0;
+      &:disabled {
+        font-size: 0.6rem;
+      }
     }
   }
 }

@@ -2,7 +2,8 @@ import Button from './Button'
 import { useGlobalContext } from '../../context'
 
 function SearchBar () {
-  const { inputText, setInputText } = useGlobalContext()
+  const { inputText, setInputText, isSearching, setIsSearching } =
+    useGlobalContext()
 
   return (
     <search className='search-menu'>
@@ -16,15 +17,33 @@ function SearchBar () {
             value={inputText}
             onInput={e => setInputText(e.target.value)}
           />
-          <Button
-            buttonText='Search'
-            ariaLabel='Search for products'
-            type='submit'
-            onClick={e => {
-              e.preventDefault()
-            }}
-            isAccent={true}
-          ></Button>
+          {isSearching ? (
+            <Button
+              buttonText='Searching...'
+              ariaLabel='Search for products'
+              type='submit'
+              onClick={e => {
+                e.preventDefault()
+              }}
+              isAccent={true}
+              isInactive={true}
+            ></Button>
+          ) : (
+            <Button
+              buttonText='Search'
+              ariaLabel='Search for products'
+              type='submit'
+              onClick={e => {
+                e.preventDefault()
+                setIsSearching(true)
+
+                setInterval(() => {
+                  setIsSearching(false)
+                }, 500)
+              }}
+              isAccent={true}
+            ></Button>
+          )}
         </div>
       </form>
     </search>

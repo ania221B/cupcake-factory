@@ -34,6 +34,7 @@ function AppContext ({ children }) {
   const [filteredProducts, setFilteredProducts] = useState(products)
   const [filters, setFilters] = useState(initialFilters)
   const [priceError, setPriceError] = useState(null)
+  const [isSearching, setIsSearching] = useState(false)
 
   /**
    * Creates a camelcase version of standard text with spaces or a hyphenated text
@@ -210,7 +211,9 @@ function AppContext ({ children }) {
         priceError,
         setPriceError,
         compareMinMax,
-        resetFilters
+        resetFilters,
+        isSearching,
+        setIsSearching
       }}
     >
       {children}
