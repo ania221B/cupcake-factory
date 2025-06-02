@@ -180,7 +180,7 @@ export const products = [
     lowestPrice30Days: 14,
     currentPrice: 14,
     rating: 4.6,
-    bestseller: true,
+    bestseller: false, // originally was true
     newArrival: false,
     sale: true,
     availability: true
