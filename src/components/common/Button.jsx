@@ -13,6 +13,8 @@ import { Link } from 'react-router-dom'
  *  @param {boolean} isAccent - Whether the button has accent styling.
  * @param {boolean} isLines - Whether the button has lines styling (thin outline, filled in on hover).
  * @param {boolean} isInvisible - Whether the button has invisible styling (just text and underline on hover).
+ * @param {boolean} isItemCard - Whether the button has a card button styling (colorful, filled in background and a thin border of different color).
+ * @param {boolean} isInactive - Whether the button is disabled, so has the disabled attribute on it.
  *
  */
 
@@ -26,13 +28,20 @@ function Button ({
   hasArrow = false,
   isAccent = false,
   isLines = false,
-  isInvisible = false
+  isInvisible = false,
+  isItemCard = false,
+  isInactive = false
 }) {
   const classes = ['btn']
   if (isAccent) classes.push('btn--accent', 'bg-animation')
   if (hasArrow) classes.push('btn--arrow')
   if (isLines) classes.push('btn--lines', 'bg-animation')
   if (isInvisible) classes.push('btn--invisible')
+  if (isItemCard) classes.push('btn--card', 'bg-animation')
+  if (isInactive) {
+    const index = classes.indexOf('bg-animation')
+    classes.splice(index, 1)
+  }
 
   const commonProps = {
     className: classes.join(' '),
@@ -50,6 +59,11 @@ function Button ({
       <span>{buttonText}</span>
       {hasArrow && <span>&#8594;</span>}
     </Link>
+  ) : isInactive ? (
+    <button type={type} {...commonProps} onClick={onClick} disabled>
+      <span>{buttonText}</span>
+      {hasArrow && <span>&#8594;</span>}
+    </button>
   ) : (
     <button type={type} {...commonProps} onClick={onClick}>
       <span>{buttonText}</span>
