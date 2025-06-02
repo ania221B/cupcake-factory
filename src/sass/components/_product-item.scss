@@ -12,6 +12,12 @@
   grid-auto-rows: max-content 1fr;
   position: relative;
 
+  @include mq(50em) {
+    &:only-child {
+      max-width: calc($card-base-width * 1.5);
+    }
+  }
+
   &__img {
     overflow: hidden;
     width: 100%;
@@ -167,7 +173,7 @@
     }
   }
 
-  &__btn {
+  &__body > .btn {
     border-radius: $br-small;
 
     &:disabled {
