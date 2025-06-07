@@ -3,6 +3,11 @@
 .section {
   padding-block: $padding-section;
 
+  main > &:first-of-type {
+    --padding-section: #{$padding-section};
+    padding-block-start: calc(var(--padding-section) + var(--header-height));
+  }
+
   &:not(.hero) .even-columns {
     align-items: center;
 

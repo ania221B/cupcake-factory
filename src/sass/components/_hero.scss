@@ -18,17 +18,6 @@
     }
   }
 
-  &.section {
-    --padding-section: #{$padding-section};
-    padding-block-start: calc(var(--padding-section) + var(--header-height));
-  }
-
-  // &:has(.hero__header:only-child) .columns-two-one {
-  //   & > * {
-  //     grid-column: 1 / -1;
-  //   }
-  // }
-
   &__header:only-child {
     text-align: center;
   }
