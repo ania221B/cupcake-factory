@@ -1,21 +1,24 @@
 @use '../abstracts/' as *;
 
-// .product-item a {
-//   text-decoration: none;
-//   color: inherit;
-// }
-
 .product-item {
   height: 100%;
   display: grid;
-  grid-auto-flow: row;
-  grid-auto-rows: max-content 1fr;
+  grid-auto-rows: 1fr auto;
   position: relative;
 
   @include mq(50em) {
     &:only-child {
       max-width: calc($card-base-width * 1.5);
     }
+  }
+
+  & > a {
+    display: block;
+    height: 100%;
+    display: grid;
+    grid-auto-rows: auto 1fr;
+    text-decoration: none;
+    color: inherit;
   }
 
   &__img {
@@ -25,44 +28,49 @@
     border-radius: $br-small;
 
     display: grid;
+
+    picture {
+      grid-column: 1;
+      grid-row: 1;
+
+      width: 100%;
+      height: 100%;
+
+      transition: opacity 500ms ease-in-out;
+      margin-inline: auto;
+    }
+
     img {
       width: 100%;
       height: 100%;
       margin-inline: auto;
+    }
 
-      grid-column: 1;
-      grid-row: 1;
-
-      transition: opacity 500ms ease-in-out;
-
-      &:first-of-type {
-        background-color: clr(primary, 300);
-        opacity: 1;
-      }
-      &:last-of-type {
-        background-color: clr(secondary, 400);
-        opacity: 0;
-      }
-      padding: 0.75em; // delete later just for the text to not be in the corner
+    picture:first-of-type {
+      background-color: clr(primary, 300);
+      opacity: 1;
+    }
+    picture:last-of-type {
+      background-color: clr(secondary, 400);
+      opacity: 0;
     }
   }
 
   &:hover &__img {
-    img:first-of-type {
+    picture:first-of-type {
       opacity: 0;
     }
-    img:last-of-type {
+    picture:last-of-type {
       opacity: 1;
     }
   }
 
   &__body {
     height: 100%;
-    align-self: stretch;
     display: grid;
     grid-template-rows: 1fr auto;
 
-    > dl {
+    > * {
       display: grid;
       grid-auto-flow: row;
       padding-block: 1rem;
@@ -70,28 +78,34 @@
     }
   }
 
-  &__header-wrapper {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-  }
-
   &__header {
-    align-self: start;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-auto-rows: min-content;
+    justify-content: space-between;
+    gap: 0.5em;
   }
 
   &__name {
+    grid-column: 1;
     font-size: fs(450);
     font-weight: $fw-700;
     font-variant: small-caps;
     line-height: 1;
   }
 
+  &__description {
+    grid-column: 1/ -1;
+    grid-row: 2;
+  }
+
   &__rating {
+    grid-column: 2;
     width: max-content;
     justify-self: end;
     align-self: start;
-    // margin-top: 0.25rem;
+    line-height: 1;
+
     dd {
       display: flex;
       gap: 0.25rem;
@@ -99,53 +113,40 @@
     }
   }
 
-  &__star {
-    svg {
-      margin-top: -5px;
-      display: grid;
-      place-content: center;
-    }
-  }
-
   &__pricing {
     margin-top: 0.75rem;
     display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 0.75rem;
+    grid-template-columns: auto 1fr auto;
+    grid-auto-rows: auto;
+    gap: 0 0.75rem;
+
+    &::before {
+      grid-row: 3;
+    }
   }
 
-  &__unit-price {
-    grid-column: 1;
-    align-self: end;
-
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.25rem;
-
+  &__unit-price-tag,
+  &__unit-price-value {
     font-size: fs(200);
     color: clr(neutral, 400);
   }
-  &__price-current {
-    grid-column: 2;
-    grid-row: 1;
-    align-self: end;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.75rem;
-  }
 
-  &__price-current dd {
+  &__price-current {
+    padding-block-start: 0.75rem;
+    grid-column: 1 / -1;
+    grid-row: 2;
+    align-self: end;
+    justify-self: end;
+
     display: flex;
     flex-direction: column;
-    gap: 0.25rem;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
 
     font-size: fs(700);
     font-weight: $fw-700;
     line-height: 1;
-
-    margin-inline-start: auto;
   }
 
   &__discount {
@@ -155,22 +156,36 @@
     font-weight: $fw-700;
   }
 
-  &__sale-pricing {
-    padding-block-start: 0.5rem;
-    padding-block-end: 0;
-    padding-inline: 0;
-    grid-column: 1 / -1;
-    grid-row: 2;
+  &__price-lowest-tag,
+  &__price-lowest-value,
+  &__price-regular-tag,
+  &__price-regular-value {
+    font-size: fs(200);
+    color: clr(neutral, 400);
+  }
 
-    > * {
-      display: grid;
-      grid-template-columns: 1fr max-content;
-      align-items: end;
-      gap: 0.75rem;
+  &__price-lowest-tag {
+    padding-block-start: 0.75rem;
+  }
 
-      font-size: fs(200);
-      color: clr(neutral, 400);
-    }
+  &__price-lowest-tag,
+  &__price-lowest-value {
+    grid-row: 3;
+  }
+
+  &__price-lowest-tag,
+  &__price-regular-tag {
+    grid-column: span 2;
+  }
+
+  &__price-regular-tag,
+  &__price-regular-value {
+    grid-row: 4;
+  }
+
+  &__price-lowest-value,
+  &__price-regular-value {
+    align-self: end;
   }
 
   &__body > .btn {
