@@ -1,21 +1,16 @@
 import { useGlobalContext } from '../../context'
+import { makeCamelCaseText } from '../../utils'
 import Button from './Button'
 
 function FilterMenu () {
-  const {
-    initialFilters,
-    filters,
-    setFilters,
-    makeCapitalizedText,
-    priceError
-  } = useGlobalContext()
+  const { initialFilters, filters, setFilters, priceError } = useGlobalContext()
   function handleChange (e) {
     const typeNames = Object.keys(filters.type)
 
     if (e.target.name === 'price-min' || e.target.name === 'price-max') {
       setFilters(prevFilters => ({
         ...prevFilters,
-        [makeCapitalizedText(e.target.name)]: parseFloat(e.target.value)
+        [makeCamelCaseText(e.target.name)]: parseFloat(e.target.value)
       }))
     } else if (e.target.name === 'rating') {
       setFilters(prevFilters => ({
