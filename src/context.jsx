@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react'
 import { products } from './data'
+import { compareMinMax } from './utils'
 
 const GlobalContext = createContext()
 
@@ -37,94 +38,13 @@ function AppContext ({ children }) {
   const [isSearching, setIsSearching] = useState(false)
 
   /**
-   * Creates a camelcase version of standard text with spaces or a hyphenated text
-   * @param {String} string Text to capitalize
-   * @returns {String} Capitalized text string
+   * Checks minimum & maximum price values
+   * @param {Number} minVal minimum price
+   * @param {Number} maxVal maximum price
    */
-  function makeCapitalizedText (string) {
-    const capitalized = []
-    if (string.includes(' ')) {
-      string.split(' ').forEach((item, index) => {
-        if (index === 0) {
-          capitalized.push(item)
-        } else {
-          const newItem = item.substring(0, 1).toUpperCase() + item.substring(1)
-          capitalized.push(newItem)
-        }
-      })
-    } else {
-      string.split('-').forEach((item, index) => {
-        if (index === 0) {
-          capitalized.push(item)
-        } else {
-          const newItem = item.substring(0, 1).toUpperCase() + item.substring(1)
-          capitalized.push(newItem)
-        }
-      })
-    }
-    return capitalized.join('')
-  }
-
-  /**
-   * Formats price
-   * @param {Number} priceToFormat price as a number needed formating
-   * @returns formatted price
-   */
-  function formatPrice (priceToFormat) {
-    const price = priceToFormat.toString()
-
-    if (price.includes('.')) {
-      if (price.length === 5) {
-        return price
-      }
-      if (price.length < 5) {
-        return price.padEnd(5, 0)
-      }
-    }
-    return (price + '.').padEnd(5, 0)
-  }
-
-  /**
-   * Claculates the value of the discount for products on sale
-   * @param {Number} promoPrice price the product has while on sale
-   * @param {Number} regularPrice price the product has while not on sale
-   * @returns amount of discount
-   */
-  function calculateDiscount (promoPrice, regularPrice) {
-    const discount =
-      100 - (parseFloat(promoPrice) / parseFloat(regularPrice)) * 100
-    return parseFloat(discount.toFixed(1))
-  }
-
-  /**
-   * Safely parses a string as a float.
-   * Returns null if the input is empty or not a valid number.
-   * @param {String} value string to check
-   * @returns {number|null}
-   */
-  function safeParseFloat (value) {
-    const num = parseFloat(value)
-    return isNaN(num) ? null : num
-  }
-
-  /**
-   * Checks if maximum value is greater than minimum value
-   * @param {Number} minVal minimum value
-   * @param {Number} maxVal maximum value
-   * @returns error message or null
-   */
-  function compareMinMax (minVal, maxVal) {
-    const min = safeParseFloat(minVal)
-    const max = safeParseFloat(maxVal)
-    if (min === null || max === null) {
-      setPriceError(null)
-      return
-    }
-    if (max <= min) {
-      setPriceError('Max price must be greater than min price')
-    } else {
-      setPriceError(null)
-    }
+  function validatePrices (minVal, maxVal) {
+    const errorMessage = compareMinMax(minVal, maxVal)
+    setPriceError(errorMessage)
   }
 
   /**
@@ -185,7 +105,7 @@ function AppContext ({ children }) {
     filterProducts(inputText)
   }, [filters, inputText])
   useEffect(() => {
-    compareMinMax(filters.priceMin, filters.priceMax)
+    validatePrices(filters.priceMin, filters.priceMax)
   }, [filters.priceMin, filters.priceMax])
 
   return (
@@ -205,9 +125,7 @@ function AppContext ({ children }) {
         filterProducts,
         filters,
         setFilters,
-        formatPrice,
-        makeCapitalizedText,
-        calculateDiscount,
+        validatePrices,
         priceError,
         setPriceError,
         compareMinMax,
