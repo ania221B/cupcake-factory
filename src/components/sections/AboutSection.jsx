@@ -82,7 +82,7 @@ function AboutSection () {
           ) : (
             <Button
               buttonText={'More about us'}
-              path={'about'}
+              path={'/about'}
               isLink={true}
               isLines={true}
               aria-label={'Go to About page'}
