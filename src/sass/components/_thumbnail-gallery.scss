@@ -1,0 +1,51 @@
+@use '../abstracts/' as *;
+
+.thumbnail-gallery {
+  display: grid;
+  grid-auto-rows: auto;
+  gap: $grid-gap * 0.75;
+
+  &__preview > img {
+    border-radius: $br-medium;
+  }
+
+  &__list {
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: $grid-gap * 0.5;
+
+    li {
+      border-radius: $br-small;
+      overflow: hidden;
+    }
+
+    .selected {
+      outline: 3px solid clr(secondary, 500);
+      outline-offset: 3px;
+    }
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1;
+  }
+
+  @include mq(39em, between, large) {
+    grid-template-columns: 10rem 1fr;
+
+    &__preview {
+      grid-row: 1;
+      grid-column: 2;
+    }
+
+    &__list {
+      grid-row: 1;
+      grid-column: 1;
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(3, 1fr);
+    }
+  }
+}
