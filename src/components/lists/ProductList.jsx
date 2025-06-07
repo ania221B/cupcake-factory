@@ -19,8 +19,8 @@ function ProductList ({ list }) {
     <ul
       className={
         isAllProductsPage
-          ? 'card-list grid-auto-fit padding-0'
-          : 'card-list grid-auto-fit margin-block-start-64 padding-0'
+          ? 'card-list grid-auto-fit margin-block-end-0 padding-0'
+          : 'card-list grid-auto-fit margin-block-start-64 margin-block-end-0 padding-0'
       }
       role='list'
       aria-live={isAllProductsPage ? 'polite' : undefined}
