@@ -1,0 +1,31 @@
+@use '../abstracts/' as *;
+
+.contact-details {
+  padding: 0;
+  &__item {
+    padding-block: 2em;
+    display: grid;
+    gap: $grid-gap;
+
+    @include mq(small) {
+      grid-template-columns: auto 1fr;
+    }
+  }
+  &__icon {
+    display: grid;
+    place-items: center;
+    width: 4rem;
+    height: 4rem;
+    font-size: fs(600);
+    background-color: clr(primary, 100);
+    border-radius: $br-small;
+  }
+
+  &__heading {
+    font-family: $ff-secondary;
+  }
+
+  a {
+    color: currentColor;
+  }
+}
