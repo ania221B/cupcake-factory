@@ -1,14 +1,15 @@
+import { Link } from 'react-router-dom'
 import { footerLinks } from '../../data'
 import Logo from '../ui/Logo'
 
 function Footer () {
   return (
-    <footer className='section'>
+    <footer className='section footer'>
       <div className='footer-primary'>
-        <div className='container'>
+        <div className='footer-primary__wrapper container'>
           <div className='flow--small'>
             <Logo></Logo>
-            <p className='fs-100'>
+            <p className='fs-300'>
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos
               saepe iusto cum enim in facilis esse perspiciatis iure, ea
               expedita tenetur. Incidunt nemo commodi perspiciatis!
@@ -25,7 +26,7 @@ function Footer () {
                     if (detail.text === 'email us') {
                       return (
                         <dd
-                          className='footer__contact-details fs-100'
+                          className='footer__contact-details fs-300'
                           key={detail.id}
                         >
                           <div className='footer__icon fs-400'>
@@ -40,7 +41,7 @@ function Footer () {
                     }
                     return (
                       <dd
-                        className='footer__contact-details fs-100'
+                        className='footer__contact-details fs-300'
                         key={detail.id}
                       >
                         <div className='footer__icon fs-400'>{detail.icon}</div>
@@ -59,8 +60,8 @@ function Footer () {
                 <dt className='footer__title'>{title}</dt>
                 {details.map(detail => {
                   return (
-                    <dd className='fs-100' key={detail.id}>
-                      <a href={detail.path}>{detail.text}</a>
+                    <dd className='fs-300' key={detail.id}>
+                      <Link to={detail.path}>{detail.text}</Link>
                     </dd>
                   )
                 })}
@@ -70,11 +71,11 @@ function Footer () {
         </div>
       </div>
       <div className='footer-secondary'>
-        <div className='container'>
-          <p className='fs-100'>
+        <div className='footer-secondary__wrapper container'>
+          <p className='fs-300'>
             &copy; {new Date().getFullYear()} CupcakeFactory
           </p>
-          <p className='fs-100'>Powered by CupcakeFactory</p>
+          <p className='fs-300'>Powered by CupcakeFactory</p>
         </div>
       </div>
     </footer>

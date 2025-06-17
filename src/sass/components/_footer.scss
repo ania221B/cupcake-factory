@@ -1,10 +1,10 @@
 @use '../abstracts/' as *;
 
-footer {
+.footer {
   border-top: 0.0625rem solid rgba(216, 216, 216);
 }
 
-.footer-primary .container {
+.footer-primary__wrapper {
   display: grid;
   grid-template-columns: 1fr;
   gap: clamp(2rem, 2rem + 2vw, 4.125rem);
@@ -18,13 +18,11 @@ footer {
     display: inline-block;
     text-decoration: none;
     color: currentColor;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    white-space: normal;
-    position: relative;
-    isolation: isolate;
-    cursor: pointer;
-    max-width: 20ch;
+
+    &:hover,
+    &:focus {
+      color: clr(secondary, 700);
+    }
   }
 
   @include mq(small) {
@@ -34,20 +32,24 @@ footer {
   }
 
   @include mq(large) {
-    grid-template-columns: 14.5rem minmax(10rem, 1fr) repeat(
-        auto-fit,
-        minmax(0, 1fr)
-      );
+    grid-template-columns:
+      14.5rem minmax(3.5rem, 1fr) minmax(0, 10rem) minmax(0, 10rem)
+      1fr;
     grid-template-rows: auto;
+
     gap: 0;
 
     & > *:nth-child(2) {
       grid-column: 3;
     }
+
+    & > *:last-child {
+      grid-column: 5;
+    }
   }
 }
 
-.footer-secondary .container {
+.footer-secondary__wrapper {
   padding-top: 3rem;
   display: flex;
   flex-direction: column;
@@ -91,10 +93,6 @@ footer {
   font-size: fs(450);
   margin-bottom: 1rem;
 }
-
-// .footer dd {
-
-// }
 
 .footer__icon {
   display: grid;
