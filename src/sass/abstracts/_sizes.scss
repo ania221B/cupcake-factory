@@ -15,6 +15,9 @@ $sizes: (
 $padding-hero: clamp(15rem, 15vh, 20rem);
 $padding-section: clamp(3rem, 7vh, 5rem);
 
+$accordion-panel-padding: 2rem;
+$accordion-panel-deco-thickness: 0.0625rem;
+
 $bg-min-height: 14.5rem;
 $bg-max-height: 20rem;
 
@@ -26,7 +29,8 @@ $flex-group-gap: 1rem;
 
 $container-padding-inline: clamp(2rem, 1rem + 0.9vw, 3rem);
 $container-max-width: 75rem;
-$container-max-width-small: 65rem;
+$container-max-width-x-small: 40rem;
+$container-max-width-small: 60rem;
 $container-max-width-large: 95rem;
 $container-max-width-full-bleed: 100%;
 
