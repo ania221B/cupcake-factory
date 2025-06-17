@@ -1,5 +1,98 @@
 @use '../abstracts/' as *;
 
+.all-posts {
+  padding-block-start: $padding-section;
+  &__sorting-menu {
+    grid-column: 2;
+    grid-row: 1;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+  }
+
+  &__label {
+    font-weight: $fw-700;
+  }
+
+  &__select-wrapper {
+    position: relative;
+    border: none;
+    border-radius: $br-small;
+    outline: 1px solid clr(neutral, 500);
+
+    display: grid;
+    grid-template-columns: 1fr max-content;
+
+    &:focus-within {
+      outline: 2px solid clr(secondary, 700);
+
+      &::after {
+        background-color: clr(secondary, 500);
+      }
+    }
+  }
+
+  &__select-wrapper::after {
+    content: '▾';
+    grid-column: 2;
+    grid-row: 1;
+
+    font-size: fs(800);
+    line-height: 1;
+    text-align: center;
+    background-color: clr(secondary, 700);
+    padding-inline: 0.5em;
+    padding-block: 0.06em;
+    opacity: 1;
+    transition: opacity 400ms ease-in-out;
+    z-index: -1;
+  }
+  &__select-wrapper::before {
+    content: '▾';
+    grid-column: 2;
+    grid-row: 1;
+
+    font-size: fs(800);
+    line-height: 1;
+    text-align: center;
+    background-color: clr(secondary, 500);
+    padding-inline: 0.5em;
+    padding-block: 0.06em;
+    opacity: 0;
+    transition: opacity 400ms ease-in-out;
+    z-index: -1;
+  }
+
+  &__select-wrapper:hover::after {
+    opacity: 0;
+  }
+  &__select-wrapper:hover::before {
+    opacity: 1;
+  }
+
+  &__select {
+    grid-column: 1 / span 2;
+    grid-row: 1;
+
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: transparent;
+    color: clr(neutral, 400);
+    padding-inline: 1em;
+
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+
+  .item-area {
+    grid-column: 2;
+    grid-row: 2;
+  }
+}
+
 .articles {
   display: grid;
   gap: $grid-gap;
@@ -27,6 +120,7 @@
 
 .article {
   --grid-gap: 1.5rem;
+  height: 100%;
   display: grid;
   gap: var(--grid-gap);
 

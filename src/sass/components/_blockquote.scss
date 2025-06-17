@@ -1,0 +1,61 @@
+@use '../abstracts/' as *;
+
+.quote {
+  display: grid;
+  grid-template-columns: min-content 1fr min-content;
+  grid-auto-rows: min-content;
+  gap: 1rem;
+
+  padding-block: $grid-gap;
+  color: clr(primary, 500);
+  position: relative;
+
+  &::before {
+    content: '”';
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    align-self: start;
+    justify-self: start;
+
+    font-size: 10rem;
+    line-height: 0.4;
+    font-family: $ff-secondary;
+    color: clr(primary, 500);
+
+    z-index: 0;
+  }
+
+  &::after {
+    content: '“';
+    grid-column: 3;
+    align-self: end;
+    grid-row: 2;
+    align-self: end;
+    justify-self: end;
+
+    font-family: $ff-secondary;
+    font-size: 10rem;
+    line-height: 0;
+    color: clr(primary, 500);
+
+    z-index: 0;
+  }
+
+  p {
+    grid-column: 2;
+    grid-row: 1;
+
+    font-style: italic;
+    font-weight: $fw-700;
+
+    z-index: 1;
+  }
+
+  footer {
+    grid-column: 2;
+    grid-row: 2;
+    text-align: right;
+
+    z-index: 1;
+  }
+}

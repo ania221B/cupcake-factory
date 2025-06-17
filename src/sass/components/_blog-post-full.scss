@@ -1,0 +1,76 @@
+@use '../abstracts/' as *;
+
+.article--full {
+  display: grid;
+  grid-auto-flow: row;
+  gap: $grid-gap;
+  &__header,
+  &__content,
+  &__footer {
+    grid-column: 2;
+  }
+
+  &__header {
+    // --flow-spacing: $grid-gap;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    justify-items: center;
+    gap: $grid-gap;
+
+    h2,
+    p:first-of-type {
+      grid-column: 1 / -1;
+      text-align: center;
+    }
+    p:first-of-type,
+    dd {
+      font-size: fs(200);
+      font-weight: $fw-600;
+      text-transform: uppercase;
+      letter-spacing: 0.25rem;
+    }
+    dl {
+      margin: 0;
+    }
+  }
+
+  &__img {
+    grid-column: 1 / -1;
+    min-height: 55dvh;
+    background-color: clr(primary, 200);
+    padding: 1em; // delete later just for the text to not be in the corner
+  }
+
+  section {
+    padding-block: $grid-gap * 0.5;
+  }
+  h3 {
+    font-family: $ff-secondary;
+    font-size: fs(600);
+  }
+
+  &__footer {
+    padding-block-start: $grid-gap * 2;
+    padding-inline: clamp($grid-gap * 0.25, $grid-gap + 1vw, $grid-gap * 1.25);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $grid-gap;
+    text-align: center;
+    @include mq(small) {
+      grid-template-columns: auto 1fr;
+      text-align: left;
+    }
+    h4 {
+      font-family: $ff-secondary;
+      font-size: fs(500);
+    }
+  }
+
+  &__footer-img {
+    width: 6rem;
+    height: 6rem;
+    margin-inline: auto;
+    background-color: clr(primary, 200);
+    border-radius: $br-circle;
+  }
+}
