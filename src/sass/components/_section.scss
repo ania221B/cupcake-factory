@@ -6,6 +6,13 @@
   main > &:first-of-type {
     --padding-section: #{$padding-section};
     padding-block-start: calc(var(--padding-section) + var(--header-height));
+    padding-block-end: var(--padding-section);
+    @include mq(medium) {
+      padding-block-start: calc(
+        var(--padding-section) * 1.75 + var(--header-height)
+      );
+      padding-block-end: calc(var(--padding-section) * 1.75);
+    }
   }
 
   &:not(.hero) .even-columns {
@@ -39,7 +46,7 @@
     font-size: fs(650);
   }
   &__subtitle {
-    font-size: fs(300);
+    font-size: fs(400);
     font-family: $ff-secondary;
     color: clr(neutral, 300);
   }
