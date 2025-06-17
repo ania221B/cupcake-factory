@@ -1,13 +1,16 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import {
   About,
-  AllBlogArticles,
+  AllBlogPosts,
   AllProducts,
   BaseLayout,
   Blog,
   Contact,
   Error,
+  Faq,
   Home,
+  SinglePostPage,
+  SingleProductPage,
   Store
 } from './pages'
 
@@ -31,6 +34,10 @@ const router = createBrowserRouter([
           {
             path: 'all-products',
             element: <AllProducts></AllProducts>
+          },
+          {
+            path: ':productSlug',
+            element: <SingleProductPage></SingleProductPage>
           }
         ]
       },
@@ -42,8 +49,12 @@ const router = createBrowserRouter([
             element: <Blog></Blog>
           },
           {
-            path: 'all-articles',
-            element: <AllBlogArticles></AllBlogArticles>
+            path: 'all-posts',
+            element: <AllBlogPosts></AllBlogPosts>
+          },
+          {
+            path: ':postSlug',
+            element: <SinglePostPage></SinglePostPage>
           }
         ]
       },
@@ -54,6 +65,10 @@ const router = createBrowserRouter([
       {
         path: 'contact',
         element: <Contact></Contact>
+      },
+      {
+        path: 'faq',
+        element: <Faq></Faq>
       }
     ]
   }
