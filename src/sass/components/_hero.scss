@@ -16,6 +16,13 @@
     &::before {
       width: 70%;
     }
+
+    .page-title {
+      text-align: center;
+      @include mq(medium) {
+        text-align: left;
+      }
+    }
   }
 
   &__header:only-child {
