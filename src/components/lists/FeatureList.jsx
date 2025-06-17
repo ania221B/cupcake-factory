@@ -7,8 +7,8 @@ function FeatureList () {
         const { id, title, description } = feature
         return (
           <li key={id} className='feature flow'>
-            <h3 className='ff-secondary fs-500'>{title}</h3>
-            <p className='fs-100'>{description}</p>
+            <h3 className='ff-secondary fs-600'>{title}</h3>
+            <p className='fs-400'>{description}</p>
           </li>
         )
       })}
