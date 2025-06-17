@@ -1,6 +1,7 @@
 export { default as Accordion } from './Accordion'
 export { default as AccordionPanel } from './AccordionPanel'
 export { default as Button } from './Button'
+export { default as ContactDetailsLink } from './ContactDetailsLink'
 export { default as FilterMenu } from './FilterMenu'
 export { default as ProductHeader } from './ProductHeader'
 export { default as ProductImages } from './ProductImages'
