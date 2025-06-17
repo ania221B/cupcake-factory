@@ -1,19 +1,19 @@
 @font-face {
-  font-family: 'Montserrat';
-  src: url(/src/assets/fonts/montserrat-regular-webfont.woff2) format('woff2'),
-    url(/src/assets/fonts/montserrat-regular-webfont.woff) format('woff');
+  font-family: 'Source Sans 3';
+  src: url(/src/assets/fonts/SourceSans3-Regular.woff2) format('woff2'),
+    url(/src/assets/fonts/SourceSans3-Regular.woff) format('woff');
   font-weight: 400;
 }
 @font-face {
-  font-family: 'Montserrat';
-  src: url(/src/assets/fonts/montserrat-semibold-webfont.woff2) format('woff2'),
-    url(/src/assets/fonts/montserrat-semibold-webfont.woff) format('woff');
+  font-family: 'Source Sans 3';
+  src: url(/src/assets/fonts/SourceSans3-SemiBold.woff2) format('woff2'),
+    url(/src/assets/fonts/SourceSans3-SemiBold.woff) format('woff');
   font-weight: 600;
 }
 @font-face {
-  font-family: 'Montserrat';
-  src: url(/src/assets/fonts/montserrat-bold-webfont.woff2) format('woff2'),
-    url(/src/assets/fonts/montserrat-bold-webfont.woff) format('woff');
+  font-family: 'Source Sans 3';
+  src: url(/src/assets/fonts/SourceSans3-Bold.woff2) format('woff2'),
+    url(/src/assets/fonts/SourceSans3-Bold.woff) format('woff');
   font-weight: 700;
 }
 @font-face {
@@ -32,21 +32,31 @@
   font-weight: 700;
 }
 
-$ff-primary: 'Montserrat', sans-serif;
+$ff-primary: 'Source Sans 3', sans-serif;
 $ff-secondary: 'Fraunces', serif;
 
 $font-sizes: (
-  100: clamp(0.741rem, 0.7vw, 0.8125rem),
-  200: clamp(0.8125rem, 0.8vw, 0.9375rem),
-  300: clamp(0.9375rem, 0.9vw, 1rem),
-  400: clamp(1rem, 1vw, 1.03125rem),
-  450: clamp(1.03125rem, 1.1vw, 1.125rem),
+  100: clamp(0.8125rem, 0.75vw, 0.875rem),
+  // ~13–14px
+  200: clamp(0.875rem, 0.85vw, 0.95rem),
+  // ~14–15px
+  300: clamp(0.95rem, 0.95vw, 1.025rem),
+  // ~15.2–16.4px
+  400: clamp(1.0625rem, 1.05vw, 1.125rem),
+  // ~17–18px (body)
+  450: clamp(1.125rem, 1.2vw, 1.2rem),
+  // ~18–19.2px
   500: clamp(1.25rem, 1.5vw, 1.5rem),
-  600: clamp(1.5rem, 1.6vw, 1.5rem),
-  650: clamp(1.5rem, 2vw, 2rem),
-  700: clamp(1.75rem, 2.2vw, 2rem),
-  800: clamp(1.875rem, 1.875rem + 1.5vw, 3rem),
-  900: clamp(2rem, 0.5rem + 5vw, 4.75rem),
+  // ~20–24px
+  600: clamp(1.5rem, 1.7vw, 1.75rem),
+  // ~24–28px
+  650: clamp(1.75rem, 2vw, 2rem),
+  // ~28–32px
+  700: clamp(2rem, 2.25vw, 2.5rem),
+  // ~32–40px
+  800: clamp(2.25rem, 2.75vw, 3rem),
+  // ~36–48px
+  900: clamp(2.75rem, 3.5vw, 4.5rem) // ~44–72px,,
 );
 
 $fw-400: 400;
