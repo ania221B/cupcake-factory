@@ -12,14 +12,15 @@
   }
 
   a {
-    font-size: fs(300);
+    font-size: fs(400);
     font-weight: $fw-700;
+    // font-variant: small-caps;
     color: clr(neutral, 300);
     text-decoration: none;
   }
 
-  li:hover a,
-  li:focus a {
+  li:hover a:not(.active),
+  li:focus a:not(.active) {
     color: clr(secondary, 700);
   }
 
@@ -32,11 +33,11 @@
     }
   }
 
-  @include mq(medium) {
-    a {
-      font-size: fs(200);
-    }
-  }
+  // @include mq(medium) {
+  //   a {
+  //     font-size: fs(300);
+  //   }
+  // }
 
   @include mq(large, max-width) {
     flex-direction: column;
