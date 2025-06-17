@@ -1,8 +1,8 @@
 import { Button } from '../common'
 
-function CTASection () {
+function BookingSection () {
   return (
-    <section className='cta section'>
+    <section className='booking section'>
       <div className='container bg-primary-100 flow deco deco--diamond'>
         <h2 className='section__subtitle'>Visit us</h2>
         <p className='section__title'>Chocolate wonders await...</p>
@@ -20,4 +20,4 @@ function CTASection () {
     </section>
   )
 }
-export default CTASection
+export default BookingSection

@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom'
 import { Footer, Header } from '../layout'
-import { ConnectSection, CTASection } from '../sections'
+import { ConnectSection, BookingSection } from '../sections'
 import { usePageLocation } from '../../hooks'
 
 function BaseLayout () {
@@ -11,7 +11,7 @@ function BaseLayout () {
       <Header></Header>
       <main data-page={page}>
         <Outlet></Outlet>
-        <CTASection></CTASection>
+        <BookingSection></BookingSection>
         <ConnectSection></ConnectSection>
       </main>
       <Footer></Footer>

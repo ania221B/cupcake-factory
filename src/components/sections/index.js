@@ -1,7 +1,7 @@
 export { default as AboutSection } from './AboutSection'
 export { default as BestsellersSection } from './BestsellersSection'
 export { default as BlogSection } from './BlogSection'
-export { default as CTASection } from './BookingSection'
+export { default as BookingSection } from './BookingSection'
 export { default as ConnectSection } from './ConnectSection'
 export { default as ContactDetailsSection } from './ContactDetailsSection'
 export { default as HeroSection } from './HeroSection'
