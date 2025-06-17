@@ -13,13 +13,13 @@ function HeroSection ({ title, children, additionalContent = false, image }) {
     >
       <div className={children ? 'container even-columns' : 'container'}>
         <div className='flow'>
-          <header className='hero__header xl-padding deco deco--line deco--line-left'>
+          <header className='hero__header deco deco--line deco--line-left'>
             <h1 className='page-title'>{title}</h1>
           </header>
           {children}
         </div>
         {additionalContent && image.src && (
-          <div className='secondary-content'>
+          <div>
             <HeroImage
               imgSrc={image.src}
               imgAlt={image.alt}
