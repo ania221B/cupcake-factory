@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from 'react'
 import { products } from './data'
 import { compareMinMax } from './utils'
+import { blogPosts } from './data/blogPosts'
 
 const GlobalContext = createContext()
 
@@ -36,6 +37,9 @@ function AppContext ({ children }) {
   const [filters, setFilters] = useState(initialFilters)
   const [priceError, setPriceError] = useState(null)
   const [isSearching, setIsSearching] = useState(false)
+  const [allPosts, setAllPosts] = useState(blogPosts)
+  const [sortedPosts, setSortedPosts] = useState(blogPosts)
+  const [sortBy, setSortBy] = useState('newest')
 
   /**
    * Checks minimum & maximum price values
@@ -101,12 +105,25 @@ function AppContext ({ children }) {
     setFilters(initialFilters)
   }
 
+  function sortPosts (sortBy) {
+    const newPosts = allPosts.toSorted((a, b) => {
+      if (sortBy === 'newest') return new Date(b.date) - new Date(a.date)
+      if (sortBy === 'oldest') return new Date(a.date) - new Date(b.date)
+      if (sortBy === 'a-z') return a.title.localeCompare(b.title)
+      if (sortBy === 'z-a') return b.title.localeCompare(a.title)
+    })
+    setSortedPosts(newPosts)
+  }
+
   useEffect(() => {
     filterProducts(inputText)
   }, [filters, inputText])
   useEffect(() => {
     validatePrices(filters.priceMin, filters.priceMax)
   }, [filters.priceMin, filters.priceMax])
+  useEffect(() => {
+    sortPosts(sortBy)
+  }, [sortBy])
 
   return (
     <GlobalContext.Provider
@@ -131,7 +148,13 @@ function AppContext ({ children }) {
         compareMinMax,
         resetFilters,
         isSearching,
-        setIsSearching
+        setIsSearching,
+        allPosts,
+        setAllPosts,
+        sortedPosts,
+        setSortedPosts,
+        sortBy,
+        setSortBy
       }}
     >
       {children}
