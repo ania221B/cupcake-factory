@@ -1,7 +1,7 @@
 import {
   AboutSection,
-  CTASection,
   HeroSection,
+  OurTeamSection,
   ProductFeatureSection,
   TestimonialSection
 } from '../components/sections'
@@ -11,9 +11,9 @@ function About () {
     <>
       <HeroSection title={`About us`}></HeroSection>
       <AboutSection></AboutSection>
+      <OurTeamSection></OurTeamSection>
       <ProductFeatureSection></ProductFeatureSection>
       <TestimonialSection></TestimonialSection>
-      <CTASection></CTASection>
     </>
   )
 }

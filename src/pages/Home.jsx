@@ -6,8 +6,7 @@ import {
   BestsellersSection,
   ProductFeatureSection,
   TestimonialSection,
-  BlogSection,
-  CTASection
+  BlogSection
 } from '../components/sections'
 import { heroImages } from '../data'
 
@@ -52,8 +51,6 @@ function Home () {
       <TestimonialSection></TestimonialSection>
 
       <BlogSection></BlogSection>
-
-      <CTASection></CTASection>
     </>
   )
 }

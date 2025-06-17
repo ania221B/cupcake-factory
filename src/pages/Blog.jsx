@@ -1,7 +1,6 @@
 import {
   AboutSection,
   BlogSection,
-  CTASection,
   HeroSection,
   PopularPostsSection,
   ProductFeatureSection
@@ -15,7 +14,6 @@ function Blog () {
       <PopularPostsSection></PopularPostsSection>
       <AboutSection></AboutSection>
       <ProductFeatureSection></ProductFeatureSection>
-      <CTASection></CTASection>
     </>
   )
 }
