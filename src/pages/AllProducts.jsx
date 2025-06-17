@@ -2,7 +2,6 @@ import { FilterMenu, SearchBar } from '../components/common'
 import { ProductList } from '../components/lists'
 import { HeroSection } from '../components/sections'
 import { useGlobalContext } from '../context'
-import { products } from '../data'
 
 function AllProducts () {
   const { filteredProducts } = useGlobalContext()
