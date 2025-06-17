@@ -1,6 +1,10 @@
 @forward './about-section';
-@forward './blog-article';
+@forward './accordion';
+@forward './blockquote';
+@forward './blog-post';
+@forward './blog-post-full';
 @forward './buttons';
+@forward './contact-details';
 @forward './contact-form';
 @forward './cta-section';
 @forward './decorations';
@@ -15,8 +19,10 @@
 @forward './page-nav__list';
 @forward './product-item';
 @forward './product-labels';
+@forward './product-item--single__quantity-controls';
 @forward './search-bar';
 @forward './section';
 @forward './social-list';
+@forward './team-member-card';
 @forward './testimonial-list';
 @forward './thumbnail-gallery';
