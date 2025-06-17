@@ -1,7 +1,7 @@
 import { usePageLocation } from '../../hooks'
-import BlogArticleCard from '../ui/BlogArticleCard'
+import BlogPostCard from '../ui/BlogPostCard'
 
-function BlogArticleList ({ list }) {
+function BlogPostList ({ list }) {
   const path = usePageLocation()
   const isBlogPage = path === '/blog'
 
@@ -17,11 +17,11 @@ function BlogArticleList ({ list }) {
       {list.map(item => {
         return (
           <li key={item.id} className='flow'>
-            <BlogArticleCard item={item}></BlogArticleCard>
+            <BlogPostCard item={item}></BlogPostCard>
           </li>
         )
       })}
     </ul>
   )
 }
-export default BlogArticleList
+export default BlogPostList

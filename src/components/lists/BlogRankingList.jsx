@@ -1,5 +1,5 @@
 import { usePageLocation } from '../../hooks'
-import BlogArticleCard from '../ui/BlogArticleCard'
+import BlogPostCard from '../ui/BlogPostCard'
 
 function BlogRankingList ({ list }) {
   //   const path = usePageLocation()
@@ -13,7 +13,7 @@ function BlogRankingList ({ list }) {
       {list.map(item => {
         return (
           <li key={item.id} className='flow'>
-            <BlogArticleCard item={item}></BlogArticleCard>
+            <BlogPostCard item={item} variant='ranked'></BlogPostCard>
           </li>
         )
       })}

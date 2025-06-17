@@ -1,7 +1,7 @@
-import { blogPreviews } from '../../data/blogPreviews'
+import { blogPosts } from '../../data/blogPosts'
 import { usePageLocation } from '../../hooks'
 import { Button, SectionHeader } from '../common'
-import BlogArticleList from '../lists/BlogArticleList'
+import BlogPostList from '../lists/BlogPostList'
 
 function BlogSection () {
   const path = usePageLocation()
@@ -14,7 +14,7 @@ function BlogSection () {
           {isBlogPage ? (
             <Button
               buttonText={'see all'}
-              path={'all-articles'}
+              path={'all-posts'}
               isLink={true}
               isLines={true}
               ariaLabel={'View all blog posts'}
@@ -29,7 +29,7 @@ function BlogSection () {
           )}
         </SectionHeader>
 
-        <BlogArticleList list={blogPreviews}></BlogArticleList>
+        <BlogPostList list={blogPosts}></BlogPostList>
       </div>
     </section>
   )

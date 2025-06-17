@@ -1,4 +1,4 @@
-import { blogPreviews } from '../../data/blogPreviews'
+import { blogPosts } from '../../data/blogPosts'
 import { Button, SectionHeader } from '../common'
 import { BlogRankingList } from '../lists'
 
@@ -9,14 +9,14 @@ function PopularPostsSection () {
         <SectionHeader title={'Most popular on the blog'}>
           <Button
             buttonText={'see all'}
-            path={'all-articles'}
+            path={'all-posts'}
             isLink={true}
             isLines={true}
             ariaLabel={'View all blog posts'}
           ></Button>
         </SectionHeader>
 
-        <BlogRankingList list={blogPreviews}></BlogRankingList>
+        <BlogRankingList list={blogPosts}></BlogRankingList>
       </div>
     </section>
   )
