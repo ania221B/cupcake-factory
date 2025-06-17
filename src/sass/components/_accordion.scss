@@ -1,0 +1,97 @@
+@use '../abstracts/' as *;
+.accordion + .accordion {
+  padding-block-start: $padding-section;
+}
+
+.accordion {
+  &__list {
+    padding: 0;
+    margin: 0;
+    margin-block-start: $grid-gap;
+  }
+  &__panel {
+    display: grid;
+    grid-auto-flow: row;
+
+    padding-block: $accordion-panel-padding;
+
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: auto 0 0 0;
+      height: $accordion-panel-deco-thickness;
+      width: 100%;
+      background-image: linear-gradient(
+        to left,
+        clr(secondary, 400),
+        clr(primary, 400),
+        clr(secondary, 400)
+      );
+    }
+  }
+
+  &__title {
+    padding-inline: 1rem;
+  }
+
+  &__btn {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: $grid-gap;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:focus-visible {
+      outline: 2px solid clr(primary, 400);
+    }
+  }
+
+  &__toggle {
+    flex-shrink: 0;
+    transform: rotate(0deg);
+    transition: transform 500ms ease-in-out;
+  }
+
+  &__panel[data-state='opened'] &__toggle {
+    transform: rotate(180deg);
+  }
+
+  &__btn:hover &__toggle,
+  &__btn:focus &__toggle {
+    color: clr(primary, 400);
+  }
+
+  &__content {
+    overflow: hidden;
+    max-height: var(--accordion-max-height, 0);
+    transition: max-height 500ms ease;
+  }
+
+  @supports (transition: grid-template-rows) {
+    &__content {
+      all: unset;
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 500ms ease;
+
+      &[aria-hidden='false'] {
+        grid-template-rows: 1fr;
+      }
+
+      & > div {
+        overflow: hidden;
+      }
+    }
+  }
+
+  &__text {
+    padding-block-start: 2rem;
+    padding-inline: 1rem;
+  }
+}
