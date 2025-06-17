@@ -29,6 +29,7 @@ function Button ({
   isAccent = false,
   isLines = false,
   isInvisible = false,
+  isInvisibleWithArrow = false,
   isItemCard = false,
   isInactive = false
 }) {
@@ -37,6 +38,7 @@ function Button ({
   if (hasArrow) classes.push('btn--arrow')
   if (isLines) classes.push('btn--lines', 'bg-animation')
   if (isInvisible) classes.push('btn--invisible')
+  if (isInvisibleWithArrow) classes.push('btn--invisible-w-arrow')
   if (isItemCard) classes.push('btn--card', 'bg-animation')
   if (isInactive) {
     const index = classes.indexOf('bg-animation')
