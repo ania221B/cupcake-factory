@@ -1,0 +1,25 @@
+@use '../abstracts/' as *;
+
+.page-wrapper {
+  --padding-inline: #{$container-padding-inline};
+  --max-width: #{$container-max-width};
+  display: grid;
+  grid-template-columns:
+    minmax(var(--padding-inline), 1fr)
+    min(calc(100% - (var(--padding-inline) * 2)), var(--max-width))
+    minmax(var(--padding-inline), 1fr);
+  justify-content: center;
+}
+
+.page-wrapper[data-wrapper='x-small'] {
+  --max-width: #{$container-max-width-x-small};
+}
+.page-wrapper[data-wrapper='small'] {
+  --max-width: #{$container-max-width-small};
+}
+.page-wrapper[data-wrapper='large'] {
+  --max-width: #{$container-max-width-large};
+}
+.page-wrapper[data-wrapper='full-bleed'] {
+  --max-width: #{$container-max-width-full-bleed};
+}
