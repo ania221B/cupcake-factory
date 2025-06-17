@@ -1,0 +1,27 @@
+@use '../abstracts/' as *;
+
+.team-member-card {
+  height: 100%;
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  gap: $grid-gap;
+  text-align: center;
+  &__img {
+    width: 15rem;
+    height: 15rem;
+    margin-inline: auto;
+    border-radius: $br-medium;
+    background-color: clr(primary, 200);
+    padding: 2rem;
+  }
+  &__name {
+    font-family: $ff-secondary;
+    font-size: fs(600);
+  }
+  &__role {
+    font-size: fs(200);
+    font-weight: $fw-600;
+    text-transform: uppercase;
+    letter-spacing: 0.25rem;
+  }
+}
