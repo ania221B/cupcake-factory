@@ -35,58 +35,59 @@ function AboutSection () {
         />
 
         <div className='main-content flow' style={{ '--flow-spacer': '2rem' }}>
-          <p className='fs-500 fw-700'>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quo
-            facilis consectetur, fuga sequi molestiae accusamus assumenda quas?
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat vel
-            numquam beatae repellendus corporis. Nulla, earum laudantium,
-            mollitia neque cum repellat nostrum.
-          </p>
-          <p>
-            Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
-            In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.
-            Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras
-            dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend
-            tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend
-            ac, enim.
-          </p>
-
           {isAboutPage ? (
             <>
               <p className='fw-700'>
-                In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.
-                Nullam dictum felis eu pede mollis pretium. Integer tincidunt.
+                At CupcakeFactory, we’re more than a bakery — we’re
+                dream-weavers, flavor-tinkerers, and full-time lovers of all
+                things sweet. Nestled in the heart of our imaginary town (and
+                somewhere deep in your dessert dreams), we specialize in
+                hand-crafted confections that are equal parts indulgent and
+                imaginative.
               </p>
               <p>
-                {' '}
-                Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate
-                eleifend tellus. Aenean leo ligula, porttitor eu, consequat
-                vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in,
-                viverra quis, feugiat a, tellus.
+                From cloud-like cupcakes and perfectly swirled buttercream to
+                rich chocolate ganache that melts on your tongue, every treat we
+                create is made with heart, whimsy, and just a touch of fairy
+                dust. Our recipes blend old-world charm with a pinch of modern
+                flair — the kind of sweets that transport you back to childhood
+                and make your Instagram feed blush.
               </p>
               <p>
-                Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum.
-                Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur
-                ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus.
-                Maecenas tempus, tellus eget condimentum rhoncus, sem quam
-                semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam
-                nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
-                Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien
-                ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet
-                orci eget eros faucibus tincidunt. Duis leo. Sed fringilla
-                mauris sit amet nibh.
+                We believe dessert should be a joyful ritual — not just a bite,
+                but a moment. That’s why we pour love into every layer, drizzle,
+                and sprinkle. Whether you’re here for a celebratory centerpiece,
+                a cozy midweek craving, or a spontaneous sugar adventure,
+                CupcakeFactory is your enchanted destination.
+              </p>
+              <p>
+                So grab a fork, take a deep breath (it smells like vanilla and
+                cocoa in here), and stay a while. There’s always something fresh
+                in the oven — and a little bit of magic in every bite.
               </p>
             </>
           ) : (
-            <Button
-              buttonText={'More about us'}
-              path={'/about'}
-              isLink={true}
-              isLines={true}
-              aria-label={'Go to About page'}
-            ></Button>
+            <>
+              <p className='fs-500 fw-700'>
+                We’re not just bakers — we’re makers of moments. From fluffy
+                cupcakes to silky ganache, each treat is hand-crafted with
+                heart, whimsy, and a touch of wonder.
+              </p>
+              <p>
+                Whether you’re celebrating something big or just craving
+                something sweet, CupcakeFactory is here to turn dessert into
+                delight. Step inside our sugar-sprinkled world — there’s always
+                something warm in the oven and a little magic in every bite.
+              </p>
+
+              <Button
+                buttonText={'More about us'}
+                path={'/about'}
+                isLink={true}
+                isLines={true}
+                aria-label={'Go to About page'}
+              ></Button>
+            </>
           )}
         </div>
       </div>
