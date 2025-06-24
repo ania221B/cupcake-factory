@@ -1,0 +1,49 @@
+@use '../abstracts/' as *;
+
+.reservation-form {
+  display: grid;
+  grid-auto-flow: row;
+  gap: $grid-gap;
+
+  @include mq(small) {
+    grid-template-columns: repeat(2, 1fr);
+
+    & > *:first-child {
+      grid-column: 1 /-1;
+      grid-row: 1;
+    }
+    .btn[type='submit'] {
+      grid-column: 1 /-1;
+      grid-row: 4;
+    }
+  }
+
+  input {
+    /* Chrome, Safari, Edge, Opera */
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    /* Firefox */
+    &[type='number'] {
+      -moz-appearance: textfield;
+      appearance: textfield;
+    }
+  }
+
+  label {
+    font-weight: $fw-600;
+    color: clr(neutral, 300);
+  }
+
+  .quantity-control {
+    grid-template-columns: max-content 1fr max-content;
+    gap: 0.5rem;
+
+    label {
+      grid-column: 1 / -1;
+      grid-row: 1;
+    }
+  }
+}

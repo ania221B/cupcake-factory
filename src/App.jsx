@@ -5,6 +5,7 @@ import {
   AllProducts,
   BaseLayout,
   Blog,
+  BookATable,
   Contact,
   Error,
   Faq,
@@ -65,6 +66,10 @@ const router = createBrowserRouter([
       {
         path: 'contact',
         element: <Contact></Contact>
+      },
+      {
+        path: 'book-a-table',
+        element: <BookATable></BookATable>
       },
       {
         path: 'faq',
