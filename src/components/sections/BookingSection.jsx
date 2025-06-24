@@ -13,6 +13,8 @@ function BookingSection () {
 
         <Button
           buttonText={'book a table'}
+          path='/book-a-table'
+          isLink={true}
           hasArrow={true}
           isAccent={true}
         ></Button>
