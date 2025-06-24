@@ -153,3 +153,19 @@ export function getDateTimeString (sourceDate) {
   const day = date.getDate()
   return `${year}-${month}-${day}`
 }
+/**
+ *
+ * @param {Number} number value to check
+ * @param {Number} min minimum allowed value
+ * @param {Number} max maximum allowed value
+ * @returns {min|max|number} min if number is lower than allowed minimum value, max if number is greater than allowed maximum or number in other cases
+ */
+export function checkNumber (number, min, max) {
+  if (number < min) {
+    return min
+  } else if (number > max) {
+    return max
+  } else {
+    return number
+  }
+}
