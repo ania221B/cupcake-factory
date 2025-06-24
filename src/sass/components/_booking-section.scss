@@ -11,23 +11,22 @@
     display: grid;
     justify-items: center;
 
-    p:not([class]) {
-      text-align: center;
-      max-width: 45ch;
-      margin-inline: auto;
-    }
-
-    button {
-      justify-self: stretch;
-    }
-
     @include mq(medium) {
       --max-width: #{$container-max-width-small};
       border-radius: $br-medium;
+    }
+  }
 
-      button {
-        justify-self: center;
-      }
+  p:not([class]) {
+    text-align: center;
+    max-width: 45ch;
+    margin-inline: auto;
+  }
+
+  .btn {
+    justify-self: stretch;
+    @include mq(medium) {
+      justify-self: center;
     }
   }
 }
