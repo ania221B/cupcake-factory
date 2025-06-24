@@ -1,13 +1,14 @@
 import { useParams } from 'react-router-dom'
 import { useGlobalContext } from '../context'
 import { Button, ProductHeader, ThumbnailGallery } from '../components/common'
-import { makeCapitalizedText } from '../utils'
+import { checkNumber, makeCapitalizedText } from '../utils'
 import { FaMinus, FaPlus } from 'react-icons/fa'
 import ProductPricing from '../components/common/ProductPricing'
 import { useState } from 'react'
 
 function SingleProductPage () {
   const { headerHeight, allProducts } = useGlobalContext()
+
   const { productSlug } = useParams()
 
   const currentProduct = allProducts.find(
@@ -35,15 +36,6 @@ function SingleProductPage () {
   const minQuantity = 0
   const maxQuantity = 100
 
-  function checkQuantity (quantity) {
-    if (quantity < 0) {
-      return minQuantity
-    } else if (quantity > 100) {
-      return maxQuantity
-    } else {
-      return quantity
-    }
-  }
   return (
     <>
       <section
@@ -82,7 +74,9 @@ function SingleProductPage () {
                   buttonText={<FaMinus />}
                   ariaLabel='Decrease product quantity in cart'
                   onClick={() =>
-                    setQuantity(prevQuantity => checkQuantity(prevQuantity - 1))
+                    setQuantity(prevQuantity =>
+                      checkNumber(prevQuantity - 1, minQuantity, maxQuantity)
+                    )
                   }
                   isAccent={true}
                 ></Button>
@@ -102,7 +96,9 @@ function SingleProductPage () {
                   buttonText={<FaPlus />}
                   ariaLabel='Increase product quantity in cart'
                   onClick={() =>
-                    setQuantity(prevQuantity => checkQuantity(prevQuantity + 1))
+                    setQuantity(prevQuantity =>
+                      checkNumber(prevQuantity + 1, minQuantity, maxQuantity)
+                    )
                   }
                   isAccent={true}
                 ></Button>
