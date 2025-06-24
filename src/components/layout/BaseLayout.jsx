@@ -6,12 +6,13 @@ import { usePageLocation } from '../../hooks'
 function BaseLayout () {
   const location = usePageLocation()
   const page = location?.split('/')[1] || 'home'
+  const isBookATable = location === '/book-a-table'
   return (
     <>
       <Header></Header>
       <main data-page={page}>
         <Outlet></Outlet>
-        <BookingSection></BookingSection>
+        {!isBookATable && <BookingSection></BookingSection>}
         <ConnectSection></ConnectSection>
       </main>
       <Footer></Footer>
