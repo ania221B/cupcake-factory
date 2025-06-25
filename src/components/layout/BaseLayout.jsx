@@ -2,6 +2,7 @@ import { Outlet } from 'react-router-dom'
 import { Footer, Header } from '../layout'
 import { ConnectSection, BookingSection } from '../sections'
 import { usePageLocation } from '../../hooks'
+import ScrollToTop from './ScrollToTop'
 
 function BaseLayout () {
   const location = usePageLocation()
@@ -9,6 +10,7 @@ function BaseLayout () {
   const isBookATable = location === '/book-a-table'
   return (
     <>
+      <ScrollToTop></ScrollToTop>
       <Header></Header>
       <main data-page={page}>
         <Outlet></Outlet>

@@ -8,20 +8,55 @@ export const footerLinks = [
     id: nanoid(),
     title: 'shopping',
     details: [
-      { id: nanoid(), path: '/faq', text: 'shipping', type: 'internal' },
-      { id: nanoid(), path: '/faq', text: 'payment', type: 'internal' },
-      { id: nanoid(), path: '/faq', text: 'gift cards', type: 'internal' },
-      { id: nanoid(), path: '/faq', text: 'returns', type: 'internal' }
+      {
+        id: nanoid(),
+        path: '/faq#shopping',
+        text: 'shipping',
+        type: 'internal'
+      },
+      {
+        id: nanoid(),
+        path: '/faq#shopping',
+        text: 'payment',
+        type: 'internal'
+      },
+      {
+        id: nanoid(),
+        path: '/faq#shopping',
+        text: 'gift cards',
+        type: 'internal'
+      },
+      { id: nanoid(), path: '/faq#shopping', text: 'returns', type: 'internal' }
     ]
   },
   {
     id: nanoid(),
     title: 'my account',
     details: [
-      { id: nanoid(), path: '/faq', text: 'signing up', type: 'internal' },
-      { id: nanoid(), path: '/faq', text: 'logging in', type: 'internal' },
-      { id: nanoid(), path: '/faq', text: 'orders', type: 'internal' },
-      { id: nanoid(), path: '/faq', text: 'newsletter', type: 'internal' }
+      {
+        id: nanoid(),
+        path: '/faq#my-account',
+        text: 'signing up',
+        type: 'internal'
+      },
+      {
+        id: nanoid(),
+        path: '/faq#my-account',
+        text: 'logging in',
+        type: 'internal'
+      },
+      {
+        id: nanoid(),
+        path: '/faq#my-account',
+        text: 'orders',
+        type: 'internal'
+      },
+      {
+        id: nanoid(),
+        path: '/faq#my-account',
+        text: 'newsletter',
+        type: 'internal'
+      }
     ]
   },
   {
