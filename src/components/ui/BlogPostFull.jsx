@@ -15,7 +15,7 @@ function BlogPostFull ({ item }) {
 
   return (
     <article className='article--full page-wrapper' data-wrapper='x-small'>
-      <header className='article--full__header flow deco deco--diamond'>
+      <header className='article--full__header flow'>
         <dl>
           <dt className='sr-only'>Published on:</dt>
           <dd>

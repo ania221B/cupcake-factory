@@ -133,14 +133,23 @@
   }
 
   &__metadata {
+    display: grid;
+    grid-template-columns: max-content $grid-gap max-content;
     font-size: fs(200);
-  }
-
-  &__metadata,
-  &__footer {
-    display: flex;
-    gap: var(--grid-gap);
-    align-items: center;
+    line-height: 1;
+    @include decoration(
+      $inset: 0,
+      $transform: rotate(45deg),
+      $width: 0.25em,
+      $height: 0.25em,
+      $bg-clr: clr(neutral, 500)
+    ) {
+      grid-column: 2;
+      grid-row: 1;
+      position: unset;
+      display: block;
+      margin: auto;
+    }
   }
 
   &__title {
@@ -149,8 +158,11 @@
   }
 
   &__footer {
-    font-size: fs(300);
+    display: flex;
+    gap: var(--grid-gap);
+    align-items: center;
     padding-block-start: var(--grid-gap);
+    font-size: fs(300);
   }
 
   &__footer-img {

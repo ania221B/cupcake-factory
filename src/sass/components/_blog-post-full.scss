@@ -13,9 +13,22 @@
   &__header {
     // --flow-spacing: $grid-gap;
     display: grid;
-    grid-template-columns: repeat(2, auto);
-    justify-items: center;
-    gap: $grid-gap;
+    grid-template-columns: 1fr $grid-gap 1fr;
+    gap: $grid-gap 0;
+
+    @include decoration(
+      $inset: 0,
+      $transform: rotate(45deg),
+      $width: 0.35em,
+      $height: 0.35em,
+      $bg-clr: clr(neutral, 500)
+    ) {
+      grid-column: 2;
+      grid-row: 1;
+      position: unset;
+      display: block;
+      margin: auto;
+    }
 
     h2,
     p:first-of-type {
@@ -30,7 +43,17 @@
       letter-spacing: 0.25rem;
     }
     dl {
+      grid-row: 1;
       margin: 0;
+      text-align: center;
+      line-height: 1;
+
+      *:first-of-type {
+        grid-column: 1;
+      }
+      *:last-of-type {
+        grid-column: 3;
+      }
     }
   }
 
