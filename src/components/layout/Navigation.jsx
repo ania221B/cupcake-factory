@@ -65,7 +65,7 @@ function Navigation () {
         ref={navList}
         onAnimationEnd={e => {
           if (e.animationName === 'closeMenu') {
-            navList.current.setAttribute('data-state', 'closed')
+            navList.current.setAttribute('data-state', 'is-closed')
           }
         }}
       >
