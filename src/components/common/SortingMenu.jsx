@@ -7,13 +7,13 @@ function SortingMenu () {
       <label htmlFor='posts-sorting' className='all-posts__label'>
         Sort articles:
       </label>
-      <div className='all-posts__select-wrapper'>
+      <div className='select-menu-wrapper'>
         <select
           name='posts-sorting'
           value={sortBy}
           id='posts-sorting'
           onChange={e => setSortBy(e.target.value)}
-          className='all-posts__select'
+          className='select-menu all-posts__select'
         >
           <option value='newest'>Newest first</option>
           <option value='oldest'>Oldest first</option>

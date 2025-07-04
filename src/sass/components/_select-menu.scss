@@ -1,0 +1,92 @@
+@use '../abstracts/' as *;
+
+.select-menu-wrapper {
+  --_btn-size: 2.5rem;
+  position: relative;
+  border: none;
+  border-radius: $br-small;
+  outline: 1px solid clr(neutral, 500);
+  overflow: hidden;
+  isolation: isolate;
+
+  &:focus-within {
+    outline: 2px solid clr(secondary, 700);
+  }
+
+  .form & {
+    outline: 0.0625rem solid rgba(216, 216, 216, 0.5);
+
+    &:focus,
+    &:hover {
+      outline: none;
+      outline: 0.125rem solid clr(secondary, 700);
+    }
+  }
+}
+
+.select-menu-wrapper::after {
+  content: '▾';
+  position: absolute;
+  inset: 0 0 0 auto;
+
+  font-size: fs(800);
+  width: var(--_btn-size);
+  height: 100%;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  text-align: center;
+
+  background-color: clr(secondary, 700);
+  opacity: 1;
+  transition: opacity 400ms ease-in-out;
+  pointer-events: none;
+}
+.select-menu-wrapper::before {
+  content: '▾';
+  position: absolute;
+  inset: 0 0 0 auto;
+
+  font-size: fs(800);
+  width: var(--_btn-size);
+  height: 100%;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  text-align: center;
+
+  background-color: clr(secondary, 500);
+  opacity: 0;
+  transition: opacity 400ms ease-in-out;
+  pointer-events: none;
+}
+
+.select-menu-wrapper:hover::after {
+  opacity: 0;
+}
+.select-menu-wrapper:hover::before {
+  opacity: 1;
+}
+
+.select-menu {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 100%;
+  color: clr(neutral, 300);
+  padding-block: 0.5rem;
+  padding-inline: 1em var(--_btn-size);
+  border-radius: $br-small $br-small 0 0;
+
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  .all-posts & {
+    background: transparent;
+  }
+}
