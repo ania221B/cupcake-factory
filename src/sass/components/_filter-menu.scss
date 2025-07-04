@@ -100,10 +100,6 @@
       transform: scale(1);
     }
   }
-
-  @include mq(55em, max-width) {
-    margin-block-start: 2em;
-  }
 }
 
 // === RESET BUTTON ===========================
