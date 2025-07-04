@@ -21,8 +21,11 @@ body {
     transition: opacity 400ms ease-in-out;
     z-index: 10;
   }
-  &.overlay::before {
-    opacity: 1;
-    pointer-events: auto;
+  &.overlay {
+    overflow-y: hidden;
+    &::before {
+      opacity: 1;
+      pointer-events: auto;
+    }
   }
 }

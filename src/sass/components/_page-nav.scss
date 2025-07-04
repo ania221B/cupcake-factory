@@ -6,36 +6,42 @@
     margin-inline-start: 2rem;
   }
   &__slideout {
-    display: flex;
+    display: grid;
+    grid-auto-flow: column;
     align-items: center;
     justify-content: space-between;
+
     background-color: transparent;
+    will-change: transform;
 
     @include mq(large, max-width) {
-      flex-direction: column;
-      align-items: start;
-      justify-content: start;
+      grid-auto-flow: row;
+      grid-auto-rows: min-content;
       gap: min(10dvh, 5rem);
+      justify-content: unset;
       background-color: clr(neutral, 100);
-      padding-inline: calc($container-padding-inline * 2);
-      padding-block: calc($container-padding-inline * 3);
+
+      padding-inline-start: calc($container-padding-inline * 2);
+      padding-inline-end: calc($container-padding-inline * 1.5);
+
+      padding-block: 1em;
       width: 90%;
       height: 100vh;
 
       position: fixed;
-      z-index: 10000;
+      z-index: 10;
       inset: 0 0 0 100%;
 
       &[data-state='is-open'] {
         animation-name: openMenu;
-        animation-duration: 500ms;
+        animation-duration: $slideout-animation-duration;
         animation-timing-function: ease-in-out;
         animation-fill-mode: forwards;
       }
 
       &[data-state='is-closing'] {
         animation-name: closeMenu;
-        animation-duration: 500ms;
+        animation-duration: $slideout-animation-duration;
         animation-timing-function: ease-in-out;
         animation-fill-mode: forwards;
       }
@@ -46,19 +52,23 @@
   }
 
   &__extras {
-    display: flex;
+    display: grid;
+    grid-auto-flow: column;
     align-items: center;
     & > * + * {
-      margin: 0 0 0 1rem;
+      margin: 0 0 0 0.75rem;
     }
 
     @include mq(large, max-width) {
-      flex-direction: column;
-      align-items: start;
       & > * + * {
-        margin: 1rem 0 0 0;
+        margin: 0 0 0 1.25rem;
       }
     }
+  }
+
+  .btn--menu {
+    align-self: start;
+    justify-self: end;
   }
 }
 

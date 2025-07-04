@@ -1,6 +1,7 @@
 @use '../abstracts' as *;
 
 .btn {
+  $parent: &;
   background: 0;
   border: 0;
   cursor: pointer;
@@ -19,7 +20,7 @@
   letter-spacing: 0.125rem;
   overflow: hidden;
 
-  &:not(.btn--thumbnail, .btn--invisible, .btn--invisible-w-arrow) {
+  &:not(.btn--thumbnail, .btn--invisible, .btn--invisible-w-arrow, .btn--icon) {
     padding: 0.85em 1.5em;
   }
 
@@ -29,6 +30,28 @@
   }
 
   &--menu {
+    &:hover #{$parent}--open,
+    &:focus #{$parent}--open {
+      color: clr(secondary, 400);
+    }
+    &:hover #{$parent}--close,
+    &:focus #{$parent}--close {
+      color: clr(neutral, 500);
+    }
+    &:focus-visible {
+      &:has(#{$parent}--open) {
+        outline: 2px solid clr(secondary, 400);
+      }
+      &:has(#{$parent}--close) {
+        outline: 2px solid clr(neutral, 500);
+      }
+      #{$parent}--open {
+        color: clr(secondary, 400);
+      }
+      #{$parent}--close {
+        color: clr(neutral, 500);
+      }
+    }
     @include mq(large) {
       display: none;
     }
@@ -38,23 +61,17 @@
   &--open {
     font-size: fs(700);
     font-weight: $fw-700;
-    z-index: 100000000;
   }
 
   &--open {
     color: clr(secondary, 700);
-    &:hover,
-    &:focus {
-      color: clr(secondary, 400);
-    }
   }
 
   &--close {
     color: clr(neutral, 300);
-    &:hover,
-    &:focus {
-      color: clr(neutral, 500);
-    }
+
+    opacity: 0;
+    transform: scale(0);
   }
 
   &--accent {
@@ -63,6 +80,12 @@
     position: relative;
 
     --bg-clr: #{clr(secondary, 400)};
+
+    &:disabled {
+      cursor: not-allowed;
+      background-color: clr(secondary, 300);
+      color: clr(neutral, 300);
+    }
   }
 
   &--invisible {
@@ -95,10 +118,6 @@
         opacity: 100%;
       }
     }
-
-    &-blog::after {
-      background-color: clr(primary, 200);
-    }
   }
 
   &--arrow {
@@ -117,6 +136,11 @@
     &:focus > *:last-child,
     &:hover > *:last-child {
       transform: translateX(0);
+    }
+
+    &:disabled:focus > *:last-child,
+    &:disabled:hover > *:last-child {
+      transform: translateX(-0.75rem);
     }
   }
 
@@ -153,18 +177,19 @@
     }
   }
 
-  &--left {
-    align-self: flex-start;
-  }
-
   &--card {
     background-color: clr(primary, 300);
-    color: clr(neutral, 100);
+    color: clr(neutral, 500);
     border: 0.0625rem solid clr(primary, 400);
 
     position: relative;
     z-index: 1000;
     --bg-clr: #{clr(primary, 500)};
+
+    &:focus,
+    &:hover {
+      color: clr(neutral, 100);
+    }
 
     &:disabled {
       cursor: not-allowed;
@@ -181,30 +206,63 @@
     overflow: visible;
   }
 
-  &--video {
-    width: 5rem;
-    height: 5rem;
-    border-radius: var(--br-circle);
-    background-color: clr(primary, 500);
-    color: clr(primary, 100);
-    font-size: fs(700);
-
+  &--icon {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.45em 0.75em;
+    font-size: 0.75rem;
+    color: clr(neutral, 400);
+    transition: color 200ms ease-in-out;
 
+    svg {
+      width: 2rem;
+      height: 2rem;
+      color: inherit;
+    }
     &:hover,
     &:focus {
-      background-color: clr(secondary, 700);
+      color: clr(secondary, 700);
+    }
+
+    @include mq(large, max-width) {
+      padding-inline-start: 0;
+      padding-inline-end: 0.75em;
+      padding-block: 0.45em;
     }
   }
+}
 
-  &--blog {
-    &-back {
-      align-self: flex-start;
-    }
-    &-next {
-      align-self: flex-end;
-    }
+.fade-in {
+  animation-name: fadeInScale;
+  animation-duration: 300ms;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+}
+.fade-out {
+  animation-name: fadeOutScale;
+  animation-duration: 300ms;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes fadeOutScale {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0);
   }
 }

@@ -17,6 +17,9 @@
     // font-variant: small-caps;
     color: clr(neutral, 300);
     text-decoration: none;
+    &:focus-visible {
+      outline-offset: 10px;
+    }
   }
 
   li:hover a:not(.active),
@@ -32,12 +35,6 @@
       color: clr(neutral, 500);
     }
   }
-
-  // @include mq(medium) {
-  //   a {
-  //     font-size: fs(300);
-  //   }
-  // }
 
   @include mq(large, max-width) {
     flex-direction: column;
