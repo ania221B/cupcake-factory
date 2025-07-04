@@ -10,6 +10,7 @@ import {
   Error,
   Faq,
   Home,
+  Login,
   SinglePostPage,
   SingleProductPage,
   Store
@@ -33,7 +34,7 @@ const router = createBrowserRouter([
             element: <Store></Store>
           },
           {
-            path: 'all-products',
+            path: 'all-products/:category?',
             element: <AllProducts></AllProducts>
           },
           {
@@ -74,6 +75,26 @@ const router = createBrowserRouter([
       {
         path: 'faq',
         element: <Faq></Faq>
+      },
+      {
+        path: 'login',
+        element: <Login></Login>
+      },
+      {
+        path: 'cart',
+        element: (
+          <section className='section'>
+            <h2 className='section__title'>Cart will be here</h2>
+          </section>
+        )
+      },
+      {
+        path: 'account',
+        element: (
+          <section className='section'>
+            <h2 className='section__title'>User account will be here</h2>
+          </section>
+        )
       }
     ]
   }
