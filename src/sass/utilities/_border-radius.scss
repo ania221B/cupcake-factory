@@ -1,0 +1,11 @@
+@use '../abstracts/' as *;
+
+.br-small {
+  border-radius: $br-small;
+}
+.br-medium {
+  border-radius: $br-medium;
+}
+.br-circle {
+  border-radius: $br-circle;
+}
