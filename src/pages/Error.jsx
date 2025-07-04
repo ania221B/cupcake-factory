@@ -1,9 +1,14 @@
 import { Link, useRouteError } from 'react-router-dom'
 import errorImage from '../assets/images/page-not-found.svg'
 import { Button } from '../components/common'
+import { useEffect } from 'react'
 
 function Error () {
   const error = useRouteError()
+
+  useEffect(() => {
+    document.body.classList.remove('overlay')
+  })
 
   if (error.status === 404) {
     return (
