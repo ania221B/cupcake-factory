@@ -1,6 +1,7 @@
 export { default as AboutSection } from './AboutSection'
 export { default as BestsellersSection } from './BestsellersSection'
 export { default as BlogSection } from './BlogSection'
+export { default as BookingForm } from './BookingForm'
 export { default as BookingSection } from './BookingSection'
 export { default as ConnectSection } from './ConnectSection'
 export { default as ContactDetailsSection } from './ContactDetailsSection'
