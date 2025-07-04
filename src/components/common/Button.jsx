@@ -7,15 +7,16 @@ import { Link } from 'react-router-dom'
  * @param {string} ariaLabel - Accessible label for the button.
  * @param {string} type - The type of the button (default is 'button').
  * @param {string} path - The path for the link (if isLink is true).
- * @param {function} onClick - Function executed on button click
+ * @param {function} onClick - Function executed on button click.
  * @param {boolean} isLink - Whether the button is a link.
  * @param {boolean} hasArrow - Whether to display an arrow next to the text.
  *  @param {boolean} isAccent - Whether the button has accent styling.
- * @param {boolean} isLines - Whether the button has lines styling (thin outline, filled in on hover).
+ * @param {boolean} isIcon - Whether the button has icon styling.
  * @param {boolean} isInvisible - Whether the button has invisible styling (just text and underline on hover).
- * @param {boolean} isItemCard - Whether the button has a card button styling (colorful, filled in background and a thin border of different color).
  * @param {boolean} isInactive - Whether the button is disabled, so has the disabled attribute on it.
- *
+ * @param {boolean} isItemCard - Whether the button has a card button styling (colorful, filled in background and a thin border of different color).
+ * @param {boolean} isLines - Whether the button has lines styling (thin outline, filled in on hover).
+ 
  */
 
 function Button ({
@@ -27,19 +28,21 @@ function Button ({
   isLink = false,
   hasArrow = false,
   isAccent = false,
-  isLines = false,
+  isIcon = false,
   isInvisible = false,
   isInvisibleWithArrow = false,
+  isInactive = false,
   isItemCard = false,
-  isInactive = false
+  isLines = false
 }) {
   const classes = ['btn']
-  if (isAccent) classes.push('btn--accent', 'bg-animation')
   if (hasArrow) classes.push('btn--arrow')
-  if (isLines) classes.push('btn--lines', 'bg-animation')
+  if (isAccent) classes.push('btn--accent', 'bg-animation')
+  if (isIcon) classes.push('btn--icon')
   if (isInvisible) classes.push('btn--invisible')
   if (isInvisibleWithArrow) classes.push('btn--invisible-w-arrow')
   if (isItemCard) classes.push('btn--card', 'bg-animation')
+  if (isLines) classes.push('btn--lines', 'bg-animation')
   if (isInactive) {
     const index = classes.indexOf('bg-animation')
     classes.splice(index, 1)
@@ -58,17 +61,17 @@ function Button ({
 
   return isLink ? (
     <Link to={path} {...commonProps}>
-      <span>{buttonText}</span>
+      {typeof buttonText === 'string' ? <span>{buttonText}</span> : buttonText}
       {hasArrow && <span>&#8594;</span>}
     </Link>
-  ) : isInactive ? (
-    <button type={type} {...commonProps} onClick={onClick} disabled>
-      <span>{buttonText}</span>
-      {hasArrow && <span>&#8594;</span>}
-    </button>
   ) : (
-    <button type={type} {...commonProps} onClick={onClick}>
-      <span>{buttonText}</span>
+    <button
+      type={type}
+      {...commonProps}
+      onClick={onClick}
+      disabled={isInactive}
+    >
+      {typeof buttonText === 'string' ? <span>{buttonText}</span> : buttonText}
       {hasArrow && <span>&#8594;</span>}
     </button>
   )
