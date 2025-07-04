@@ -13,7 +13,7 @@ function TestimonialSection () {
         isHomePage
           ? 'testimonials section bg-primary-100'
           : isStorePage
-          ? 'testimonials section deco deco--diamond'
+          ? 'testimonials section'
           : 'testimonials section'
       }
     >
