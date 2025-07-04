@@ -194,6 +194,7 @@
 }
 
 .product-item--single {
+  padding-block-start: $grid-gap;
   &__body {
     display: grid;
     grid-template-rows: min-content;
