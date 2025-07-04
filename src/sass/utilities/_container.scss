@@ -8,10 +8,10 @@
 }
 
 .container[data-container='x-small'] {
-  --max-width: #{$container-max-width-small};
-}
-.container[data-container='x-small'] {
   --max-width: #{$container-max-width-x-small};
+}
+.container[data-container='small'] {
+  --max-width: #{$container-max-width-small};
 }
 .container[data-container='large'] {
   --max-width: #{$container-max-width-large};
