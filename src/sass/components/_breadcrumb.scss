@@ -1,0 +1,39 @@
+@use '../abstracts/' as *;
+
+.breadcrumb {
+  padding-block-end: 2em;
+  ol {
+    margin: 0;
+    padding-inline: 0;
+  }
+
+  li {
+    display: inline;
+    font-size: fs(450);
+  }
+
+  li + li::before {
+    content: '';
+    display: inline-block;
+    margin: 0 1em;
+    transform: rotate(15deg);
+    border-right: 0.1em solid currentcolor;
+    height: 0.8em;
+  }
+
+  a {
+    color: clr(neutral, 500);
+    transition: color 300ms ease-in-out;
+
+    &:hover,
+    &:focus {
+      color: clr(primary, 400);
+    }
+  }
+
+  [aria-current='page'] {
+    color: clr(primary, 500);
+    font-weight: $fw-700;
+    text-decoration: none;
+  }
+}

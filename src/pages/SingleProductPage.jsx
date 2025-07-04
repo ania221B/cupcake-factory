@@ -1,7 +1,12 @@
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { useGlobalContext } from '../context'
-import { Button, ProductHeader, ThumbnailGallery } from '../components/common'
-import { checkNumber, makeCapitalizedText } from '../utils'
+import {
+  Breadcrumb,
+  Button,
+  ProductHeader,
+  ThumbnailGallery
+} from '../components/common'
+import { checkNumber, makeCapitalizedText, pluralizeCategory } from '../utils'
 import { FaMinus, FaPlus } from 'react-icons/fa'
 import ProductPricing from '../components/common/ProductPricing'
 import { useState } from 'react'
@@ -45,6 +50,18 @@ function SingleProductPage () {
         }}
       >
         <div className='container'>
+          <Breadcrumb
+            items={[
+              { label: 'home', path: '/' },
+              { label: 'store', path: '/store' },
+              { label: 'all products', path: '/store/all-products' },
+              {
+                label: `${pluralizeCategory(type)}`,
+                path: `/store/all-products/${type}`
+              },
+              { label: `${name}`, path: null }
+            ]}
+          ></Breadcrumb>
           <article className='product-item--single columns-one-one'>
             <ThumbnailGallery images={images}></ThumbnailGallery>
 
