@@ -6,6 +6,7 @@ function ProductFeatureSection () {
   const isHomePage = path === '/'
   const isContactPage = path === '/contact'
   const isBlogPage = path === '/blog'
+  const isStorePage = path === '/store'
   return (
     <section
       className={
@@ -15,6 +16,8 @@ function ProductFeatureSection () {
           ? 'product-features deco deco--line'
           : isBlogPage
           ? 'product-features section deco deco--line'
+          : isStorePage
+          ? 'product-features'
           : 'product-features section deco deco--separator deco--separator-top deco--separator-bottom deco--separator-short'
       }
     >
