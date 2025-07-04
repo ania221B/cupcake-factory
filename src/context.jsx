@@ -32,6 +32,7 @@ function AppContext ({ children }) {
   }
   const [headerHeight, setHeaderHeight] = useState(0)
   const [inputText, setInputText] = useState('')
+  const [currentCategory, setCurrentCategory] = useState(null)
   const [allProducts, setAllProducts] = useState(products)
   const [filteredProducts, setFilteredProducts] = useState(products)
   const [filters, setFilters] = useState(initialFilters)
@@ -40,6 +41,11 @@ function AppContext ({ children }) {
   const [allPosts, setAllPosts] = useState(blogPosts)
   const [sortedPosts, setSortedPosts] = useState(blogPosts)
   const [sortBy, setSortBy] = useState('newest')
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const demoUser = {
+    username: 'demo-user',
+    password: '!password123'
+  }
 
   /**
    * Checks minimum & maximum price values
@@ -55,13 +61,15 @@ function AppContext ({ children }) {
    * Filters products based on filters applied
    * @param {String} text text typed in by the user into the search bar
    */
-  function filterProducts (text) {
+  function filterProducts (text, category = null) {
     const term = text.trim().toLowerCase()
     const activeTypes = Object.entries(filters.type)
       .filter(([_, value]) => value)
       .map(([key]) => key)
 
     const newProducts = allProducts.filter(product => {
+      // Category
+      if (category && product.type !== category) return false
       // Tag
       if (filters.bestseller && !product.bestseller) return false
 
@@ -116,8 +124,8 @@ function AppContext ({ children }) {
   }
 
   useEffect(() => {
-    filterProducts(inputText)
-  }, [filters, inputText])
+    filterProducts(inputText, currentCategory)
+  }, [filters, inputText, currentCategory])
   useEffect(() => {
     validatePrices(filters.priceMin, filters.priceMax)
   }, [filters.priceMin, filters.priceMax])
@@ -154,7 +162,12 @@ function AppContext ({ children }) {
         sortedPosts,
         setSortedPosts,
         sortBy,
-        setSortBy
+        setSortBy,
+        isLoggedIn,
+        setIsLoggedIn,
+        demoUser,
+        currentCategory,
+        setCurrentCategory
       }}
     >
       {children}
