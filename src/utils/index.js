@@ -169,3 +169,14 @@ export function checkNumber (number, min, max) {
     return number
   }
 }
+
+/**
+ * Pluralizes given product category
+ * @param {String} category type/category of a product
+ * @returns plural form of the category
+ */
+export function pluralizeCategory (category) {
+  if (!category) return null
+  if (category === 'pastry') return 'pastries'
+  return `${category}s`
+}

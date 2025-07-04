@@ -1,9 +1,12 @@
+import { useParams } from 'react-router-dom'
 import { useGlobalContext } from '../../context'
 import { makeCamelCaseText } from '../../utils'
 import Button from './Button'
 
 function FilterMenu () {
-  const { initialFilters, filters, setFilters, priceError } = useGlobalContext()
+  const { category } = useParams()
+  const { initialFilters, filters, setFilters, priceError, resetFilters } =
+    useGlobalContext()
   function handleChange (e) {
     const typeNames = Object.keys(filters.type)
 
@@ -35,49 +38,51 @@ function FilterMenu () {
         <h3>Filter products</h3>
       </header>
       <form id='product-filters' className='product-filters'>
-        <fieldset data-filter='roast' className='flow'>
-          <legend>Type</legend>
-          <div className='product-filters__control-wrapper'>
-            <input
-              type='checkbox'
-              name='cake'
-              id='cake'
-              checked={filters.type.cake}
-              onChange={handleChange}
-            />
-            <label htmlFor='cake'>Cake</label>
-          </div>
-          <div className='product-filters__control-wrapper'>
-            <input
-              type='checkbox'
-              name='cookie'
-              id='cookie'
-              checked={filters.type.cookie}
-              onChange={handleChange}
-            />
-            <label htmlFor='cookie'>Cookie</label>
-          </div>
-          <div className='product-filters__control-wrapper'>
-            <input
-              type='checkbox'
-              name='pastry'
-              id='pastry'
-              checked={filters.type.pastry}
-              onChange={handleChange}
-            />
-            <label htmlFor='pastry'>Pastry</label>
-          </div>
-          <div className='product-filters__control-wrapper'>
-            <input
-              type='checkbox'
-              name='dessert'
-              id='dessert'
-              checked={filters.type.dessert}
-              onChange={handleChange}
-            />
-            <label htmlFor='dessert'>Dessert</label>
-          </div>
-        </fieldset>
+        {!category && (
+          <fieldset data-filter='roast' className='flow'>
+            <legend>Type</legend>
+            <div className='product-filters__control-wrapper'>
+              <input
+                type='checkbox'
+                name='cake'
+                id='cake'
+                checked={filters.type.cake}
+                onChange={handleChange}
+              />
+              <label htmlFor='cake'>Cake</label>
+            </div>
+            <div className='product-filters__control-wrapper'>
+              <input
+                type='checkbox'
+                name='cookie'
+                id='cookie'
+                checked={filters.type.cookie}
+                onChange={handleChange}
+              />
+              <label htmlFor='cookie'>Cookie</label>
+            </div>
+            <div className='product-filters__control-wrapper'>
+              <input
+                type='checkbox'
+                name='pastry'
+                id='pastry'
+                checked={filters.type.pastry}
+                onChange={handleChange}
+              />
+              <label htmlFor='pastry'>Pastry</label>
+            </div>
+            <div className='product-filters__control-wrapper'>
+              <input
+                type='checkbox'
+                name='dessert'
+                id='dessert'
+                checked={filters.type.dessert}
+                onChange={handleChange}
+              />
+              <label htmlFor='dessert'>Dessert</label>
+            </div>
+          </fieldset>
+        )}
 
         <fieldset data-filter='type' className='flow'>
           <legend>Tag</legend>
@@ -189,7 +194,7 @@ function FilterMenu () {
       <Button
         buttonText='Reset All'
         ariaLabel='Resets all filtering applied'
-        onClick={() => console.log('Filters were reset')}
+        onClick={resetFilters}
         isAccent={true}
       ></Button>
     </aside>

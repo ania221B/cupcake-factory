@@ -1,13 +1,25 @@
-import { FilterMenu, SearchBar } from '../components/common'
+import { Link, useParams } from 'react-router-dom'
+import { Breadcrumb, FilterMenu, SearchBar } from '../components/common'
 import { ProductList } from '../components/lists'
 import { HeroSection } from '../components/sections'
 import { useGlobalContext } from '../context'
+import { makeCapitalizedText, pluralizeCategory } from '../utils'
+import { useEffect } from 'react'
 
 function AllProducts () {
-  const { filteredProducts } = useGlobalContext()
+  const { category } = useParams()
+  const { filteredProducts, setCurrentCategory } = useGlobalContext()
+  const productCategory = pluralizeCategory(category)
+
+  useEffect(() => {
+    setCurrentCategory(category || null)
+  }, [category])
+
   return (
     <>
-      <HeroSection title='All Products Go Here'></HeroSection>
+      <HeroSection
+        title={category ? makeCapitalizedText(productCategory) : 'All Products'}
+      ></HeroSection>
       <section className='section products'>
         <div className='page-wrapper'>
           <div className='catalog-grid'>
@@ -25,6 +37,16 @@ function AllProducts () {
               </p>
             </header> */}
 
+            {category && (
+              <Breadcrumb
+                items={[
+                  { label: 'home', path: '/' },
+                  { label: 'store', path: '/store' },
+                  { label: 'all products', path: '/store/all-products' },
+                  { label: `${productCategory}`, path: null }
+                ]}
+              ></Breadcrumb>
+            )}
             <FilterMenu></FilterMenu>
             <SearchBar></SearchBar>
 
