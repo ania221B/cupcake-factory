@@ -1,10 +1,14 @@
-function Logo () {
+import { Link } from 'react-router-dom'
+
+function Logo ({ elementType = 'div' }) {
+  const Tag = elementType
+
   return (
-    <div className='logo'>
-      <a href='index.html' className='logo__link clr-neutral-500'>
+    <Tag className='logo'>
+      <Link to='/' className='logo__link clr-neutral-500'>
         CupcakeFactory
-      </a>
-    </div>
+      </Link>
+    </Tag>
   )
 }
 export default Logo
