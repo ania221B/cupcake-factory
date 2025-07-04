@@ -1,8 +1,4 @@
-import {
-  ContactDetailsSection,
-  HeroSection,
-  OrderPromoSection
-} from '../components/sections'
+import { ContactDetailsSection, HeroSection } from '../components/sections'
 import ContactSection from '../components/sections/ContactSection'
 import { footerLinks } from '../data'
 
@@ -16,7 +12,6 @@ function Contact () {
       <HeroSection title={'Contact us'}></HeroSection>
       <ContactSection></ContactSection>
       <ContactDetailsSection list={contactDetailsList}></ContactDetailsSection>
-      <OrderPromoSection></OrderPromoSection>
     </>
   )
 }

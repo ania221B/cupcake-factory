@@ -2,30 +2,28 @@ import { Button, SectionHeader } from '../common'
 import ProductFeatureSection from './ProductFeatureSection'
 
 function OrderPromoSection () {
-  function handleOrder () {
-    console.log('Thank you for your order')
-  }
   return (
-    <section className='section'>
+    <section className='section deco deco--diamond deco--separator deco--separator-bottom deco--separator-short'>
       <div className='container'>
         <div className='order-wrapper text-center'>
           <SectionHeader title='Order & get your bonus'></SectionHeader>
 
           <div className='char-limit-1'>
             <p>
-              Eleifend tincidunt cum amet id mi, sodales amet ut non habitant
-              accumsan risus.
+              Make your first purchase today and enjoy a surprise bonus item in
+              your package.
             </p>
+
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Reiciendis beatae labore quam dolores quis error! Vivamus
-              elementum semper nisi. Aenean vulputate eleifend tellus. Aenean
-              leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.
+              This offer is valid for all orders placed before the end of the
+              month.
             </p>
           </div>
           <Button
             buttonText={'order now'}
-            onClick={handleOrder}
+            path='/store/all-products'
+            isLink={true}
+            hasArrow={true}
             isLines={true}
           ></Button>
 

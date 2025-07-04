@@ -1,5 +1,9 @@
 import { UnderConstruction } from '../components/common'
-import { BestsellersSection, TestimonialSection } from '../components/sections'
+import {
+  BestsellersSection,
+  OrderPromoSection,
+  TestimonialSection
+} from '../components/sections'
 import NewArrivalsSection from '../components/sections/NewArrivalsSection'
 
 function Store () {
@@ -8,6 +12,7 @@ function Store () {
       <UnderConstruction></UnderConstruction>
       <NewArrivalsSection></NewArrivalsSection>
       <BestsellersSection></BestsellersSection>
+      <OrderPromoSection></OrderPromoSection>
       <TestimonialSection></TestimonialSection>
     </>
   )
