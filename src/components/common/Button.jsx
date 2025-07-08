@@ -33,23 +33,31 @@ function Button ({
   isInvisibleWithArrow = false,
   isInactive = false,
   isItemCard = false,
-  isLines = false
+  isLines = false,
+  ...rest
 }) {
-  const classes = ['btn']
-  if (hasArrow) classes.push('btn--arrow')
-  if (isAccent) classes.push('btn--accent', 'bg-animation')
-  if (isIcon) classes.push('btn--icon')
-  if (isInvisible) classes.push('btn--invisible')
-  if (isInvisibleWithArrow) classes.push('btn--invisible-w-arrow')
-  if (isItemCard) classes.push('btn--card', 'bg-animation')
-  if (isLines) classes.push('btn--lines', 'bg-animation')
+  const baseClass = 'btn'
+  const classes = [
+    baseClass,
+    hasArrow && 'btn--arrow',
+    isAccent && 'btn--accent',
+    isAccent && 'bg-animation',
+    isIcon && 'btn--icon',
+    isInvisible && 'btn--invisible',
+    isInvisibleWithArrow && 'btn--invisible-w-arrow',
+    isItemCard && 'btn--card',
+    isItemCard && 'bg-animation',
+    isLines && 'btn--lines',
+    isLines && 'bg-animation',
+    rest.className
+  ]
   if (isInactive) {
     const index = classes.indexOf('bg-animation')
     classes.splice(index, 1)
   }
 
   const commonProps = {
-    className: classes.join(' '),
+    className: classes.filter(Boolean).join(' '),
     'aria-label': ariaLabel || buttonText
   }
 
