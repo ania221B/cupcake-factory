@@ -121,24 +121,26 @@ export function compareMinMax (minVal, maxVal) {
  * @param {Date} date Current date
  * @returns {String} String with formatted date
  */
-export function getFormatedDate (dateToFormat) {
+export function getFormatedDate (dateToFormat, longName = false) {
   const date = new Date(dateToFormat)
   const monthsInAYear = [
-    'Jan',
-    'Feb',
-    'Mar',
-    'Apr',
-    'May',
-    'Jun',
-    'Jul',
-    'Aug',
-    'Sep',
-    'Oct',
-    'Nov',
-    'Dec'
+    { longName: 'January', shortName: 'Jan' },
+    { longName: 'February', shortName: 'Feb' },
+    { longName: 'March', shortName: 'Mar' },
+    { longName: 'April', shortName: 'Apr' },
+    { longName: 'May', shortName: 'May' },
+    { longName: 'June', shortName: 'Jun' },
+    { longName: 'July', shortName: 'Jul' },
+    { longName: 'August', shortName: 'Aug' },
+    { longName: 'Spetember', shortName: 'Sep' },
+    { longName: 'October', shortName: 'Oct' },
+    { longName: 'Novermber', shortName: 'Nov' },
+    { longName: 'December', shortName: 'Dec' }
   ]
   const year = date.getFullYear()
-  const month = monthsInAYear[date.getMonth()]
+  const month = longName
+    ? monthsInAYear[date.getMonth()].longName
+    : monthsInAYear[date.getMonth()].shortName
   const day = date.getDate()
   return `${month} ${day}, ${year}`
 }
@@ -154,6 +156,43 @@ export function getDateTimeString (sourceDate) {
   const month = (date.getMonth() + 1).toString().padStart(2, '0')
   const day = date.getDate()
   return `${year}-${month}-${day}`
+}
+
+/**
+ * Gets a fake restock date for unavailable products
+ * @returns {Date} a date a week later from current, skipping both Saturdays and Sundays
+ */
+export function getRestockDate () {
+  const date = new Date()
+  const weekday = date.getDay()
+
+  if (weekday === 0) {
+    date.setDate(date.getDate() + 8)
+  } else if (weekday === 6) {
+    date.setDate(date.getDate() + 9)
+  } else {
+    date.setDate(date.getDate() + 7)
+  }
+  return date
+}
+
+/**
+ * Calculates blog post reading time based on the lenght of the post text content
+ * @param {Array} text an array with the body/text content of the post divided into sections
+ * @returns {Number} Time needed to read the post
+ */
+export function calculateReadingTime (text) {
+  const avgReadingSpeed = 225
+  let wordCount = 0
+  text.forEach(section => {
+    Object.entries(section).forEach(([key, value]) => {
+      if (typeof value === 'string' && key !== 'sectionType') {
+        wordCount += value.split(' ').length
+      }
+    })
+  })
+  const time = Math.ceil(wordCount / avgReadingSpeed)
+  return time
 }
 /**
  *
@@ -183,9 +222,20 @@ export function pluralizeCategory (category) {
   return `${category}s`
 }
 
+/**
+ * Calculates total price for each item in the cart
+ * @param {Number} itemPrice unit price of a given item
+ * @param {Number} itemQuantity quantity of each item from the cart
+ * @returns {Number} a number representing total price for each item in cart
+ */
 export function calculateItemTotal (itemPrice, itemQuantity) {
   return parseInt(itemPrice * itemQuantity)
 }
+
+/**
+ * Calculates total number and total price of items in the cart
+ * @returns {Object} an object with total number of items in the cart and the total price of the said items
+ */
 export function calculateCartTotals () {
   const { cart } = useGlobalContext()
   const totalItemCount = cart.reduce(
