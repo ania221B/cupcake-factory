@@ -1,4 +1,8 @@
-import { getFormatedDate, getDateTimeString } from '../../utils'
+import {
+  getFormatedDate,
+  getDateTimeString,
+  calculateReadingTime
+} from '../../utils'
 import { Button } from '../common'
 
 function BlogPostCard ({ item, variant = 'unranked' }) {
@@ -10,7 +14,8 @@ function BlogPostCard ({ item, variant = 'unranked' }) {
     postImage,
     imageDesc,
     authorImage,
-    author
+    author,
+    sections
   } = item
 
   return (
@@ -33,7 +38,7 @@ function BlogPostCard ({ item, variant = 'unranked' }) {
 
             <dl>
               <dt className='sr-only'>Reading time:</dt>
-              <dd>4 min read</dd>
+              <dd>{`${calculateReadingTime(sections)} min read`}</dd>
             </dl>
           </div>
           <h3 className='article__title'>{title}</h3>

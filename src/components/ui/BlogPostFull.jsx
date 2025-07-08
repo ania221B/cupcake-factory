@@ -1,5 +1,9 @@
 import { nanoid } from 'nanoid'
-import { getDateTimeString, getFormatedDate } from '../../utils'
+import {
+  calculateReadingTime,
+  getDateTimeString,
+  getFormatedDate
+} from '../../utils'
 
 function BlogPostFull ({ item }) {
   const {
@@ -27,7 +31,7 @@ function BlogPostFull ({ item }) {
 
         <dl>
           <dt className='sr-only'>Reading time:</dt>
-          <dd>4 min read</dd>
+          <dd>{`${calculateReadingTime(sections)} min read`}</dd>
         </dl>
         <h2 className='article--full__title page-title'>{title}</h2>
         <p>
