@@ -1,0 +1,86 @@
+@use '../abstracts/' as *;
+
+.cart__item {
+  padding-inline: 1.25em;
+  padding-block: 1.25em;
+  border: 1px solid clr(neutral, 200);
+  border-radius: $br-small;
+
+  display: grid;
+  grid-template-columns: 8.5rem 1fr;
+  gap: 1em;
+
+  &__img {
+    width: 8.5rem;
+    height: 8.5rem;
+
+    img {
+      border-radius: $br-small;
+      height: 100%;
+    }
+  }
+
+  &__details {
+    display: grid;
+    grid-template-columns: minmax(0, 18rem) 1fr;
+    gap: 0.25em 2em;
+  }
+
+  &__name {
+    grid-column: 1;
+    grid-row: 1;
+    a {
+      text-decoration: none;
+      color: currentColor;
+      &:hover,
+      &:focus {
+        text-decoration: underline;
+      }
+    }
+  }
+  &__description {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  &__unit-price {
+    grid-column: 1;
+    grid-row: 3;
+    display: flex;
+    gap: 0.5em;
+  }
+
+  .quantity-form-control {
+    align-self: center;
+    justify-self: end;
+    input {
+      font-size: fs(100);
+      padding-block: 0.25rem;
+      padding-inline: 0.5rem;
+    }
+  }
+
+  .btn {
+    font-size: fs(100);
+    padding: 0.25rem 0.5rem;
+
+    &--icon {
+      align-self: start;
+      justify-self: end;
+      padding-block-start: 0;
+      padding-block-end: 0.5rem;
+      padding-inline-start: 0.5rem;
+      padding-inline-end: 0;
+      svg {
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+    }
+  }
+
+  &__total-price {
+    justify-self: end;
+    display: flex;
+    gap: 0.5em;
+  }
+}

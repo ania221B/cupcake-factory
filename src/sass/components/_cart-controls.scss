@@ -1,6 +1,6 @@
 @use '../abstracts/' as *;
 
-.product-item--single__quantity-controls input {
+.cart-controls input {
   /* Chrome, Safari, Edge, Opera */
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {
@@ -14,10 +14,10 @@
   }
 }
 
-.product-item--single__quantity-controls {
+.cart-controls {
   align-self: start;
   display: grid;
-  grid-template-columns: repeat(3, min-content) 1fr;
+  grid-template-columns: min-content 1fr;
   gap: 0.5rem;
   input {
     font-weight: $fw-700;

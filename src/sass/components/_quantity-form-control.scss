@@ -1,0 +1,35 @@
+@use '../abstracts/' as *;
+
+.quantity-form-control input {
+  /* Chrome, Safari, Edge, Opera */
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  /* Firefox */
+  &[type='number'] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+  }
+}
+
+.quantity-form-control {
+  display: grid;
+  grid-template-columns: repeat(3, min-content);
+  gap: 0.5rem;
+  input {
+    font-weight: $fw-700;
+    color: clr(neutral, 400);
+    border: 0.0625rem solid rgba(216, 216, 216, 0.5);
+    border-radius: $br-small;
+    padding-block: 0.5rem;
+    padding-inline: 1rem;
+    display: block;
+    &:focus,
+    &:hover {
+      outline: none;
+      outline: 0.125rem solid clr(secondary, 700);
+    }
+  }
+}

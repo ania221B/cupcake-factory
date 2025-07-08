@@ -1,3 +1,5 @@
+import { useGlobalContext } from '../context'
+
 /**
  * Creates a camelcase version of standard text with spaces or a hyphenated text
  * @param {String} string Text to capitalize
@@ -59,7 +61,7 @@ export function makeHyphenatedLowerCase (string) {
 
 /**
  * Formats price
- * @param {Number} priceToFormat price as a number needed formating
+ * @param {Number} priceToFormat price as a number that needs formating
  * @returns formatted price
  */
 export function formatPrice (priceToFormat) {
@@ -73,7 +75,7 @@ export function formatPrice (priceToFormat) {
       return price.padEnd(5, 0)
     }
   }
-  return (price + '.').padEnd(5, 0)
+  return (price + '.').padEnd(`${price.length + 3}`, 0)
 }
 
 /**
@@ -179,4 +181,21 @@ export function pluralizeCategory (category) {
   if (!category) return null
   if (category === 'pastry') return 'pastries'
   return `${category}s`
+}
+
+export function calculateItemTotal (itemPrice, itemQuantity) {
+  return parseInt(itemPrice * itemQuantity)
+}
+export function calculateCartTotals () {
+  const { cart } = useGlobalContext()
+  const totalItemCount = cart.reduce(
+    (sum, item) => parseInt(sum + item.quantity),
+    0
+  )
+  const cartTotal = cart.reduce((sum, item) => {
+    const itemTotal = item.price * item.quantity
+    return parseInt(sum + itemTotal)
+  }, 0)
+
+  return { totalItemCount, cartTotal }
 }

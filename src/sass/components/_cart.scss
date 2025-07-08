@@ -1,0 +1,72 @@
+@use '../abstracts/' as *;
+
+.cart {
+  display: grid;
+  grid-template-columns: 1fr min-content;
+  gap: $grid-gap;
+
+  &--empty {
+    max-width: 40rem;
+    margin-inline: auto;
+    grid-template-columns: max-content 1fr;
+    gap: 0 $grid-gap;
+
+    .btn--accent {
+      grid-column: 2;
+      grid-row: 2;
+      justify-self: end;
+      align-self: start;
+    }
+  }
+
+  &__title,
+  &__subtitle {
+    grid-column: 2;
+    align-self: end;
+  }
+
+  &__subtitle {
+    grid-row: 2;
+  }
+
+  .btn--invisible {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    justify-self: start;
+  }
+
+  header {
+    display: flex;
+    gap: 1rem;
+  }
+
+  &__item-counter {
+    margin-top: 0.35rem;
+    display: grid;
+    place-items: center;
+
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: $br-circle;
+    background-color: clr(primary, 200);
+    font-weight: $fw-700;
+    line-height: 1;
+    text-align: center;
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    padding-block-end: $grid-gap;
+    grid-column: 1 / -1;
+    display: grid;
+    gap: $grid-gap;
+  }
+
+  &__total {
+    grid-column: 1 / -1;
+    padding-block-start: $grid-gap;
+    display: flex;
+    justify-content: space-between;
+  }
+}

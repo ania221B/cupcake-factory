@@ -6,6 +6,9 @@
 @forward './booking-section';
 @forward './breadcrumb';
 @forward './buttons';
+@forward './cart';
+@forward './cart-controls';
+@forward './cart-item';
 @forward './contact-details';
 @forward './decorations';
 @forward './error-page';
@@ -19,7 +22,7 @@
 @forward './page-nav__list';
 @forward './product-item';
 @forward './product-labels';
-@forward './product-item--single__quantity-controls';
+@forward './quantity-form-control';
 @forward './search-bar';
 @forward './section';
 @forward './select-menu';

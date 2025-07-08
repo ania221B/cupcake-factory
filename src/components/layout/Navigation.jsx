@@ -1,18 +1,22 @@
 import { useEffect, useRef, useState } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { NavLink, useLocation } from 'react-router-dom'
 import { RiCloseFill, RiMenuFill, RiAccountCircleLine } from 'react-icons/ri'
 import { BiCart } from 'react-icons/bi'
 import { IoMdLogOut } from 'react-icons/io'
 import { navLinks } from '../../data/navLinks'
 import { Button } from '../common'
 import { useGlobalContext } from '../../context'
+import { calculateCartTotals } from '../../utils'
 
 function Navigation () {
   const { isLoggedIn, setIsLoggedIn } = useGlobalContext()
+  const { pathname } = useLocation()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const navList = useRef('is-closed')
   const openBtn = useRef(null)
   const closeBtn = useRef(null)
+  const isStorePage = pathname.startsWith('/store')
+  const { totalItemCount } = calculateCartTotals()
 
   function openMenu () {
     openBtn.current?.classList.remove('fade-in')
@@ -143,22 +147,26 @@ function Navigation () {
         </ul>
 
         <div className='page-nav__extras'>
+          {(isStorePage || isLoggedIn) && (
+            <Button
+              buttonText={
+                <>
+                  <span className='cart__item-counter'>{totalItemCount}</span>
+                  <span className='icon'>
+                    <BiCart />
+                  </span>
+                  <span>Cart</span>
+                </>
+              }
+              ariaLabel='View your cart'
+              path='/cart'
+              isLink={true}
+              isIcon={true}
+              className='btn--cart'
+            />
+          )}
           {isLoggedIn ? (
             <>
-              <Button
-                buttonText={
-                  <>
-                    <span>
-                      <BiCart />
-                    </span>
-                    <span>Cart</span>
-                  </>
-                }
-                ariaLabel='View your cart'
-                path='/cart'
-                isLink={true}
-                isIcon={true}
-              ></Button>
               <Button
                 buttonText={
                   <>
@@ -172,7 +180,7 @@ function Navigation () {
                 path='/account'
                 isLink={true}
                 isIcon={true}
-              ></Button>
+              />
               <Button
                 buttonText={
                   <>
@@ -182,10 +190,10 @@ function Navigation () {
                     <span>Log out</span>
                   </>
                 }
-                ariaLabel='log out of your account'
+                ariaLabel='Log out of your account'
                 onClick={() => setIsLoggedIn(false)}
                 isIcon={true}
-              ></Button>
+              />
             </>
           ) : (
             <Button
@@ -193,7 +201,7 @@ function Navigation () {
               isLink={true}
               path='/login'
               isLines={true}
-            ></Button>
+            />
           )}
         </div>
       </div>

@@ -1,18 +1,19 @@
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { useGlobalContext } from '../context'
 import {
   Breadcrumb,
   Button,
   ProductHeader,
+  QuantityFormControl,
   ThumbnailGallery
 } from '../components/common'
 import { checkNumber, makeCapitalizedText, pluralizeCategory } from '../utils'
-import { FaMinus, FaPlus } from 'react-icons/fa'
 import ProductPricing from '../components/common/ProductPricing'
 import { useState } from 'react'
 
 function SingleProductPage () {
-  const { headerHeight, allProducts } = useGlobalContext()
+  const { headerHeight, allProducts, addToCart, productMin, productMax } =
+    useGlobalContext()
 
   const { productSlug } = useParams()
 
@@ -37,9 +38,7 @@ function SingleProductPage () {
     availability
   } = currentProduct
 
-  const [quantity, setQuantity] = useState(0)
-  const minQuantity = 0
-  const maxQuantity = 100
+  const [quantity, setQuantity] = useState(1)
 
   return (
     <>
@@ -86,49 +85,32 @@ function SingleProductPage () {
                 sale={sale}
               ></ProductPricing>
 
-              <div className='product-item--single__quantity-controls'>
-                <Button
-                  buttonText={<FaMinus />}
-                  ariaLabel='Decrease product quantity in cart'
-                  onClick={() =>
-                    setQuantity(prevQuantity =>
-                      checkNumber(prevQuantity - 1, minQuantity, maxQuantity)
+              <div className='product-item--single__cart-controls cart-controls'>
+                <QuantityFormControl
+                  quantity={quantity}
+                  onIncrease={() =>
+                    setQuantity(prev =>
+                      checkNumber(prev + 1, productMin, productMax)
                     )
                   }
-                  isAccent={true}
-                ></Button>
-                <input
-                  type='number'
-                  name='product-quantity'
-                  id='product-quantity'
-                  min={minQuantity}
-                  max={maxQuantity}
-                  value={quantity}
-                  onChange={e => setQuantity(e.target.value.trim())}
-                />
-                <label htmlFor='product-quantity' className='sr-only'>
-                  Product count
-                </label>
-                <Button
-                  buttonText={<FaPlus />}
-                  ariaLabel='Increase product quantity in cart'
-                  onClick={() =>
-                    setQuantity(prevQuantity =>
-                      checkNumber(prevQuantity + 1, minQuantity, maxQuantity)
+                  onDecrease={() =>
+                    setQuantity(prev =>
+                      checkNumber(prev - 1, productMin, productMax)
                     )
                   }
-                  isAccent={true}
-                ></Button>
+                  onChange={newQty =>
+                    setQuantity(checkNumber(newQty, productMin, productMax))
+                  }
+                ></QuantityFormControl>
                 {availability ? (
                   <Button
                     buttonText='Add to cart'
-                    onClick={() => console.log('product added to cart')}
+                    onClick={() => addToCart(currentProduct, quantity)}
                     isItemCard={true}
                   ></Button>
                 ) : (
                   <Button
                     buttonText='Will be back soon'
-                    onClick={() => console.log('product added to cart')}
                     isItemCard={true}
                     isInactive={true}
                   ></Button>

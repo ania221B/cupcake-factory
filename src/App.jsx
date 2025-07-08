@@ -6,6 +6,7 @@ import {
   BaseLayout,
   Blog,
   BookATable,
+  Cart,
   Contact,
   Error,
   Faq,
@@ -82,11 +83,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'cart',
-        element: (
-          <section className='section'>
-            <h2 className='section__title'>Cart will be here</h2>
-          </section>
-        )
+        element: <Cart></Cart>
       },
       {
         path: 'account',

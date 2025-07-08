@@ -6,6 +6,7 @@ import {
   ProductLabels,
   ProductPricing
 } from '../common'
+import { useGlobalContext } from '../../context'
 
 function ProductCard ({ item }) {
   const {
@@ -23,6 +24,8 @@ function ProductCard ({ item }) {
     sale,
     availability
   } = item
+
+  const { addToCart } = useGlobalContext()
 
   return (
     <article className='product-item'>
@@ -59,13 +62,14 @@ function ProductCard ({ item }) {
       {availability ? (
         <Button
           buttonText='Add to cart'
-          onClick={() => console.log('product added to cart')}
+          onClick={() => {
+            addToCart(item, 1)
+          }}
           isItemCard={true}
         ></Button>
       ) : (
         <Button
           buttonText='Will be back soon'
-          onClick={() => console.log('product added to cart')}
           isItemCard={true}
           isInactive={true}
         ></Button>

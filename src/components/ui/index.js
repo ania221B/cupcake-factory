@@ -1,5 +1,6 @@
 export { default as BlogPostCard } from './BlogPostCard'
 export { default as BlogPostFull } from './BlogPostFull'
+export { default as CartItem } from './CartItem'
 export { default as HeroImage } from './HeroImage'
 export { default as Logo } from './Logo'
 export { default as ProductCard } from './ProductCard'

@@ -1,7 +1,16 @@
-import { createContext, useContext, useEffect, useState } from 'react'
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useReducer,
+  useState
+} from 'react'
 import { products } from './data'
 import { compareMinMax } from './utils'
 import { blogPosts } from './data/blogPosts'
+
+import cartReducer from './cartReducer'
+import { ADD_ITEM, CLEAR_CART, REMOVE_ITEM, SET_ITEM_QUANTITY } from './actions'
 
 const GlobalContext = createContext()
 
@@ -41,10 +50,49 @@ function AppContext ({ children }) {
   const [allPosts, setAllPosts] = useState(blogPosts)
   const [sortedPosts, setSortedPosts] = useState(blogPosts)
   const [sortBy, setSortBy] = useState('newest')
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(true)
+  const productMin = 1
+  const productMax = 100
+  const cartItemMin = 0
+  const cartItemMax = 100
+  const guestMin = 1
+  const guestMax = 12
   const demoUser = {
     username: 'demo-user',
     password: '!password123'
+  }
+  const initialCart = []
+  const [cart, dispatch] = useReducer(cartReducer, initialCart)
+
+  function clearCart () {
+    dispatch({ type: CLEAR_CART })
+  }
+
+  function addToCart (product, quantity) {
+    dispatch({
+      type: ADD_ITEM,
+      payload: {
+        id: product.id,
+        image: product.images[0].src,
+        name: product.name,
+        slug: product.slug,
+        type: product.type,
+        description: product.description,
+        price: product.currentPrice,
+        quantity: quantity
+      }
+    })
+  }
+
+  function removeCartItem (productId) {
+    dispatch({ type: REMOVE_ITEM, payload: { id: productId } })
+  }
+
+  function setItemQuantity (productId, newQuantity) {
+    dispatch({
+      type: SET_ITEM_QUANTITY,
+      payload: { id: productId, quantity: newQuantity }
+    })
   }
 
   /**
@@ -167,7 +215,18 @@ function AppContext ({ children }) {
         setIsLoggedIn,
         demoUser,
         currentCategory,
-        setCurrentCategory
+        setCurrentCategory,
+        cart,
+        addToCart,
+        removeCartItem,
+        clearCart,
+        setItemQuantity,
+        productMin,
+        productMax,
+        guestMin,
+        guestMax,
+        cartItemMin,
+        cartItemMax
       }}
     >
       {children}
