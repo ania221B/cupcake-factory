@@ -7,7 +7,14 @@ import {
   QuantityFormControl,
   ThumbnailGallery
 } from '../components/common'
-import { checkNumber, makeCapitalizedText, pluralizeCategory } from '../utils'
+import {
+  checkNumber,
+  getDateTimeString,
+  getFormatedDate,
+  getRestockDate,
+  makeCapitalizedText,
+  pluralizeCategory
+} from '../utils'
 import ProductPricing from '../components/common/ProductPricing'
 import { useState } from 'react'
 
@@ -20,6 +27,7 @@ function SingleProductPage () {
   const currentProduct = allProducts.find(
     product => product.name === makeCapitalizedText(productSlug)
   )
+  const restockDate = getRestockDate()
 
   const {
     images,
@@ -129,7 +137,9 @@ function SingleProductPage () {
                 ) : (
                   <dd>
                     Will be back soon. Estimated restock date:{' '}
-                    <time dateTime='2025-07-07'>July 7, 2025</time>
+                    <time dateTime={getDateTimeString(restockDate)}>
+                      {getFormatedDate(restockDate, true)}
+                    </time>
                   </dd>
                 )}
               </dl>
