@@ -53,22 +53,20 @@
 
   &__extras {
     display: grid;
-    grid-auto-flow: column;
+    grid-template-columns: repeat(3, 1fr);
     align-items: center;
-    & > * + * {
-      margin: 0 0 0 0.75rem;
-    }
-
-    @include mq(large, max-width) {
-      & > * + * {
-        margin: 0 0 0 1.25rem;
-      }
-    }
+    gap: 1.25rem;
   }
 
   .btn--menu {
     align-self: start;
     justify-self: end;
+  }
+
+  @include mq(large) {
+    .btn:only-child {
+      grid-column: -1;
+    }
   }
 }
 
