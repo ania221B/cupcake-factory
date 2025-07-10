@@ -16,7 +16,7 @@
 
 .quantity-form-control {
   display: grid;
-  grid-template-columns: repeat(3, min-content);
+  grid-template-columns: min-content minmax(3rem, 100%) min-content;
   gap: 0.5rem;
   input {
     font-weight: $fw-700;
