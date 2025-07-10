@@ -38,15 +38,12 @@ function BookingForm () {
     )
   }
   return (
-    <div
-      ref={formRef}
-      className='form-wrapper bg-primary-100'
-      onSubmit={handleSubmit}
-    >
-      <div
+    <div ref={formRef} className='form-wrapper bg-primary-100'>
+      <form
         className={`form form--reservation ${
           state.succeeded ? 'form-fade-out' : 'form-fade-in'
         }`}
+        onSubmit={handleSubmit}
       >
         <h2 className='section__title form__title'>Make a reservation</h2>
         <div className='form__control-wrapper'>
@@ -120,7 +117,7 @@ function BookingForm () {
             isLines={true}
           ></Button>
         )}
-      </div>
+      </form>
     </div>
   )
 }
