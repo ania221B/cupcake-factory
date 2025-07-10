@@ -5,6 +5,7 @@ import {
   Button,
   ProductHeader,
   QuantityFormControl,
+  RestockNotificationForm,
   ThumbnailGallery
 } from '../components/common'
 import {
@@ -143,6 +144,10 @@ function SingleProductPage () {
                   </dd>
                 )}
               </dl>
+
+              {!availability && (
+                <RestockNotificationForm></RestockNotificationForm>
+              )}
             </div>
           </article>
         </div>

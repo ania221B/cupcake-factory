@@ -20,7 +20,8 @@
     }
   }
 
-  &--newsletter {
+  &--newsletter,
+  &--restock-notification {
     padding: 0;
     border-radius: 0;
   }
@@ -60,7 +61,7 @@
 
   &__control-wrapper {
     display: grid;
-    grid-template-rows: repeat(2, min-content) 1.3125rem;
+    grid-template-rows: repeat(2, min-content) $error-height;
     gap: 0.5rem;
 
     fieldset:first-of-type & {
@@ -100,7 +101,8 @@
     color: clr(primary, 900);
   }
 
-  &--newsletter {
+  &--newsletter,
+  &--restock-notification {
     --_outline-size: 0.0625rem;
     grid-auto-rows: 1fr;
 
@@ -111,17 +113,69 @@
     input {
       background: none;
       border: none;
-      padding: 0 1.5rem;
       background-color: rgba(216, 216, 216, 0.2);
       outline: var(--_outline-size) solid clr(neutral, 200);
       border-radius: $br-small;
       height: calc(100% - (var(--_outline-size) * 2));
+
+      &::placeholder {
+        transition: opacity 200ms ease;
+      }
 
       &:focus,
       &:hover {
         outline: none;
         background-color: clr(neutral, 100);
         outline: 0.125rem solid clr(secondary, 700);
+      }
+
+      &:focus::placeholder {
+        opacity: 0;
+      }
+    }
+  }
+
+  &--newsletter {
+    input {
+      padding: 0 1.5rem;
+    }
+  }
+
+  &--restock-notification {
+    --_form-btn-height: 41.02px;
+    grid-auto-rows: min-content;
+    gap: 0 0.5rem;
+
+    header {
+      margin-bottom: 1.5rem;
+    }
+
+    .form__control-wrapper {
+      grid-template-rows: max-content $error-height;
+      gap: 0.5rem;
+      align-self: end;
+    }
+    input {
+      height: var(--_form-btn-height);
+      padding-block: 0.6rem;
+    }
+    .btn {
+      align-self: start;
+    }
+
+    @include mq(small) {
+      header {
+        grid-column: 1 / -1;
+      }
+
+      .form__control-wrapper {
+        grid-column: 1;
+        grid-row: 2;
+      }
+      .btn {
+        grid-column: 2;
+        grid-row: 2;
+        align-self: start;
       }
     }
   }
