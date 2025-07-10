@@ -31,15 +31,12 @@ function NewsletterForm () {
     )
   }
   return (
-    <div
-      ref={formRef}
-      className='form-wrapper form-wrapper--newsletter'
-      onSubmit={handleSubmit}
-    >
-      <div
+    <div ref={formRef} className='form-wrapper form-wrapper--newsletter'>
+      <form
         className={`form form--newsletter ${
           state.succeeded ? 'form-fade-out' : 'form-fade-in'
         }`}
+        onSubmit={handleSubmit}
       >
         <label htmlFor='newsletter-email' className='sr-only'>
           Email:
@@ -69,7 +66,7 @@ function NewsletterForm () {
             isLines={true}
           ></Button>
         )}
-      </div>
+      </form>
     </div>
   )
 }
