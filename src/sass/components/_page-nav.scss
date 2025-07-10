@@ -53,9 +53,14 @@
 
   &__extras {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-auto-flow: column;
+    grid-auto-columns: auto;
     align-items: center;
     gap: 1.25rem;
+
+    @include mq(large) {
+      gap: 2.5rem;
+    }
   }
 
   .btn--menu {
@@ -63,10 +68,8 @@
     justify-self: end;
   }
 
-  @include mq(large) {
-    .btn:only-child {
-      grid-column: -1;
-    }
+  .btn--cart {
+    justify-self: start;
   }
 }
 
