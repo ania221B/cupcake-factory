@@ -8,7 +8,7 @@ function NewsletterSection () {
         <SectionHeader
           subtitle='Stay in touch'
           title='Get the newsletter'
-          titleClasses='section__title-small'
+          titleClasses='section__title--small'
         ></SectionHeader>
         <NewsletterForm></NewsletterForm>
       </div>
