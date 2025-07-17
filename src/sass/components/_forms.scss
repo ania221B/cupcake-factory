@@ -225,6 +225,11 @@
       }
     }
   }
+
+  &--gift-card {
+    gap: 0;
+    grid-auto-rows: min-content;
+  }
 }
 
 .form-hint {
