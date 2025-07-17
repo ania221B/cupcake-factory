@@ -1,0 +1,29 @@
+@use '../abstracts/' as *;
+
+.spinner {
+  display: block;
+  margin-inline: auto;
+
+  width: 5rem;
+  height: 5rem;
+  color: clr(secondary, 700);
+
+  animation-name: rotate;
+  animation-duration: 450ms;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+  &-section {
+    min-height: 100dvh;
+    display: grid;
+    place-items: center;
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(90deg);
+  }
+}
