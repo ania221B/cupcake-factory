@@ -110,6 +110,7 @@ function SingleProductPage () {
                   onChange={newQty =>
                     setQuantity(checkNumber(newQty, productMin, productMax))
                   }
+                  isDisabled={!availability}
                 ></QuantityFormControl>
                 {availability ? (
                   <Button

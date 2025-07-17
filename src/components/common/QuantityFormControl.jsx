@@ -7,7 +7,8 @@ function QuantityFormControl ({
   onIncrease,
   onChange,
   min = 0,
-  max = 100
+  max = 100,
+  isDisabled = false
 }) {
   return (
     <div className='quantity-form-control'>
@@ -16,6 +17,7 @@ function QuantityFormControl ({
         ariaLabel='Decrease product quantity in cart'
         onClick={onDecrease}
         isAccent={true}
+        isInactive={isDisabled}
       ></Button>
       <input
         type='number'
@@ -28,6 +30,7 @@ function QuantityFormControl ({
           const value = Number(e.target.value)
           if (!isNaN(value)) onChange(value)
         }}
+        disabled={isDisabled}
       />
       <label htmlFor='product-quantity' className='sr-only'>
         Product count
@@ -37,6 +40,7 @@ function QuantityFormControl ({
         ariaLabel='Increase product quantity in cart'
         onClick={onIncrease}
         isAccent={true}
+        isInactive={isDisabled}
       ></Button>
     </div>
   )

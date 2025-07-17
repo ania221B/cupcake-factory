@@ -31,5 +31,12 @@
       outline: none;
       outline: 0.125rem solid clr(secondary, 700);
     }
+    &:disabled {
+      cursor: not-allowed;
+      &:hover,
+      &:focus {
+        outline: none;
+      }
+    }
   }
 }
