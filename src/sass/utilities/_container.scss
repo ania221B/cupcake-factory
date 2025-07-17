@@ -17,5 +17,6 @@
   --max-width: #{$container-max-width-large};
 }
 .container[data-container='full-bleed'] {
+  --padding-inline: 0;
   --max-width: #{$container-max-width-full-bleed};
 }
