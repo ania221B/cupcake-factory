@@ -61,6 +61,18 @@
       max-width: 85%;
       margin-left: auto;
     }
+    & > img {
+      height: 100%;
+      border-radius: inherit;
+    }
+    &--contact {
+      max-height: 55dvh;
+      border-radius: 0;
+      @include mq(small, between, medium) {
+        max-width: 100%;
+        margin-left: 0;
+      }
+    }
   }
 
   .social-list {

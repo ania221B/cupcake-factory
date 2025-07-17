@@ -1,6 +1,9 @@
+import { heroImages } from '../../data'
 import { ContactDetailsLink } from '../common'
+import { HeroImage } from '../ui'
 
 function ContactDetailsSection ({ list }) {
+  const mainImage = heroImages.contact
   return (
     <section className='section'>
       <div className='container'>
@@ -14,6 +17,12 @@ function ContactDetailsSection ({ list }) {
             )
           })}
         </ul>
+      </div>
+      <div className='container' data-container='full-bleed'>
+        <HeroImage
+          image={mainImage}
+          imgClass='hero__img hero__img--contact'
+        ></HeroImage>
       </div>
     </section>
   )
