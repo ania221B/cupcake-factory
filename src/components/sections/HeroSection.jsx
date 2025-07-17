@@ -22,13 +22,9 @@ function HeroSection ({ title, children, additionalContent = false, image }) {
           </header>
           {children}
         </div>
-        {additionalContent && image.src && (
+        {additionalContent && image.fallback && (
           <div>
-            <HeroImage
-              imgSrc={image.src}
-              imgAlt={image.alt}
-              imgTitle={image.title}
-            ></HeroImage>
+            <HeroImage image={image} imgClass='hero__img'></HeroImage>
           </div>
         )}
       </div>

@@ -8,7 +8,8 @@
   &__preview {
     border-radius: $br-medium;
 
-    & > img {
+    & > picture,
+    & img {
       height: 100%;
       border-radius: inherit;
     }

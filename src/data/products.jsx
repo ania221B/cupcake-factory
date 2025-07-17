@@ -536,24 +536,41 @@ export const products = rawProducts.map(product => {
   const grouped = {}
 
   for (const [path, src] of entries) {
-    const match = path.match(/img(\d)\.(jpg|webp|avif)$/)
+    const match = path.match(/img(\d)(?:-(\d+))?\.(jpg|webp|avif)$/)
+
     if (!match) continue
 
-    const [, index, extension] = match
+    const [, index, size, format] = match
     const key = `img${index}`
+    const sizeKey = size || 'fallback'
 
     if (!grouped[key]) grouped[key] = {}
-    grouped[key][extension] = src
-  }
+    if (!grouped[key][sizeKey]) grouped[key][sizeKey] = {}
 
-  const images = Object.entries(grouped).map(([_, formats], index) => ({
-    id: nanoid(),
-    type: ['main', 'secondary', 'additional'][index] || 'other',
-    formats,
-    src: formats.jpg || formats.webp || formats.avif,
-    alt: `${product.name} image ${index + 1}`,
-    title: 'Photo by Pexels'
-  }))
+    grouped[key][sizeKey][format] = src
+  }
+  const images = Object.entries(grouped).map(([_, sizes], index) => {
+    const fallback = sizes.fallback || {}
+    const smallest = sizes['400'] || sizes['768'] || sizes['1200'] || {}
+
+    const src =
+      fallback.jpg ||
+      fallback.webp ||
+      fallback.avif ||
+      smallest.jpg ||
+      smallest.webp ||
+      smallest.avif
+
+    return {
+      id: nanoid(),
+      type: ['main', 'secondary', 'additional'][index] || 'other',
+      sizes,
+      src,
+      alt: `${product.name} image ${index + 1}`,
+      title: 'Photo by Pexels'
+    }
+  })
+
   return {
     ...product,
     id: nanoid(),

@@ -1,3 +1,4 @@
+import { aboutImages } from '../../data'
 import { usePageLocation } from '../../hooks'
 import { Button, SectionHeader } from '../common'
 
@@ -17,22 +18,43 @@ function AboutSection () {
           title='Welcome to CupcakeFactory - a chocolate wonderland, where magic
             happens & creates the most delightful of treats!'
         ></SectionHeader>
-        <img
-          src='src/assets/images/pexels-pixelperfectmom-18186418.jpg'
-          alt='Pink Cookie Cake With Cherries'
-          title='Photo by Karina Kungla: Pink Cookie Cake With Cherries'
-        />
-        <img
-          src='src/assets/images/pexels-pixelperfectmom-18296426.jpg'
-          alt='White Chocolate Cheesecake With Cherry Jam'
-          title='Photo by Karina Kungla: White Chocolate Cheesecake With Cherry Jam'
-        />
-
-        <img
-          src='src/assets/images/pexels-pixelperfectmom-18254932.jpg'
-          alt='Red Velvet Cake With Caramelised Peanuts, Raspberries And Cream Cheese Frosting'
-          title='Photo by Karina Kungla: Red Velvet Cake With Caramelised Peanuts, Raspberries And Cream Cheese Frosting'
-        />
+        {aboutImages.map(image => {
+          return (
+            <picture key={image.id}>
+              <source
+                srcSet={image.desktop.avif}
+                type='image/avif'
+                media='(min-width: 912px)'
+              />
+              <source
+                srcSet={image.desktop.webp}
+                type='image/webp'
+                media='(min-width: 912px)'
+              />
+              <source
+                srcSet={image.tablet.avif}
+                type='image/avif'
+                media='(min-width: 768px)'
+              />
+              <source
+                srcSet={image.tablet.webp}
+                type='image/webp'
+                media='(min-width: 768px)'
+              />
+              <source
+                srcSet={image.mobile.webp}
+                type='image/avif'
+                media='(max-width: 767px)'
+              />
+              <source
+                srcSet={image.mobile.webp}
+                type='image/webp'
+                media='(max-width: 767px)'
+              />
+              <img src={image.fallback} alt={image.alt} title={image.title} />
+            </picture>
+          )
+        })}
 
         <div className='main-content flow' style={{ '--flow-spacer': '2rem' }}>
           {isAboutPage ? (

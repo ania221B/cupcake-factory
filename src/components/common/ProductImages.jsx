@@ -4,26 +4,111 @@ function ProductImages ({ images }) {
   return (
     <div className='product-item__img'>
       <picture>
-        {mainImage?.formats?.avif && (
-          <source srcSet={mainImage.formats.avif} type='image/avif' />
+        {/* Desktop */}
+        {mainImage?.sizes?.['1200']?.avif && (
+          <source
+            srcSet={mainImage.sizes['1200'].avif}
+            type='image/avif'
+            media='(min-width: 1200px)'
+          />
         )}
-        {mainImage?.formats?.webp && (
-          <source srcSet={mainImage.formats.webp} type='image/webp' />
+        {mainImage?.sizes?.['1200']?.webp && (
+          <source
+            srcSet={mainImage.sizes['1200'].webp}
+            type='image/webp'
+            media='(min-width: 1200px)'
+          />
         )}
+
+        {/* Tablet */}
+        {mainImage?.sizes?.['768']?.avif && (
+          <source
+            srcSet={mainImage.sizes['768'].avif}
+            type='image/avif'
+            media='(min-width: 768px)'
+          />
+        )}
+        {mainImage?.sizes?.['768']?.webp && (
+          <source
+            srcSet={mainImage.sizes['768'].webp}
+            type='image/webp'
+            media='(min-width: 768px)'
+          />
+        )}
+
+        {/* Mobile */}
+        {mainImage?.sizes?.['400']?.avif && (
+          <source
+            srcSet={mainImage.sizes['400'].avif}
+            type='image/avif'
+            media='(max-width: 767px)'
+          />
+        )}
+        {mainImage?.sizes?.['400']?.webp && (
+          <source
+            srcSet={mainImage.sizes['400'].webp}
+            type='image/webp'
+            media='(max-width: 767px)'
+          />
+        )}
+
         <img
-          src={mainImage?.formats?.jpg}
+          src={mainImage?.src}
           alt={mainImage?.alt}
           title={mainImage?.title}
           loading='lazy'
         />
       </picture>
+
       <picture>
-        {secondaryImage?.formats?.avif && (
-          <source srcSet={secondaryImage.formats.avif} type='image/avif' />
+        {/* Desktop */}
+        {secondaryImage?.sizes?.['1200']?.avif && (
+          <source
+            srcSet={secondaryImage.sizes['1200'].avif}
+            type='image/avif'
+            media='(min-width: 1200px)'
+          />
         )}
-        {secondaryImage?.formats?.webp && (
-          <source srcSet={secondaryImage.formats.webp} type='image/webp' />
+        {secondaryImage?.sizes?.['1200']?.webp && (
+          <source
+            srcSet={secondaryImage.sizes['1200'].webp}
+            type='image/webp'
+            media='(min-width: 1200px)'
+          />
         )}
+
+        {/* Tablet */}
+        {secondaryImage?.sizes?.['768']?.avif && (
+          <source
+            srcSet={secondaryImage.sizes['768'].avif}
+            type='image/avif'
+            media='(min-width: 768px)'
+          />
+        )}
+        {secondaryImage?.sizes?.['768']?.webp && (
+          <source
+            srcSet={secondaryImage.sizes['768'].webp}
+            type='image/webp'
+            media='(min-width: 768px)'
+          />
+        )}
+
+        {/* Mobile */}
+        {secondaryImage?.sizes?.['400']?.avif && (
+          <source
+            srcSet={secondaryImage.sizes['400'].avif}
+            type='image/avif'
+            media='(max-width: 767px)'
+          />
+        )}
+        {secondaryImage?.sizes?.['400']?.webp && (
+          <source
+            srcSet={secondaryImage.sizes['400'].webp}
+            type='image/webp'
+            media='(max-width: 767px)'
+          />
+        )}
+
         <img
           src={secondaryImage?.src}
           alt={secondaryImage?.alt}

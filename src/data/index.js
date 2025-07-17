@@ -1,3 +1,4 @@
+export { aboutImages } from './aboutImages'
 export { navLinks } from './navLinks'
 export { socialMediaLinks } from './socialMediaLinks'
 export { heroImages } from './heroImages'

@@ -36,11 +36,60 @@ function ThumbnailGallery ({ images }) {
   return (
     <div className='thumbnail-gallery'>
       <div className='thumbnail-gallery__preview'>
-        <img
-          src={selectedImage.src}
-          alt={selectedImage.alt}
-          title={selectedImage.title}
-        />
+        <picture>
+          {selectedImage?.sizes?.['1200']?.avif && (
+            <source
+              srcSet={selectedImage.sizes['1200'].avif}
+              type='image/avif'
+              media='(min-width: 1200px)'
+            />
+          )}
+          {selectedImage?.sizes?.['1200']?.webp && (
+            <source
+              srcSet={selectedImage.sizes['1200'].webp}
+              type='image/webp'
+              media='(min-width: 1200px)'
+            />
+          )}
+          {selectedImage?.sizes?.['768']?.avif && (
+            <source
+              srcSet={selectedImage.sizes['768'].avif}
+              type='image/avif'
+              media='(min-width: 768px)'
+            />
+          )}
+          {selectedImage?.sizes?.['768']?.webp && (
+            <source
+              srcSet={selectedImage.sizes['768'].webp}
+              type='image/webp'
+              media='(min-width: 768px)'
+            />
+          )}
+          {selectedImage?.sizes?.['400']?.avif && (
+            <source
+              srcSet={selectedImage.sizes['400'].avif}
+              type='image/avif'
+              media='(max-width: 767px)'
+            />
+          )}
+          {selectedImage?.sizes?.['400']?.webp && (
+            <source
+              srcSet={selectedImage.sizes['400'].webp}
+              type='image/webp'
+              media='(max-width: 767px)'
+            />
+          )}
+          <img
+            src={
+              selectedImage?.src ||
+              selectedImage?.sizes?.fallback?.jpg ||
+              selectedImage.sizes?.fallback?.webp ||
+              selectedImage.sizes?.fallback?.avif
+            }
+            alt={selectedImage.alt}
+            title={selectedImage.title}
+          />
+        </picture>
       </div>
       <ul className='thumbnail-gallery__list' role='list'>
         {images.map((image, index) => {
