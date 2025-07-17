@@ -1,21 +1,30 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import {
-  About,
-  AllBlogPosts,
-  AllProducts,
-  BaseLayout,
-  Blog,
-  BookATable,
-  Cart,
-  Contact,
-  Error,
-  Faq,
-  Home,
-  Login,
-  SinglePostPage,
-  SingleProductPage,
-  Store
-} from './pages'
+import { lazy, Suspense } from 'react'
+const About = lazy(() => import('./pages/About'))
+const Account = lazy(() => import('./pages/Account'))
+const AllBlogPosts = lazy(() => import('./pages/AllBlogPosts'))
+const AllProducts = lazy(() => import('./pages/AllProducts'))
+const Blog = lazy(() => import('./pages/Blog'))
+const BookATable = lazy(() => import('./pages/BookATable'))
+const Cart = lazy(() => import('./pages/Cart'))
+const Contact = lazy(() => import('./pages/Contact'))
+const Faq = lazy(() => import('./pages/Faq'))
+const Home = lazy(() => import('./pages/Home'))
+const Login = lazy(() => import('./pages/Login'))
+const SinglePostPage = lazy(() => import('./pages/SinglePostPage'))
+const SingleProductPage = lazy(() => import('./pages/SingleProductPage'))
+const Store = lazy(() => import('./pages/Store'))
+
+import { BaseLayout, Error } from './pages'
+import { Loader } from './components/common'
+
+function suspenseWrapped (Component) {
+  return (
+    <Suspense fallback={<Loader></Loader>}>
+      <Component></Component>
+    </Suspense>
+  )
+}
 
 const router = createBrowserRouter([
   {
@@ -25,22 +34,22 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Home></Home>
+        element: suspenseWrapped(Home)
       },
       {
         path: 'store',
         children: [
           {
             index: true,
-            element: <Store></Store>
+            element: suspenseWrapped(Store)
           },
           {
             path: 'all-products/:category?',
-            element: <AllProducts></AllProducts>
+            element: suspenseWrapped(AllProducts)
           },
           {
             path: ':productSlug',
-            element: <SingleProductPage></SingleProductPage>
+            element: suspenseWrapped(SingleProductPage)
           }
         ]
       },
@@ -49,49 +58,45 @@ const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <Blog></Blog>
+            element: suspenseWrapped(Blog)
           },
           {
             path: 'all-posts',
-            element: <AllBlogPosts></AllBlogPosts>
+            element: suspenseWrapped(AllBlogPosts)
           },
           {
             path: ':postSlug',
-            element: <SinglePostPage></SinglePostPage>
+            element: suspenseWrapped(SinglePostPage)
           }
         ]
       },
       {
         path: 'about',
-        element: <About></About>
+        element: suspenseWrapped(About)
       },
       {
         path: 'contact',
-        element: <Contact></Contact>
+        element: suspenseWrapped(Contact)
       },
       {
         path: 'book-a-table',
-        element: <BookATable></BookATable>
+        element: suspenseWrapped(BookATable)
       },
       {
         path: 'faq',
-        element: <Faq></Faq>
+        element: suspenseWrapped(Faq)
       },
       {
         path: 'login',
-        element: <Login></Login>
+        element: suspenseWrapped(Login)
       },
       {
         path: 'cart',
-        element: <Cart></Cart>
+        element: suspenseWrapped(Cart)
       },
       {
         path: 'account',
-        element: (
-          <section className='section'>
-            <h2 className='section__title'>User account will be here</h2>
-          </section>
-        )
+        element: suspenseWrapped(Account)
       }
     ]
   }
