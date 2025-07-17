@@ -1,0 +1,72 @@
+@use '../abstracts/' as *;
+
+.account {
+  --flow-spacer: 3rem;
+  &__header {
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    gap: 0.5rem 1rem;
+
+    p {
+      grid-column: 2;
+      grid-row: 2;
+    }
+  }
+  &__user-img,
+  &__icon {
+    grid-column: 1;
+    grid-row: 1 / 3;
+  }
+  &__user-img {
+    width: 6rem;
+    height: 6rem;
+    padding: 1rem;
+    border-radius: $br-circle;
+    background-color: clr(primary, 200);
+  }
+
+  &__icon {
+    svg {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+
+  &__section {
+    --flow-spacer: 0.75rem;
+    padding-block: 2em;
+    padding-inline: 2em;
+    border-radius: $br-medium;
+    background-color: clr(primary, 100);
+
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      display: block;
+      background-size: 300%;
+      background-image: linear-gradient(
+        to left,
+        clr(secondary, 400),
+        clr(secondary, 700),
+        clr(primary, 200),
+        clr(primary, 500)
+      );
+      background-position-x: left;
+      will-change: background-position-x;
+      transition: background-position-x 300ms ease-in-out;
+      border-radius: inherit;
+      z-index: -1;
+    }
+
+    &:hover::after {
+      background-position-x: right;
+    }
+  }
+
+  &__list {
+    margin: 0;
+  }
+}
