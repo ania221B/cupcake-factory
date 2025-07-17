@@ -19,11 +19,6 @@ export function useGlobalContext () {
 }
 
 function AppContext ({ children }) {
-  const heroImageData = {
-    alt: 'cake stand with heart-shaped cookies and a cup with coffee and heart-shaped sweets floating on the surface all in different shades of pink',
-    title: 'Photo by Jill Wellington from Pexels',
-    src: 'assets/hero-pexels-jill-wellington.jpg'
-  }
   const initialFilters = {
     bestseller: false,
     newArrival: false,
@@ -59,7 +54,9 @@ function AppContext ({ children }) {
   const guestMax = 12
   const demoUser = {
     username: 'demo-user',
-    password: '!password123'
+    password: '!password123',
+    email: 'demo-user@example.com',
+    balance: 1000
   }
   const initialCart = []
   const [cart, dispatch] = useReducer(cartReducer, initialCart)
@@ -185,7 +182,6 @@ function AppContext ({ children }) {
     <GlobalContext.Provider
       value={{
         location,
-        heroImageData,
         initialFilters,
         headerHeight,
         setHeaderHeight,
