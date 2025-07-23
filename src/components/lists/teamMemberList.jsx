@@ -3,7 +3,10 @@ import { TeamMemberCard } from '../ui'
 
 function TeamMemberList ({ list }) {
   return (
-    <ul className='grid-auto-fit margin-block-start-64 padding-0' role='list'>
+    <ul
+      className='team-member-list grid-auto-fit margin-block-start-64 padding-0'
+      role='list'
+    >
       {list.map(item => {
         return (
           <li key={nanoid()}>
