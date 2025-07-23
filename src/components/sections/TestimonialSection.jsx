@@ -21,8 +21,9 @@ function TestimonialSection () {
         <div className='container flow'>
           <SectionHeader title='What our customers think about the confectionery we make'>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
-              tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+              We pour our heart into every dessert—and our customers feel it.
+              Here’s what they’re saying about the confections that keep them
+              coming back.
             </p>
           </SectionHeader>
           <TestimonialList></TestimonialList>

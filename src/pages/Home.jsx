@@ -19,9 +19,12 @@ function Home () {
         image={heroImages.home}
       >
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur
-          suscipit impedit fuga, velit porro blanditiis rem sunt accusantium
-          ipsa voluptatem.
+          Step into a world where every bite brings joy and every treat tells a
+          story. From handcrafted cakes to delicate macarons, our bakery is
+          devoted to creating sweets that are as beautiful as they are
+          delicious. Whether you're celebrating a special moment or simply
+          craving something sweet, you'll find just the right indulgence waiting
+          for you here.
         </p>
         <div className='hero__buttons even-columns'>
           <Button

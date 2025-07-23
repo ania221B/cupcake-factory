@@ -11,13 +11,21 @@ function ContactSection () {
               Don't hesitate to contact us for any questions!
             </h2>
             <p className='fw-700'>
-              Vulputate egestas nullam volutpat diam nisi at venenatis
-              adipiscing massa posuere massa nulla massa id integer.
+              Whether you’re planning a special event, have a custom cake idea
+              in mind, or simply want to ask about our daily offerings—we’re
+              here to help.
             </p>
             <p>
-              Cras ullamcorper fermentum arcu in sed fermentum velit nulla
-              scelerisque pharetra tristique lectus justo faucibus purus est
-              purus gravida nibh odio ante.
+              Our team loves chatting all things sweet, and we’ll do our best to
+              answer your questions quickly and thoroughly. No question is too
+              small (or too big!) when it comes to creating something delicious.
+            </p>
+            <p>
+              You can reach out via email, phone, or through our contact
+              form—we’ll get back to you as soon as we can. Want to stop by in
+              person? Wonderful! We’d love to welcome you to our shop and help
+              you find the perfect treat. Whether you’re a long-time customer or
+              just discovering us, we’re always happy to hear from you.
             </p>
           </header>
           <SocialMediaList></SocialMediaList>

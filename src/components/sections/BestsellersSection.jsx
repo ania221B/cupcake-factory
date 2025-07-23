@@ -14,7 +14,7 @@ function BestsellersSection () {
       <div className='container flow'>
         <SectionHeader
           title='Bestsellers'
-          text='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.'
+          text='These customer favorites are loved for a reason—crafted to perfection and enjoyed time and again. Discover the treats everyone’s raving about.'
         >
           {isStorePage ? (
             <Button

@@ -12,8 +12,7 @@ function NewArrivalsSection () {
       <div className='container flow'>
         <SectionHeader
           title='New Arrivals'
-          text='Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Voluptate, omnis!'
+          text='Fresh from our oven and full of inspiration, these new creations are ready to tempt your taste buds. Be the first to try what’s just landed.'
         >
           {isStorePage ? (
             <Button
