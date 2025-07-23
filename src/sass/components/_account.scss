@@ -69,4 +69,9 @@
   &__list {
     margin: 0;
   }
+
+  .form-hint {
+    max-width: 25rem;
+    grid-column: 1 / -1;
+  }
 }

@@ -1,5 +1,6 @@
 import { Button } from '../components/common'
 import { useGlobalContext } from '../context'
+import { FaInfoCircle } from 'react-icons/fa'
 import { MdCardGiftcard } from 'react-icons/md'
 import { PiPackageBold } from 'react-icons/pi'
 import { GrFavorite } from 'react-icons/gr'
@@ -129,6 +130,34 @@ function Account () {
               ></Button>
             </form>
           </section>
+
+          <div className='form-hint margin-block-start-32'>
+            <FaInfoCircle className='form-hint__icon' />
+            <p className='char-limit'>You can apply the following codes: </p>
+            <ul>
+              <li>
+                <p className='fw-600'>
+                  CAKELOVER10 <span> — 10% discount</span>
+                </p>
+              </li>
+              <li>
+                <p className='fw-600'>
+                  FLOURPOWER5 <span> — 5% discount</span>
+                </p>
+              </li>
+              <li>
+                <p className='fw-600'>
+                  BAKECAREFULLY <span> — 15% discount on Tuesdays</span>
+                </p>
+              </li>
+              <li>
+                <p className='fw-600'>
+                  SORRY2024 <span> — expired code</span>
+                </p>
+              </li>
+            </ul>
+            <p>Everything else is invalid.</p>
+          </div>
         </div>
       </div>
     </section>
