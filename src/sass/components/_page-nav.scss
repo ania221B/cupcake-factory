@@ -21,15 +21,14 @@
       justify-content: unset;
       background-color: clr(neutral, 100);
 
-      padding-inline-start: calc($container-padding-inline * 2);
-      padding-inline-end: calc($container-padding-inline * 1.5);
+      padding-inline-end: $container-padding-inline;
 
       padding-block: 1em;
       width: 90%;
       height: 100vh;
 
       position: fixed;
-      z-index: 10;
+      z-index: 20;
       inset: 0 0 0 100%;
 
       &[data-state='is-open'] {
@@ -47,6 +46,17 @@
       }
       &[data-state='is-closed'] {
         display: none;
+      }
+
+      ul {
+        padding-inline-start: calc($container-padding-inline * 1.75);
+      }
+    }
+    @include mq(medium, max-width) {
+      padding-inline: calc($container-padding-inline);
+
+      ul {
+        padding-inline-start: 0;
       }
     }
   }
@@ -66,10 +76,6 @@
   .btn--menu {
     align-self: start;
     justify-self: end;
-  }
-
-  .btn--cart {
-    justify-self: start;
   }
 }
 

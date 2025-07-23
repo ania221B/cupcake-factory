@@ -20,7 +20,13 @@
   letter-spacing: 0.125rem;
   overflow: hidden;
 
-  &:not(.btn--thumbnail, .btn--invisible, .btn--invisible-w-arrow, .btn--icon) {
+  &:not(
+      .btn--thumbnail,
+      .btn--invisible,
+      .btn--invisible-w-arrow,
+      .btn--menu,
+      .btn--icon
+    ) {
     padding: 0.85em 1.5em;
   }
 
@@ -30,6 +36,7 @@
   }
 
   &--menu {
+    padding: 0.85em 0 0.85em 1.5em;
     &:hover #{$parent}--open,
     &:focus #{$parent}--open {
       color: clr(secondary, 400);
