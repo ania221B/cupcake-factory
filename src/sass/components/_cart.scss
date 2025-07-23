@@ -8,25 +8,40 @@
   &--empty {
     max-width: 40rem;
     margin-inline: auto;
-    grid-template-columns: max-content 1fr;
-    gap: 0 $grid-gap;
+    grid-template-columns: 1fr;
+    gap: 0.5rem $grid-gap;
 
-    .btn--accent {
-      grid-column: 2;
-      grid-row: 2;
-      justify-self: end;
-      align-self: start;
+    & > * {
+      grid-column: 1 / -1;
+    }
+
+    @include mq(485px) {
+      grid-template-columns: max-content 1fr;
+      gap: 0 $grid-gap;
+
+      .cart__title {
+        grid-column: 1;
+        align-self: end;
+      }
+      .cart__subtitle {
+        grid-column: 1;
+        grid-row: 2;
+        align-self: end;
+      }
+
+      .btn--accent {
+        grid-column: 2;
+        grid-row: 2;
+        justify-self: end;
+        align-self: start;
+      }
     }
   }
 
   &__title,
   &__subtitle {
-    grid-column: 2;
+    grid-column: 1;
     align-self: end;
-  }
-
-  &__subtitle {
-    grid-row: 2;
   }
 
   .btn--invisible {
