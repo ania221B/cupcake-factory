@@ -2,9 +2,30 @@
 
 .primary-header {
   border-bottom: 0.0625rem solid rgba(216, 216, 216, 0.5);
-  position: absolute;
+  position: sticky;
   inset: 0 0 auto 0;
   z-index: 10;
+  &.sticky {
+    background-color: rgba(clr(neutral, 100), 0.9);
+  }
+  @supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+    &.sticky {
+      background-color: rgba(clr(neutral, 100), 0.6);
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      -webkit-backdrop-filter: blur(0.35em);
+      backdrop-filter: blur(0.35em);
+      opacity: 0;
+      transition: opacity 500ms ease;
+      z-index: -1;
+    }
+    &.sticky::after {
+      opacity: 1;
+    }
+  }
 }
 
 .primary-header__wrapper {

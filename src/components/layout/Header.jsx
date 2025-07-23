@@ -1,13 +1,16 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useGlobalContext } from '../../context'
 import Logo from '../ui/Logo'
 import Navigation from './Navigation'
-import { useLocation } from 'react-router-dom'
+
+import { usePageLocation } from '../../hooks'
 
 function Header () {
-  const { pathname } = useLocation()
-  const isHomePage = pathname === '/'
+  const path = usePageLocation()
+  const isHomePage = path === '/'
+  const [isSticky, setIsSticky] = useState(false)
   const headerRef = useRef(null)
+  const sentinelRef = useRef(null)
   const { setHeaderHeight } = useGlobalContext()
 
   useEffect(() => {
@@ -16,15 +19,36 @@ function Header () {
       setHeaderHeight(height)
     }
   }, [])
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsSticky(!entry.isIntersecting)
+      },
+      { threshold: 0 }
+    )
+    if (sentinelRef.current) {
+      observer.observe(sentinelRef.current)
+    }
+    return () => observer.disconnect()
+  }, [])
   return (
-    <header ref={headerRef} className='home primary-header'>
-      <div className='container'>
-        <div className='primary-header__wrapper'>
-          <Logo elementType={isHomePage ? 'h1' : 'div'}></Logo>
-          <Navigation></Navigation>
+    <>
+      <div ref={sentinelRef} style={{ height: '1px' }}></div>
+      <header
+        ref={headerRef}
+        className={
+          isSticky ? 'home primary-header sticky' : 'home primary-header'
+        }
+      >
+        <div className='container'>
+          <div className='primary-header__wrapper'>
+            <Logo elementType={isHomePage ? 'h1' : 'div'}></Logo>
+            <Navigation></Navigation>
+          </div>
         </div>
-      </div>
-    </header>
+      </header>
+    </>
   )
 }
 export default Header

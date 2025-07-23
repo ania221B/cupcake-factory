@@ -7,6 +7,15 @@
     --padding-section: #{$padding-section};
     padding-block-start: calc(var(--padding-section) + var(--header-height));
     padding-block-end: var(--padding-section);
+    margin-block-start: calc(var(--header-height) * -1);
+    @include mq(medium) {
+      padding-block-start: calc(var(--padding-section) + var(--header-height));
+      padding-block-end: var(--padding-section);
+    }
+  }
+
+  main:not([data-page='product']):not([data-page='blog-post'])
+    > &:first-of-type {
     @include mq(medium) {
       padding-block-start: calc(
         var(--padding-section) * 1.75 + var(--header-height)
