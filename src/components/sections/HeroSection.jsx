@@ -8,7 +8,7 @@ function HeroSection ({ title, children, additionalContent = false, image }) {
   const isHomePage = path === '/'
   return (
     <section
-      className='hero section deco deco--colored-bg'
+      className='hero section deco'
       style={{ '--header-height': `${headerHeight}px` }}
     >
       <div className={children ? 'container even-columns' : 'container'}>
