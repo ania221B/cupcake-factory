@@ -2,6 +2,9 @@
 
 .breadcrumb {
   padding-block-end: 2em;
+  main[data-page='blog-post'] & {
+    padding-block-end: 4em;
+  }
   ol {
     margin: 0;
     padding-inline: 0;
