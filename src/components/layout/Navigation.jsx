@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { NavLink, useLocation } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { RiCloseFill, RiMenuFill, RiAccountCircleLine } from 'react-icons/ri'
 import { BiCart } from 'react-icons/bi'
 import { IoMdLogOut } from 'react-icons/io'
@@ -7,15 +7,16 @@ import { navLinks } from '../../data/navLinks'
 import { Button } from '../common'
 import { useGlobalContext } from '../../context'
 import { calculateCartTotals } from '../../utils'
+import { usePageLocation } from '../../hooks'
 
 function Navigation () {
   const { isLoggedIn, setIsLoggedIn } = useGlobalContext()
-  const { pathname } = useLocation()
+  const path = usePageLocation()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const navList = useRef('is-closed')
   const openBtn = useRef(null)
   const closeBtn = useRef(null)
-  const isStorePage = pathname.startsWith('/store')
+  const isStorePage = path.startsWith('/store')
   const { totalItemCount } = calculateCartTotals()
 
   function openMenu () {
