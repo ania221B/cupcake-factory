@@ -59,9 +59,13 @@
 
   &__img {
     grid-column: 1 / -1;
-    min-height: 55dvh;
+    min-height: 40dvh;
+    max-height: 60dvh;
     background-color: clr(primary, 200);
-    padding: 1em; // delete later just for the text to not be in the corner
+    picture,
+    img {
+      height: 100%;
+    }
   }
 
   section {
@@ -95,5 +99,8 @@
     margin-inline: auto;
     background-color: clr(primary, 200);
     border-radius: $br-circle;
+    img {
+      border-radius: inherit;
+    }
   }
 }

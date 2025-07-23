@@ -62,7 +62,12 @@
     height: 20rem;
     border-radius: $br-medium;
     background-color: clr(primary, 200);
-    padding: 0.75em; // delete later just for the text to not be in the corner
+
+    picture,
+    img {
+      height: 100%;
+      border-radius: inherit;
+    }
   }
 
   &__metadata {
@@ -103,6 +108,9 @@
     height: 3rem;
     background-color: clr(primary, 200);
     border-radius: $br-circle;
+    img {
+      border-radius: inherit;
+    }
   }
 
   .btn {
@@ -159,8 +167,8 @@
       font-size: 4rem;
       font-weight: $fw-700;
       line-height: 1;
-      color: clr(neutral, 100);
-      mix-blend-mode: difference; // might require replacing with text shadow or an overlay over the image
+      color: clr(neutral, 500);
+      // mix-blend-mode: difference; // might require replacing with text shadow or an overlay over the image
       grid-column: 1;
       grid-row: 1;
       z-index: 2;

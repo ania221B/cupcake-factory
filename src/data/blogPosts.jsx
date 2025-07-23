@@ -1,5 +1,29 @@
 import { nanoid } from 'nanoid'
 import { makeHyphenatedLowerCase } from '../utils'
+import fluffyCakeFallback from '../assets/images/blog/fluffy-cake.jpg'
+import fluffyCakeMobileAvif from '../assets/images/blog/fluffy-cake-400.avif'
+import fluffyCakeMobileWebp from '../assets/images/blog/fluffy-cake-400.webp'
+import fluffyCakeTabletAvif from '../assets/images/blog/fluffy-cake-768.avif'
+import fluffyCakeTabletWebp from '../assets/images/blog/fluffy-cake-768.webp'
+import fluffyCakeDesktopAvif from '../assets/images/blog/fluffy-cake-1200.avif'
+import fluffyCakeDesktopWebp from '../assets/images/blog/fluffy-cake-1200.webp'
+import chocolateFallback from '../assets/images/blog/chocolate.jpg'
+import chocolateMobileAvif from '../assets/images/blog/chocolate-400.avif'
+import chocolateMobileWebp from '../assets/images/blog/chocolate-400.webp'
+import chocolateTabletAvif from '../assets/images/blog/chocolate-768.avif'
+import chocolateTabletWebp from '../assets/images/blog/chocolate-768.webp'
+import chocolateDesktopAvif from '../assets/images/blog/chocolate-1200.avif'
+import chocolateDesktopWebp from '../assets/images/blog/chocolate-1200.webp'
+import cakeDecorationFallback from '../assets/images/blog/cake-decoration.jpg'
+import cakeDecorationMobileAvif from '../assets/images/blog/cake-decoration-400.avif'
+import cakeDecorationMobileWebp from '../assets/images/blog/cake-decoration-400.webp'
+import cakeDecorationTabletAvif from '../assets/images/blog/cake-decoration-768.avif'
+import cakeDecorationTabletWebp from '../assets/images/blog/cake-decoration-768.webp'
+import cakeDecorationDesktopAvif from '../assets/images/blog/cake-decoration-1200.avif'
+import cakeDecorationDesktopWebp from '../assets/images/blog/cake-decoration-1200.webp'
+import emilyBrown from '../assets/images/team/emily-brown.jpg'
+import lanaJones from '../assets/images/team/lana-jones.jpg'
+import tomBaker from '../assets/images/team/tom-baker.jpg'
 
 const rawBlogPosts = [
   {
@@ -7,9 +31,29 @@ const rawBlogPosts = [
     excerpt:
       'Ever wondered why some cakes are light and airy while others turn out dense? The secret lies in how you mix your ingredients and the role of temperature. In this article, we’ll explore the science behind fluffy cakes and share expert tips to achieve bakery-quality results at home.',
     date: '2025-06-10',
-    postImage: 'assets/',
+    postImages: [
+      {
+        id: 'fluffy-cake',
+        alt: 'Blueberry cupcakes on a glass plate',
+        title: 'Photo by Julias Torten und Törtchen',
+        fallback: fluffyCakeFallback,
+        mobile: {
+          avif: fluffyCakeMobileAvif,
+          webp: fluffyCakeMobileWebp
+        },
+        tablet: {
+          avif: fluffyCakeTabletAvif,
+          webp: fluffyCakeTabletWebp
+        },
+        desktop: {
+          avif: fluffyCakeDesktopAvif,
+          webp: fluffyCakeDesktopWebp
+        }
+      }
+    ],
     imageDesc: 'Desc of the img',
-    authorImage: 'assests/',
+    authorImage: emilyBrown,
+    authorImageTitle: 'Photo by KATRIN  BOLOVTSOVA',
     author: 'Emily Brown',
     authorBio:
       'Emily Brown is a pastry chef turned food writer with over a decade of experience in the baking industry. Known for her approachable recipes and love of dessert science, Emily is passionate about helping home bakers achieve sweet success in their own kitchens.',
@@ -62,9 +106,29 @@ const rawBlogPosts = [
     excerpt:
       'Cake decorating is an art, but with the right techniques, anyone can master it. From smooth buttercream finishes to elegant piping designs, we’ll guide you through the basics. Learn which tools you need and how to create stunning decorations for any occasion.',
     date: '2025-06-03',
-    postImage: 'assets/',
+    postImages: [
+      {
+        id: 'cake-decoration',
+        alt: 'White Icing Cover Cake',
+        title: 'Photo by Brent Keane: White Icing Cover Cake',
+        fallback: cakeDecorationFallback,
+        mobile: {
+          avif: cakeDecorationMobileAvif,
+          webp: cakeDecorationMobileWebp
+        },
+        tablet: {
+          avif: cakeDecorationTabletAvif,
+          webp: cakeDecorationTabletWebp
+        },
+        desktop: {
+          avif: cakeDecorationDesktopAvif,
+          webp: cakeDecorationDesktopWebp
+        }
+      }
+    ],
     imageDesc: 'Desc of the img',
-    authorImage: 'assests/',
+    authorImage: lanaJones,
+    authorImageTitle: 'Photo by Daniel Xavier',
     author: 'Lana Jones',
     authorBio:
       'Lana Jones is a cake designer and instructor with over 12 years of experience creating showstopping cakes for weddings, birthdays, and everything in between. Known for her elegant style and passion for teaching, Lana loves helping aspiring decorators bring their visions to life.',
@@ -131,9 +195,29 @@ const rawBlogPosts = [
       'Not all chocolate is created equal, especially when it comes to baking. The right choice can elevate your desserts, while the wrong one can leave them lacking flavor. In this guide, we’ll break down the types of chocolate and how to pick the best one for your recipes.',
 
     date: '2025-05-27',
-    postImage: 'assets/',
+    postImages: [
+      {
+        id: 'chocolate',
+        alt: 'Chocolate Bars on a White Surface',
+        title: 'Photo by alleksana: Chocolate Bars on a White Surface',
+        fallback: chocolateFallback,
+        mobile: {
+          avif: chocolateMobileAvif,
+          webp: chocolateMobileWebp
+        },
+        tablet: {
+          avif: chocolateTabletAvif,
+          webp: chocolateTabletWebp
+        },
+        desktop: {
+          avif: chocolateDesktopAvif,
+          webp: chocolateDesktopWebp
+        }
+      }
+    ],
     imageDesc: 'Desc of the img',
-    authorImage: 'assests/',
+    authorImage: tomBaker,
+    authorImageTitle: 'Photo by Hashtag Melvin',
     author: 'Tom Baker',
     authorBio:
       'Tom Baker is a culinary educator and chocolate expert with a passion for pastry. He’s spent over 15 years working in artisanal kitchens and teaching baking science to home cooks. When he’s not testing recipes, he’s exploring new cacao origins or teaching chocolate workshops.',

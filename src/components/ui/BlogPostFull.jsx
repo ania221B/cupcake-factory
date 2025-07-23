@@ -9,9 +9,9 @@ function BlogPostFull ({ item }) {
   const {
     title,
     date,
-    postImage,
-    imageDesc,
+    postImages,
     authorImage,
+    authorImageTitle,
     author,
     authorBio,
     sections
@@ -40,10 +40,43 @@ function BlogPostFull ({ item }) {
       </header>
 
       <div className='article--full__img'>
-        <picture>
-          <source />
-          <img src={postImage} alt={imageDesc} />
-        </picture>
+        {postImages.map(image => {
+          return (
+            <picture key={image.id}>
+              <source
+                srcSet={image.desktop.avif}
+                type='image/avif'
+                media='(min-width: 912px)'
+              />
+              <source
+                srcSet={image.desktop.webp}
+                type='image/webp'
+                media='(min-width: 912px)'
+              />
+              <source
+                srcSet={image.tablet.avif}
+                type='image/avif'
+                media='(min-width: 768px)'
+              />
+              <source
+                srcSet={image.tablet.webp}
+                type='image/webp'
+                media='(min-width: 768px)'
+              />
+              <source
+                srcSet={image.mobile.webp}
+                type='image/avif'
+                media='(max-width: 767px)'
+              />
+              <source
+                srcSet={image.mobile.webp}
+                type='image/webp'
+                media='(max-width: 767px)'
+              />
+              <img src={image.fallback} alt={image.alt} title={image.title} />
+            </picture>
+          )
+        })}
       </div>
 
       <div className='article--full__content'>
@@ -75,7 +108,7 @@ function BlogPostFull ({ item }) {
 
       <footer className='article--full__footer footer deco deco--separator-short'>
         <div className='article--full__footer-img'>
-          <img src={authorImage} alt={author} />
+          <img src={authorImage} alt={author} title={authorImageTitle} />
         </div>
 
         <div className='flow'>

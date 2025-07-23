@@ -11,9 +11,9 @@ function BlogPostCard ({ item, variant = 'unranked' }) {
     excerpt,
     slug,
     date,
-    postImage,
-    imageDesc,
+    postImages,
     authorImage,
+    authorImageTitle,
     author,
     sections
   } = item
@@ -21,7 +21,43 @@ function BlogPostCard ({ item, variant = 'unranked' }) {
   return (
     <article className='article'>
       <div className='article__img'>
-        <img src={postImage} alt={imageDesc} />
+        {postImages.map(image => {
+          return (
+            <picture key={image.id}>
+              <source
+                srcSet={image.desktop.avif}
+                type='image/avif'
+                media='(min-width: 912px)'
+              />
+              <source
+                srcSet={image.desktop.webp}
+                type='image/webp'
+                media='(min-width: 912px)'
+              />
+              <source
+                srcSet={image.tablet.avif}
+                type='image/avif'
+                media='(min-width: 768px)'
+              />
+              <source
+                srcSet={image.tablet.webp}
+                type='image/webp'
+                media='(min-width: 768px)'
+              />
+              <source
+                srcSet={image.mobile.webp}
+                type='image/avif'
+                media='(max-width: 767px)'
+              />
+              <source
+                srcSet={image.mobile.webp}
+                type='image/webp'
+                media='(max-width: 767px)'
+              />
+              <img src={image.fallback} alt={image.alt} title={image.title} />
+            </picture>
+          )
+        })}
       </div>
 
       <div className='article__content flow'>
@@ -69,7 +105,7 @@ function BlogPostCard ({ item, variant = 'unranked' }) {
 
       <footer className='article__footer footer deco deco--separator-short'>
         <div className='article__footer-img'>
-          <img src={authorImage} alt={author} />
+          <img src={authorImage} alt={author} title={authorImageTitle} />
         </div>
 
         <p>{author}</p>
