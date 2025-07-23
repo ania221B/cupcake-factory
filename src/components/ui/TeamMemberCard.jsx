@@ -1,9 +1,9 @@
 function TeamMemberCard ({ item }) {
-  const { name, role, image, bio } = item
+  const { name, role, image, imageTitle, bio } = item
   return (
     <article className='team-member-card'>
       <div className='team-member-card__img'>
-        <img src={image} alt={name} />
+        <img src={image} alt={name} title={imageTitle} />
       </div>
       <header className='flow'>
         <h3 className='team-member-card__name'>{name}</h3>

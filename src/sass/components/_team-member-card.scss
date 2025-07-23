@@ -1,5 +1,7 @@
 @use '../abstracts/' as *;
-
+.team-member-list {
+  --card-base-width: 16rem;
+}
 .team-member-card {
   height: 100%;
   display: grid;
@@ -12,7 +14,9 @@
     margin-inline: auto;
     border-radius: $br-medium;
     background-color: clr(primary, 200);
-    padding: 2rem;
+    img {
+      border-radius: inherit;
+    }
   }
   &__name {
     font-family: $ff-secondary;
