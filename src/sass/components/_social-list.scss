@@ -8,6 +8,11 @@
   gap: $grid-gap;
   align-items: center;
 
+  @include mq(374px, max-width) {
+    flex-direction: column;
+    align-items: start;
+  }
+
   a {
     display: grid;
     gap: 1em;
