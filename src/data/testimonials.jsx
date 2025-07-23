@@ -1,36 +1,40 @@
 import { nanoid } from 'nanoid'
+import annaHolmes from '../assets/images/customers/anna-holmes.jpg'
+import juliaAdam from '../assets/images/customers/julia-adams.jpg'
+import billyMoore from '../assets/images/customers/billy-moore.jpg'
+import christinaGomez from '../assets/images/customers/christina-gomez.jpg'
 
 export const testimonials = [
   {
     id: nanoid(),
     userName: 'Anna Holmes',
     quoteText:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi ad porro tempore, modi ducimus iusto ab molestias dolorum consequuntur eius minus quaerat saepe, eos neque.',
-    userImg: 'assets/student-1-pexels-andrea-piacquadio.jpg',
-    imgTitle: 'Photo by Andrea Piacquadio'
+      'The carrot cake is insanely good. Moist, perfectly spiced, and the frosting? I could eat a bowl of it!',
+    userImg: annaHolmes,
+    imgTitle: 'Photo by Muhd Emir'
   },
   {
     id: nanoid(),
     userName: 'Julia Adams',
     quoteText:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit, non eum. Debitis dolore dolorum laudantium?',
-    userImg: 'assets/student-2-pexels-pixabay.jpg',
-    imgTitle: 'Photo by Pixabay'
+      'I ordered a custom chocolate cake for my daughter’s birthday, and it was even more beautiful than I imagined. Tasted incredible too!',
+    userImg: juliaAdam,
+    imgTitle: 'Photo by Andrea Piacquadio'
   },
   {
     id: nanoid(),
     userName: 'Billy Moore',
     quoteText:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas possimus necessitatibus laborum aperiam repellendus eius ducimus id, eaque quo architecto totam quae cum, est facere amet sed, illum nihil minima. ',
-    userImg: 'assets/student-3-pexels-tim-savage.jpg',
-    imgTitle: 'Photo by Tim Savage'
+      'Every time I walk past this shop, I have to get something. The macarons melt in your mouth—total perfection. The cakes look amazing and taste even better. This place is a gem.',
+    userImg: billyMoore,
+    imgTitle: 'Photo by Italo Melo'
   },
   {
     id: nanoid(),
     userName: 'Christina Gomez',
     quoteText:
-      'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati vero aspernatur cupiditate fugit, quas corrupti animi consectetur quis laboriosam natus.',
-    userImg: 'assets/student-4-pexels-lucas-pezeta.jpg',
-    imgTitle: 'Photo by Lucas Pezeta'
+      'The new strawberry tart? Life-changing. Not too sweet, beautifully balanced. You can tell everything is made with care.',
+    userImg: christinaGomez,
+    imgTitle: 'Photo by Thaís Silva'
   }
 ]
