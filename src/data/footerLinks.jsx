@@ -66,12 +66,12 @@ export const footerLinks = [
       {
         id: nanoid(),
         text: 'find us',
-        subtext: 'Merijärvi, Finland',
+        subtext: `12 Kwiatowa Street\n00-123 Kraków, Poland`,
         icon: <FaMapLocationDot />
       },
       {
         id: nanoid(),
-        path: '/faq',
+        path: 'mailto:cupcakefactory@support.com',
         text: 'email us',
         subtext: 'cupcakefactory@support.com',
         icon: <MdEmail />,

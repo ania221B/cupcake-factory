@@ -1,3 +1,5 @@
+import React from 'react'
+
 function ContactDetailsLink ({ detail }) {
   const { icon, text, path, subtext } = detail
   return (
@@ -5,9 +7,20 @@ function ContactDetailsLink ({ detail }) {
       <div className='contact-details__icon'>{icon}</div>
       <div>
         <h3 className='contact-details__heading'>{text}</h3>
-        <a href={path} className='force-link-wrap'>
-          {subtext}
-        </a>
+        {path ? (
+          <a href={path} className='force-link-wrap'>
+            {subtext}
+          </a>
+        ) : (
+          <p>
+            {subtext.split('\n').map((line, index, array) => (
+              <React.Fragment key={index}>
+                {line}
+                {index !== array.length - 1 && <br />}
+              </React.Fragment>
+            ))}
+          </p>
+        )}
       </div>
     </li>
   )
