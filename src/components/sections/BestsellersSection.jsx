@@ -1,4 +1,4 @@
-import { products } from '../../data'
+import { products } from '../../data/products'
 import { usePageLocation } from '../../hooks'
 import { Button, SectionHeader } from '../common'
 import ProductList from '../lists/ProductList'
