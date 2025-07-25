@@ -51,12 +51,21 @@ export function makeCapitalizedText (string) {
 }
 
 /**
- * Converts text string into all lowercase hyphenated version of the said text string
+ * Converts standard text string into all lowercase hyphenated version of the said text string
  * @param {String} string Text to convert
  * @returns {String} All lowercase, hyphenated string
  */
 export function makeHyphenatedLowerCase (string) {
   return string.toLowerCase().trim().replace(/\s+/g, '-')
+}
+
+/**
+ * Converts a camel case text string into all lowercase hyphenated (kebab case) version of the said text string
+ * @param {String} string Text to convert
+ * @returns {String} All lowercase, hyphenated string
+ */
+export function makeCamelCaseKebabCase (string) {
+  return string.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase()
 }
 
 /**

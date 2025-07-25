@@ -1,6 +1,7 @@
 import { nanoid } from 'nanoid'
-import { makeHyphenatedLowerCase } from '../utils'
+import { makeCamelCaseKebabCase, makeHyphenatedLowerCase } from '../utils'
 import { productImages } from './images'
+import { imageMeta } from './imageMeta'
 
 const rawProducts = [
   {
@@ -561,13 +562,18 @@ export const products = rawProducts.map(product => {
       smallest.webp ||
       smallest.avif
 
+    const [__, metaValue] =
+      Object.entries(imageMeta).find(
+        ([key]) => makeCamelCaseKebabCase(key) === slug
+      ) || []
+
     return {
       id: nanoid(),
       type: ['main', 'secondary', 'additional'][index] || 'other',
       sizes,
       src,
-      alt: `${product.name} image ${index + 1}`,
-      title: 'Photo by Pexels'
+      alt: `${metaValue?.alt} image ${index + 1}`,
+      title: `Photo by ${metaValue?.title}`
     }
   })
 

@@ -41,8 +41,8 @@ export const storeImages = [
   },
   {
     id: 'image-2',
-    alt: 'Different flavoured macarons',
-    title: 'Photo by Diana Light: Different flavoured macarons',
+    alt: 'Different flavoured macarons on plate surrounded by flowers',
+    title: 'Photo by Diana Light',
     fallback: image2Fallback,
     mobile: {
       avif: image2MobileAvif,
