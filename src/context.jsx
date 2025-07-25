@@ -5,7 +5,7 @@ import {
   useReducer,
   useState
 } from 'react'
-import { products } from './data'
+import { products } from './data/products'
 import { compareMinMax } from './utils'
 import { blogPosts } from './data/blogPosts'
 
