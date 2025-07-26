@@ -26,81 +26,86 @@ function suspenseWrapped (Component) {
   )
 }
 
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
+    {
+      path: '/',
+      element: <BaseLayout></BaseLayout>,
+      errorElement: <Error></Error>,
+      children: [
+        {
+          index: true,
+          element: suspenseWrapped(Home)
+        },
+        {
+          path: 'store',
+          children: [
+            {
+              index: true,
+              element: suspenseWrapped(Store)
+            },
+            {
+              path: 'all-products/:category?',
+              element: suspenseWrapped(AllProducts)
+            },
+            {
+              path: ':productSlug',
+              element: suspenseWrapped(SingleProductPage)
+            }
+          ]
+        },
+        {
+          path: 'blog',
+          children: [
+            {
+              index: true,
+              element: suspenseWrapped(Blog)
+            },
+            {
+              path: 'all-posts',
+              element: suspenseWrapped(AllBlogPosts)
+            },
+            {
+              path: ':postSlug',
+              element: suspenseWrapped(SinglePostPage)
+            }
+          ]
+        },
+        {
+          path: 'about',
+          element: suspenseWrapped(About)
+        },
+        {
+          path: 'contact',
+          element: suspenseWrapped(Contact)
+        },
+        {
+          path: 'book-a-table',
+          element: suspenseWrapped(BookATable)
+        },
+        {
+          path: 'faq',
+          element: suspenseWrapped(Faq)
+        },
+        {
+          path: 'login',
+          element: suspenseWrapped(Login)
+        },
+        {
+          path: 'cart',
+          element: suspenseWrapped(Cart)
+        },
+        {
+          path: 'account',
+          element: suspenseWrapped(Account)
+        }
+      ]
+    }
+  ],
   {
-    path: '/',
-    element: <BaseLayout></BaseLayout>,
-    errorElement: <Error></Error>,
-    children: [
-      {
-        index: true,
-        element: suspenseWrapped(Home)
-      },
-      {
-        path: 'store',
-        children: [
-          {
-            index: true,
-            element: suspenseWrapped(Store)
-          },
-          {
-            path: 'all-products/:category?',
-            element: suspenseWrapped(AllProducts)
-          },
-          {
-            path: ':productSlug',
-            element: suspenseWrapped(SingleProductPage)
-          }
-        ]
-      },
-      {
-        path: 'blog',
-        children: [
-          {
-            index: true,
-            element: suspenseWrapped(Blog)
-          },
-          {
-            path: 'all-posts',
-            element: suspenseWrapped(AllBlogPosts)
-          },
-          {
-            path: ':postSlug',
-            element: suspenseWrapped(SinglePostPage)
-          }
-        ]
-      },
-      {
-        path: 'about',
-        element: suspenseWrapped(About)
-      },
-      {
-        path: 'contact',
-        element: suspenseWrapped(Contact)
-      },
-      {
-        path: 'book-a-table',
-        element: suspenseWrapped(BookATable)
-      },
-      {
-        path: 'faq',
-        element: suspenseWrapped(Faq)
-      },
-      {
-        path: 'login',
-        element: suspenseWrapped(Login)
-      },
-      {
-        path: 'cart',
-        element: suspenseWrapped(Cart)
-      },
-      {
-        path: 'account',
-        element: suspenseWrapped(Account)
-      }
-    ]
+    basename: '/cupcake-factory/'
   }
-])
+)
 
 function App () {
   return <RouterProvider router={router}></RouterProvider>
