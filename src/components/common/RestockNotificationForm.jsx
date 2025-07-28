@@ -1,65 +1,20 @@
 import { TiWarningOutline } from 'react-icons/ti'
 import Button from './Button'
 import { useEffect, useRef, useState } from 'react'
+import { useEmailForm } from '../../hooks'
 
 function RestockNotificationForm () {
   const [formHeight, setFormHeight] = useState(0)
-  const [email, setEmail] = useState('')
-  const [formError, setFormError] = useState('')
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSuccess, setIsSuccess] = useState(false)
+  const {
+    email,
+    formError,
+    isSubmitting,
+    isSuccess,
+    setIsSuccess,
+    handleChange,
+    handleSubmit
+  } = useEmailForm()
   const formRef = useRef(null)
-
-  /**
-   * Checks if value provided is a valid email address
-   * @param {String} email email address provided by user
-   * @returns {Boleean}
-   */
-  function validateEmail (email) {
-    const emailRegax = /^[a-zA-z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
-    if (email === '') {
-      return null
-    } else {
-      return emailRegax.test(email)
-    }
-  }
-
-  function handleSubmit (e) {
-    e.preventDefault()
-    setIsSubmitting(true)
-    setTimeout(() => {
-      setIsSubmitting(false)
-    }, 500)
-
-    const checkResult = validateEmail(email)
-
-    if (checkResult) {
-      setFormError('')
-    } else if (checkResult === null) {
-      setFormError('Please provide email address')
-    } else {
-      setFormError('Provided email address is invalid')
-    }
-
-    if (!formError) {
-      setEmail('')
-      setIsSuccess(true)
-    }
-  }
-
-  function handleChange (e) {
-    const updatedEmail = e.target.value
-    setEmail(updatedEmail)
-    const checkResult = validateEmail(updatedEmail)
-
-    if (checkResult) {
-      setFormError('')
-    } else if (checkResult === null) {
-      setFormError('Please provide email address')
-    } else {
-      setFormError('Provided email address is invalid')
-    }
-  }
 
   useEffect(() => {
     if (formRef.current) {
@@ -71,8 +26,8 @@ function RestockNotificationForm () {
   if (isSuccess) {
     return (
       <div
-        className='form-wrapper form-wrapper--restock-notification flow'
-        style={{ height: `${formHeight}px` }}
+        className='form-wrapper form-wrapper--restock-notification '
+        style={{ minHeight: `${formHeight}px` }}
       >
         <header>
           <h3>Notify on Restock:</h3>
@@ -82,14 +37,25 @@ function RestockNotificationForm () {
           </p>
         </header>
         <div
-          className={`char-limit ${
+          className={`form-wrapper--restock-notification__confirmation ${
             isSuccess ? 'form-fade-in' : 'form-fade-out'
           }`}
         >
-          <h4 className='fs-500 fw-700 clr-neutral-300'>
-            Thanks for your email!
-          </h4>
-          <p>We'll notify you as soon as the product is available again.</p>
+          <div>
+            <h4 className='fs-450 fw-700 clr-neutral-300'>
+              Thanks for your email!
+            </h4>
+            <p>We'll notify you as soon as the product is available again.</p>
+          </div>
+          <Button
+            buttonText='Got it'
+            isLines={true}
+            onClick={() =>
+              setTimeout(() => {
+                setIsSuccess(false)
+              }, 500)
+            }
+          ></Button>
         </div>
       </div>
     )
@@ -100,7 +66,12 @@ function RestockNotificationForm () {
       ref={formRef}
       className='form-wrapper form-wrapper--restock-notification'
     >
-      <form onSubmit={handleSubmit} className='form form--restock-notification'>
+      <form
+        onSubmit={handleSubmit}
+        className={`form form--restock-notification ${
+          isSuccess ? 'form-fade-out' : 'form-fade-in'
+        }`}
+      >
         <header>
           <h3>Notify on Restock:</h3>
           <p>
@@ -130,7 +101,7 @@ function RestockNotificationForm () {
 
         {isSubmitting ? (
           <Button
-            buttonText='Subscribing...'
+            buttonText={'Subscribing...'}
             ariaLabel='Notify me about product restock'
             type='submit'
             isLines={true}
@@ -138,7 +109,7 @@ function RestockNotificationForm () {
           ></Button>
         ) : (
           <Button
-            buttonText='Notify me'
+            buttonText={'Notify me'}
             ariaLabel='Notify me about product restock'
             type='submit'
             isLines={true}

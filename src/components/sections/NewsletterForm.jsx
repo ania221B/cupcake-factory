@@ -1,11 +1,20 @@
-import { useForm, ValidationError } from '@formspree/react'
+import { TiWarningOutline } from 'react-icons/ti'
 import { Button } from '../common'
 import { useEffect, useRef, useState } from 'react'
+import { useEmailForm } from '../../hooks'
 
 function NewsletterForm () {
   const [formHeight, setFormHeight] = useState(0)
+  const {
+    email,
+    formError,
+    isSubmitting,
+    isSuccess,
+    setIsSuccess,
+    handleChange,
+    handleSubmit
+  } = useEmailForm()
   const formRef = useRef(null)
-  const [state, handleSubmit] = useForm('mqabgdoq')
 
   useEffect(() => {
     if (formRef.current) {
@@ -14,18 +23,29 @@ function NewsletterForm () {
     }
   })
 
-  if (state.succeeded) {
+  if (isSuccess) {
     return (
       <div style={{ height: `${formHeight}px` }}>
         <div
-          className={`char-limit ${
-            state.succeeded ? 'form-fade-in' : 'form-fade-out'
+          className={`form-wrapper--newsletter__confirmation ${
+            isSuccess ? 'form-fade-in' : 'form-fade-out'
           }`}
         >
-          <h2 className='fs-500 fw-700 clr-neutral-300'>
-            Thanks for subscribing!
-          </h2>
-          <p>You'll be the first to hear our sweet news.</p>
+          <div>
+            <h2 className='fs-500 fw-700 clr-neutral-300'>
+              Thanks for subscribing!
+            </h2>
+            <p>You'll be the first to hear our sweet news.</p>
+          </div>
+          <Button
+            buttonText='Got it'
+            isLines={true}
+            onClick={() =>
+              setTimeout(() => {
+                setIsSuccess(false)
+              }, 500)
+            }
+          ></Button>
         </div>
       </div>
     )
@@ -34,25 +54,30 @@ function NewsletterForm () {
     <div ref={formRef} className='form-wrapper form-wrapper--newsletter'>
       <form
         className={`form form--newsletter ${
-          state.succeeded ? 'form-fade-out' : 'form-fade-in'
+          isSuccess ? 'form-fade-out' : 'form-fade-in'
         }`}
         onSubmit={handleSubmit}
       >
-        <label htmlFor='newsletter-email' className='sr-only'>
-          Email:
-        </label>
-        <input
-          id='newsletter-email'
-          name='newsletter-email'
-          type='text'
-          placeholder='Email address'
-        />
-        <ValidationError
-          field='newsletter-email'
-          prefix='Email'
-          errors={state.errors}
-        ></ValidationError>
-        {state.submitting ? (
+        <div className='form__control-wrapper'>
+          <label htmlFor='newsletter-email' className='sr-only'>
+            Email:
+          </label>
+          <input
+            id='newsletter-email'
+            name='newsletter-email'
+            value={email}
+            type='email'
+            placeholder='Email address'
+            onChange={handleChange}
+          />
+          {formError && (
+            <div className='form__error clr-primary-900 fw-700'>
+              <TiWarningOutline />
+              <p className='fs-200'>{formError}</p>
+            </div>
+          )}
+        </div>
+        {isSubmitting ? (
           <Button
             type={'submit'}
             buttonText={'Subscribing...'}

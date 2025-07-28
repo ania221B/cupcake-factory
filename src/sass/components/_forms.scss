@@ -23,7 +23,22 @@
   &--newsletter,
   &--restock-notification {
     padding: 0;
+    margin: 0;
     border-radius: 0;
+    &__confirmation {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-auto-rows: min-content;
+      @include mq(small) {
+        grid-template-columns: 1fr max-content;
+      }
+    }
+    header {
+      margin-bottom: 1.5rem;
+      @include mq(small) {
+        grid-column: 1 / -1;
+      }
+    }
   }
 
   &--login {
@@ -38,7 +53,6 @@
 
 .form {
   display: grid;
-  gap: 0.5rem;
 
   fieldset {
     --flow-spacer: 0.5em;
@@ -61,12 +75,18 @@
 
   &__control-wrapper {
     display: grid;
-    grid-template-rows: repeat(2, min-content) $error-height;
+    grid-template-rows: repeat(2, min-content);
     gap: 0.5rem;
 
     fieldset:first-of-type & {
       grid-template-columns: repeat(2, 1fr);
       gap: 0 0.5rem;
+
+      & > * {
+        display: grid;
+        grid-template-rows: repeat(2, min-content);
+        gap: 0.5rem;
+      }
     }
   }
 
@@ -95,19 +115,28 @@
   }
 
   &__error {
+    grid-column: 1 / -1;
     display: flex;
     gap: 0.5rem;
     font-weight: $fw-700;
     color: clr(primary, 900);
+    min-height: $error-height;
   }
 
   &--newsletter,
   &--restock-notification {
     --_outline-size: 0.0625rem;
-    grid-auto-rows: 1fr;
+    grid-auto-rows: auto;
+    gap: 0 0.5rem;
 
     @include mq(large) {
       grid-template-columns: 1fr auto;
+    }
+
+    .form__control-wrapper {
+      grid-template-rows: max-content $error-height;
+      gap: 0.5rem;
+      align-self: end;
     }
 
     input {
@@ -116,7 +145,8 @@
       background-color: rgba(216, 216, 216, 0.2);
       outline: var(--_outline-size) solid clr(neutral, 200);
       border-radius: $br-small;
-      height: calc(100% - (var(--_outline-size) * 2));
+      height: var(--_form-btn-height);
+      padding-block: 0.6rem;
 
       &::placeholder {
         transition: opacity 200ms ease;
@@ -133,41 +163,12 @@
         opacity: 0;
       }
     }
-  }
 
-  &--newsletter {
-    input {
-      padding: 0 1.5rem;
-    }
-  }
-
-  &--restock-notification {
-    --_form-btn-height: 41.02px;
-    grid-auto-rows: min-content;
-    gap: 0 0.5rem;
-
-    header {
-      margin-bottom: 1.5rem;
-    }
-
-    .form__control-wrapper {
-      grid-template-rows: max-content $error-height;
-      gap: 0.5rem;
-      align-self: end;
-    }
-    input {
-      height: var(--_form-btn-height);
-      padding-block: 0.6rem;
-    }
     .btn {
       align-self: start;
     }
 
     @include mq(small) {
-      header {
-        grid-column: 1 / -1;
-      }
-
       .form__control-wrapper {
         grid-column: 1;
         grid-row: 2;
@@ -176,6 +177,19 @@
         grid-column: 2;
         grid-row: 2;
         align-self: start;
+      }
+    }
+  }
+  &--newsletter {
+    --_form-btn-height: 44.28px;
+  }
+
+  &--restock-notification {
+    --_form-btn-height: 44.19px;
+    header {
+      margin-bottom: 1.5rem;
+      @include mq(small) {
+        grid-column: 1 / -1;
       }
     }
   }
