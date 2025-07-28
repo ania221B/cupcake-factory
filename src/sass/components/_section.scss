@@ -65,6 +65,7 @@
   .even-columns {
     > *:last-child {
       display: grid;
+      grid-auto-rows: min-content;
       @include mq(medium) {
         justify-self: end;
       }
@@ -85,7 +86,6 @@
     --flow-spacer: 1.5rem;
   }
   .social-list {
-    // margin-top: $grid-gap;
     @include mq(large, max-width) {
       justify-content: space-between;
     }
