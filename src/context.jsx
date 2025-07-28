@@ -45,7 +45,7 @@ function AppContext ({ children }) {
   const [allPosts, setAllPosts] = useState(blogPosts)
   const [sortedPosts, setSortedPosts] = useState(blogPosts)
   const [sortBy, setSortBy] = useState('newest')
-  const [isLoggedIn, setIsLoggedIn] = useState(true)
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
   const productMin = 1
   const productMax = 100
   const cartItemMin = 0
