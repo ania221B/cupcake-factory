@@ -11,7 +11,7 @@ export const imageMeta = {
     alt: 'Blueberry muffins with heart-shaped decoration',
     title: 'Photo by Leeloo The First',
     photographer: {
-      name: 'Photo by Leeloo The First',
+      name: 'Leeloo The First',
       url: 'https://www.pexels.com/@leeloothefirst'
     }
   },
@@ -219,7 +219,7 @@ export const imageMeta = {
     alt: 'Salted Caramel Truffles',
     title: 'Photo by Photo by Natalia S',
     photographer: {
-      name: 'Photo by Natalia S',
+      name: 'Natalia S',
       url: 'https://www.pexels.com/@planka'
     }
   },
