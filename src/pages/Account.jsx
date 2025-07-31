@@ -5,6 +5,7 @@ import { MdCardGiftcard } from 'react-icons/md'
 import { PiPackageBold } from 'react-icons/pi'
 import { GrFavorite } from 'react-icons/gr'
 import { IoMdSettings } from 'react-icons/io'
+import { userIcon } from '../assets/user-icon.svg'
 import { useState } from 'react'
 
 function Account () {
@@ -43,8 +44,8 @@ function Account () {
     >
       <div className='container flow' data-container='small'>
         <header className='account__header'>
-          <div className='account__user-img'>
-            <img src='/public/HugeiconsCupcake.svg' alt='' />
+          <div className='account__user-img' aria-hidden={true}>
+            <img src={userIcon} alt='' />
           </div>
           <h1 className='section__title'>Hello {demoUser.username}!</h1>
           <p>
