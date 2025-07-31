@@ -7,7 +7,7 @@ export default defineConfig({
   base: '/cupcake-factory/',
   build: {
     rollupOptions: {
-      input: 'indec.html'
+      input: 'index.html'
     }
   }
 })
