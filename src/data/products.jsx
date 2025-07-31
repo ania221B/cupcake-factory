@@ -573,7 +573,7 @@ export const products = rawProducts.map(product => {
       sizes,
       src,
       alt: `${metaValue?.alt} image ${index + 1}`,
-      title: `Photo by ${metaValue?.title}`
+      title: `${metaValue?.title}`
     }
   })
 
