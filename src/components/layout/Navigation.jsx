@@ -160,7 +160,7 @@ function Navigation () {
               buttonText={
                 <>
                   <span className='cart__item-counter'>{totalItemCount}</span>
-                  <span className='icon'>
+                  <span className='icon' aria-hidden={true}>
                     <BiCart />
                   </span>
                   <span>Cart</span>
@@ -178,7 +178,7 @@ function Navigation () {
               <Button
                 buttonText={
                   <>
-                    <span>
+                    <span aria-hidden={true}>
                       <RiAccountCircleLine />
                     </span>
                     <span>Account</span>
@@ -192,7 +192,7 @@ function Navigation () {
               <Button
                 buttonText={
                   <>
-                    <span>
+                    <span aria-hidden={true}>
                       <IoMdLogOut />
                     </span>
                     <span>Log out</span>

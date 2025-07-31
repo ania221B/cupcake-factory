@@ -31,7 +31,10 @@ function Footer () {
                           className='footer__contact-details fs-300'
                           key={detail.id}
                         >
-                          <div className='footer__icon fs-400'>
+                          <div
+                            className='footer__icon fs-400'
+                            aria-hidden={true}
+                          >
                             {detail.icon}
                           </div>
                           <div className='footer__info'>
@@ -47,7 +50,10 @@ function Footer () {
                           className='footer__contact-details fs-300'
                           key={detail.id}
                         >
-                          <div className='footer__icon fs-400'>
+                          <div
+                            className='footer__icon fs-400'
+                            aria-hidden={true}
+                          >
                             {detail.icon}
                           </div>
                           <div className='footer__info'>
@@ -71,7 +77,9 @@ function Footer () {
                         className='footer__contact-details fs-300'
                         key={detail.id}
                       >
-                        <div className='footer__icon fs-400'>{detail.icon}</div>
+                        <div className='footer__icon fs-400' aria-hidden={true}>
+                          {detail.icon}
+                        </div>
                         <div className='footer__info'>
                           <h3>{detail.text}</h3>
                           <p>{detail.subtext}</p>
