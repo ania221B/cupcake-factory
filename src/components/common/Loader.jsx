@@ -8,8 +8,9 @@ function Loader () {
       className='section bg-primary-100 spinner-section'
       style={{ '--header-height': `${headerHeight}px` }}
     >
-      <div className='container'>
-        <ImSpinner className='spinner' />
+      <div className='container spinner-container'>
+        <ImSpinner className='spinner' aria-hidden={true} />
+        <p className='sr-only'>Loading...</p>
       </div>
     </section>
   )

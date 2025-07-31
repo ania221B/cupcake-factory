@@ -1,5 +1,11 @@
 @use '../abstracts/' as *;
 
+.spinner-container {
+  display: grid;
+  gap: $grid-gap;
+  place-items: center;
+}
+
 .spinner {
   display: block;
   margin-inline: auto;
