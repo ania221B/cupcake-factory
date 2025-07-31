@@ -141,7 +141,14 @@ function Navigation () {
             const { id, path, text } = link
             return (
               <li key={id}>
-                <NavLink to={path}>{text}</NavLink>
+                <NavLink
+                  to={path}
+                  className={({ isActive }) =>
+                    isActive ? 'active' : undefined
+                  }
+                >
+                  {text}
+                </NavLink>
               </li>
             )
           })}
