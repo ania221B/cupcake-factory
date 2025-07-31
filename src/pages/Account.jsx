@@ -5,7 +5,7 @@ import { MdCardGiftcard } from 'react-icons/md'
 import { PiPackageBold } from 'react-icons/pi'
 import { GrFavorite } from 'react-icons/gr'
 import { IoMdSettings } from 'react-icons/io'
-import { userIcon } from '../assets/user-icon.svg'
+import userIcon from '../assets/user-icon.svg'
 import { useState } from 'react'
 
 function Account () {
