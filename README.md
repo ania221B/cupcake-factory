@@ -1,6 +1,6 @@
 # About
 
-SPA for a fake cake shop built using React.js, React Router DOM and Suspense API.
+SPA for a fictional cake shop built using React.js, React Router DOM and Suspense API.
 This project is a complete rebuild of a website I made based on a template found online a while back. Instead of finishing that older version, I used what I’ve learned since then to recreate it as a fully functioning single-page app using React.
 Text content for the website was generated using ChatGPT by OpenAI.
 
