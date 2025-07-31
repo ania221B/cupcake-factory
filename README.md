@@ -69,6 +69,8 @@ Adjust paths or ports depending on your setup.
 
 ├── data/                        # Static product/blog data
 
+├── forms/                        # Form components
+
 ├── hooks/                       # Custom hooks (e.g. useFormHandler)
 
 ├── pages/                       # Route-based components (Store, Blog, Contact, etc.)

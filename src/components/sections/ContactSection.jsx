@@ -1,5 +1,5 @@
 import SocialMediaList from '../lists/SocialMediaList'
-import ContactForm from './ContactForm'
+import ContactForm from '../../forms/ContactForm'
 
 function ContactSection () {
   return (

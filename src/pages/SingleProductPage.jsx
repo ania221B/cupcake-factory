@@ -5,7 +5,6 @@ import {
   Button,
   ProductHeader,
   QuantityFormControl,
-  RestockNotificationForm,
   ThumbnailGallery
 } from '../components/common'
 import {
@@ -18,6 +17,7 @@ import {
 } from '../utils'
 import ProductPricing from '../components/common/ProductPricing'
 import { useState } from 'react'
+import { RestockNotificationForm } from '../forms'
 
 function SingleProductPage () {
   const { headerHeight, allProducts, addToCart, productMin, productMax } =

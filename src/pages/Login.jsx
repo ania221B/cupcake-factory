@@ -92,12 +92,14 @@ function Login () {
                   type='text'
                   onChange={handleChange}
                 />
-                {formErrors.usernameError && (
-                  <div className='form__error clr-primary-900 fw-700'>
-                    <TiWarningOutline />
-                    <p className='fs-200 '>{formErrors.usernameError}</p>
-                  </div>
-                )}
+                <div className='form__error clr-primary-900 fw-700'>
+                  {formErrors.usernameError && (
+                    <>
+                      <TiWarningOutline />
+                      <p className='fs-200 '>{formErrors.usernameError}</p>
+                    </>
+                  )}
+                </div>
               </div>
 
               <div className='form__control-wrapper'>
@@ -111,12 +113,14 @@ function Login () {
                   type='password'
                   onChange={handleChange}
                 />
-                {formErrors.passwordError && (
-                  <div className='form__error clr-primary-900 fw-700'>
-                    <TiWarningOutline />
-                    <p className='fs-200 '>{formErrors.passwordError}</p>
-                  </div>
-                )}
+                <div className='form__error clr-primary-900 fw-700'>
+                  {formErrors.passwordError && (
+                    <>
+                      <TiWarningOutline />
+                      <p className='fs-200 '>{formErrors.passwordError}</p>
+                    </>
+                  )}
+                </div>
               </div>
 
               {isSubmitting ? (

@@ -1,10 +1,10 @@
 import { nanoid } from 'nanoid'
 import { TiWarningOutline } from 'react-icons/ti'
-import { contactSubjects } from '../../data'
-import { Button } from '../common'
+import { contactSubjects } from '../data'
+import { Button } from '../components/common'
 import { Link } from 'react-router-dom'
 import { useEffect, useRef, useState } from 'react'
-import { useFormHandler } from '../../hooks'
+import { useFormHandler } from '../hooks'
 
 function ContactForm () {
   const [formHeight, setFormHeight] = useState(0)

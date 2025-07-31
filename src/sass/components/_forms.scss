@@ -196,6 +196,7 @@
 
   &--reservation {
     grid-auto-flow: row;
+    gap: 0 clamp(0.5rem, 0.5rem + 1vw, 2rem);
 
     @include mq(small) {
       grid-template-columns: repeat(2, 1fr);

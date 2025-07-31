@@ -1,5 +1,5 @@
 import { SectionHeader } from '../common'
-import NewsletterForm from './NewsletterForm'
+import NewsletterForm from '../../forms/NewsletterForm'
 
 function NewsletterSection () {
   return (

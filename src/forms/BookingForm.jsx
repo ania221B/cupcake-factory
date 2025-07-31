@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
 import { FaMinus, FaPlus } from 'react-icons/fa'
 import { TiWarningOutline } from 'react-icons/ti'
-import { checkNumber } from '../../utils'
-import { Button } from '../common'
-import { useFormHandler } from '../../hooks'
+import { checkNumber } from '../utils'
+import { Button } from '../components/common'
+import { useFormHandler } from '../hooks'
 
 function BookingForm () {
   const [formHeight, setFormHeight] = useState(0)

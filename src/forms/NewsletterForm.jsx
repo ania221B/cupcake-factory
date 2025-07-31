@@ -1,9 +1,9 @@
 import { TiWarningOutline } from 'react-icons/ti'
-import Button from './Button'
+import { Button } from '../components/common'
 import { useEffect, useRef, useState } from 'react'
-import { useEmailForm } from '../../hooks'
+import { useEmailForm } from '../hooks'
 
-function RestockNotificationForm () {
+function NewsletterForm () {
   const [formHeight, setFormHeight] = useState(0)
   const {
     email,
@@ -25,27 +25,17 @@ function RestockNotificationForm () {
 
   if (isSuccess) {
     return (
-      <div
-        className='form-wrapper form-wrapper--restock-notification '
-        style={{ minHeight: `${formHeight}px` }}
-      >
-        <header>
-          <h3>Notify on Restock:</h3>
-          <p>
-            If you'd like to be notified once the product is restocked, type
-            your email below.
-          </p>
-        </header>
+      <div style={{ height: `${formHeight}px` }}>
         <div
-          className={`form-wrapper--restock-notification__confirmation ${
+          className={`form-wrapper--newsletter__confirmation ${
             isSuccess ? 'form-fade-in' : 'form-fade-out'
           }`}
         >
           <div>
-            <h4 className='fs-450 fw-700 clr-neutral-300'>
-              Thanks for your email!
-            </h4>
-            <p>We'll notify you as soon as the product is available again.</p>
+            <h2 className='fs-500 fw-700 clr-neutral-300'>
+              Thanks for subscribing!
+            </h2>
+            <p>You'll be the first to hear our sweet news.</p>
           </div>
           <Button
             buttonText='Got it'
@@ -60,32 +50,21 @@ function RestockNotificationForm () {
       </div>
     )
   }
-
   return (
-    <div
-      ref={formRef}
-      className='form-wrapper form-wrapper--restock-notification'
-    >
+    <div ref={formRef} className='form-wrapper form-wrapper--newsletter'>
       <form
-        onSubmit={handleSubmit}
-        className={`form form--restock-notification ${
+        className={`form form--newsletter ${
           isSuccess ? 'form-fade-out' : 'form-fade-in'
         }`}
+        onSubmit={handleSubmit}
       >
-        <header>
-          <h3>Notify on Restock:</h3>
-          <p>
-            If you'd like to be notified once the product is restocked, type
-            your email below.
-          </p>
-        </header>
         <div className='form__control-wrapper'>
-          <label htmlFor='email' className='sr-only'>
+          <label htmlFor='newsletter-email' className='sr-only'>
             Email:
           </label>
           <input
-            id='email'
-            name='email'
+            id='newsletter-email'
+            name='newsletter-email'
             value={email}
             type='email'
             placeholder='Email address'
@@ -98,20 +77,17 @@ function RestockNotificationForm () {
             </div>
           )}
         </div>
-
         {isSubmitting ? (
           <Button
+            type={'submit'}
             buttonText={'Subscribing...'}
-            ariaLabel='Notify me about product restock'
-            type='submit'
             isLines={true}
             isInactive={true}
           ></Button>
         ) : (
           <Button
-            buttonText={'Notify me'}
-            ariaLabel='Notify me about product restock'
-            type='submit'
+            type={'submit'}
+            buttonText={'Subscribe'}
             isLines={true}
           ></Button>
         )}
@@ -119,4 +95,4 @@ function RestockNotificationForm () {
     </div>
   )
 }
-export default RestockNotificationForm
+export default NewsletterForm

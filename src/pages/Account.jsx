@@ -1,4 +1,3 @@
-import { Button } from '../components/common'
 import { useGlobalContext } from '../context'
 import { FaInfoCircle } from 'react-icons/fa'
 import { MdCardGiftcard } from 'react-icons/md'
@@ -6,36 +5,10 @@ import { PiPackageBold } from 'react-icons/pi'
 import { GrFavorite } from 'react-icons/gr'
 import { IoMdSettings } from 'react-icons/io'
 import userIcon from '../assets/user-icon.svg'
-import { useState } from 'react'
+import { GiftCardForm } from '../forms'
 
 function Account () {
   const { headerHeight, demoUser } = useGlobalContext()
-  const [code, setCode] = useState('')
-  const [message, setMessage] = useState('')
-  const [isApplied, setIsApplied] = useState(false)
-
-  function handleSubmit (e) {
-    e.preventDefault()
-    if (!code.trim()) {
-      setMessage('Please enter a code')
-      return
-    }
-
-    if (code === 'CAKELOVER10') {
-      setMessage('Success! 10% discount applied 🎉')
-      setIsApplied(true)
-    } else if (code === 'FLOURPOWER5') {
-      setMessage('Success! 5% discount applied 🍰')
-      setIsApplied(true)
-    } else if (code === 'BAKECAREFULLY' && new Date().getDay() === 2) {
-      setMessage('Success! 15% discount applied ✨')
-      setIsApplied(true)
-    } else if (code === 'SORRY2024') {
-      setMessage('Sorry, this code has expired')
-    } else {
-      setMessage('Invalid code. Try again?')
-    }
-  }
 
   return (
     <section
@@ -92,6 +65,7 @@ function Account () {
             </header>
             <p>Your wishlist is currently empty.</p>
           </section>
+
           <section className='account__section flow'>
             <header className='account__header'>
               <div className='account__icon'>
@@ -103,33 +77,7 @@ function Account () {
               <p>Your current account balance is {demoUser.balance} points.</p>
             </header>
 
-            <form className='form form--gift-card' onSubmit={handleSubmit}>
-              <div className='form__control-wrapper'>
-                <label htmlFor='gift-card-code'>Enter your code:</label>
-                <input
-                  id='gift-card-code'
-                  type='text'
-                  value={code}
-                  placeholder='gift card code'
-                  onChange={e => {
-                    setCode(e.target.value)
-                    setMessage('')
-                    setIsApplied(false)
-                  }}
-                />
-                {message && (
-                  <div className='form__error clr-primary-900 fw-700'>
-                    <p className='fs-200'>{message}</p>
-                  </div>
-                )}
-              </div>
-              <Button
-                buttonText='Redeem'
-                type='submit'
-                isAccent={true}
-                isInactive={isApplied}
-              ></Button>
-            </form>
+            <GiftCardForm></GiftCardForm>
           </section>
 
           <div className='form-hint margin-block-start-32'>

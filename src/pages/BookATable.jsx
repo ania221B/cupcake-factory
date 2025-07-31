@@ -1,4 +1,5 @@
-import { BookingForm, HeroSection } from '../components/sections'
+import { HeroSection } from '../components/sections'
+import { BookingForm } from '../forms'
 
 function BookATable () {
   return (
