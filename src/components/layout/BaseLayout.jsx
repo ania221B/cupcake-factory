@@ -3,6 +3,7 @@ import { Footer, Header } from '../layout'
 import { ConnectSection, BookingSection } from '../sections'
 import { usePageLocation } from '../../hooks'
 import ScrollToTop from './ScrollToTop'
+import SkipToMain from './SkipToMain'
 
 function BaseLayout () {
   const location = usePageLocation()
@@ -23,9 +24,10 @@ function BaseLayout () {
 
   return (
     <>
+      <SkipToMain></SkipToMain>
       <ScrollToTop></ScrollToTop>
       <Header></Header>
-      <main data-page={page}>
+      <main id='main-content' data-page={page}>
         <Outlet></Outlet>
         {!isBookATable && <BookingSection></BookingSection>}
         <ConnectSection></ConnectSection>
