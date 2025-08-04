@@ -14,10 +14,25 @@ function Header () {
   const { setHeaderHeight } = useGlobalContext()
 
   useEffect(() => {
-    if (headerRef.current) {
-      const height = headerRef.current.getBoundingClientRect().height
-      setHeaderHeight(height)
+    function updateHeraderHeight () {
+      if (headerRef.current) {
+        const height = headerRef.current.getBoundingClientRect().height
+        setHeaderHeight(height)
+      }
     }
+
+    const debounce = (fn, delay) => {
+      let timeout
+      return () => {
+        clearTimeout(timeout)
+        timeout = setTimeout(fn, delay)
+      }
+    }
+    const debouncedResize = debounce(updateHeraderHeight, 100)
+
+    updateHeraderHeight()
+    window.addEventListener('resize', debouncedResize)
+    return () => window.removeEventListener('resize', updateHeraderHeight)
   }, [])
 
   useEffect(() => {
