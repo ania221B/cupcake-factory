@@ -107,11 +107,12 @@ Adjust paths or ports depending on your setup.
 
 🛒 Full store experience with:
 
-- Filter products in the store
-- View product detail pages
-- Add/remove items to/from cart (both from product pages and the cart view)
-- View calculated totals for individual items and the full cart
-- Clear cart
+- Products filtering in the store
+- Product detail pages
+- Cart offering:
+  - adding and removing items functionality
+  - clear cart functionality
+  - total price calculation per-item and for the whole cart
 
 📚 Blog system with:
 
