@@ -69,22 +69,15 @@ export function makeCamelCaseKebabCase (string) {
 }
 
 /**
- * Formats price
- * @param {Number} priceToFormat price as a number that needs formating
- * @returns formatted price
+ * Formats price to always have 2 decimal places (e.g. 5 -> "5.00")
+ * @param {Number} priceToFormat Price as a number
+ * @returns Formatted price
  */
 export function formatPrice (priceToFormat) {
-  const price = priceToFormat.toString() || ''
-
-  if (price.includes('.')) {
-    if (price.length === 5) {
-      return price
-    }
-    if (price.length < 5) {
-      return price.padEnd(5, 0)
-    }
+  if (typeof priceToFormat !== 'number' || isNaN(priceToFormat)) {
+    throw new Error(`The price to format, ${priceToFormat} is not a number`)
   }
-  return (price + '.').padEnd(`${price.length + 3}`, 0)
+  return priceToFormat.toFixed(2)
 }
 
 /**
