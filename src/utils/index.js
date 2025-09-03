@@ -82,8 +82,8 @@ export function formatPrice (priceToFormat) {
 
 /**
  * Claculates the value of the discount for products on sale
- * @param {Number} promoPrice price the product has while on sale
- * @param {Number} regularPrice price the product has while not on sale
+ * @param {Number} promoPrice Price the product has while on sale
+ * @param {Number} regularPrice Price the product has while not on sale
  * @returns amount of discount
  */
 export function calculateDiscount (promoPrice, regularPrice) {
@@ -95,7 +95,7 @@ export function calculateDiscount (promoPrice, regularPrice) {
 /**
  * Safely parses a string as a float.
  * Returns null if the input is empty or not a valid number.
- * @param {String} value string to check
+ * @param {String} value String to check
  * @returns {number|null}
  */
 export function safeParseFloat (value) {
@@ -105,9 +105,9 @@ export function safeParseFloat (value) {
 
 /**
  * Checks if maximum value is greater than minimum value
- * @param {Number} minVal minimum value
- * @param {Number} maxVal maximum value
- * @returns error message or null
+ * @param {Number} minVal Minimum value
+ * @param {Number} maxVal Maximum value
+ * @returns Error message or null
  */
 export function compareMinMax (minVal, maxVal) {
   const min = safeParseFloat(minVal)
@@ -134,9 +134,9 @@ export function getFormatedDate (dateToFormat, longName = false) {
     { longName: 'June', shortName: 'Jun' },
     { longName: 'July', shortName: 'Jul' },
     { longName: 'August', shortName: 'Aug' },
-    { longName: 'Spetember', shortName: 'Sep' },
+    { longName: 'September', shortName: 'Sep' },
     { longName: 'October', shortName: 'Oct' },
-    { longName: 'Novermber', shortName: 'Nov' },
+    { longName: 'November', shortName: 'Nov' },
     { longName: 'December', shortName: 'Dec' }
   ]
   const year = date.getFullYear()
@@ -162,7 +162,7 @@ export function getDateTimeString (sourceDate) {
 
 /**
  * Gets a fake restock date for unavailable products
- * @returns {Date} a date a week later from current, skipping both Saturdays and Sundays
+ * @returns {Date} A date a week later from current, skipping both Saturdays and Sundays
  */
 export function getRestockDate () {
   const date = new Date()
@@ -180,7 +180,7 @@ export function getRestockDate () {
 
 /**
  * Calculates blog post reading time based on the lenght of the post text content
- * @param {Array} text an array with the body/text content of the post divided into sections
+ * @param {Array} text An array with the body/text content of the post divided into sections
  * @returns {Number} Time needed to read the post
  */
 export function calculateReadingTime (text) {
@@ -198,9 +198,9 @@ export function calculateReadingTime (text) {
 }
 /**
  *
- * @param {Number} number value to check
- * @param {Number} min minimum allowed value
- * @param {Number} max maximum allowed value
+ * @param {Number} number Value to check
+ * @param {Number} min Minimum allowed value
+ * @param {Number} max Maximum allowed value
  * @returns {min|max|number} min if number is lower than allowed minimum value, max if number is greater than allowed maximum or number in other cases
  */
 export function checkNumber (number, min, max) {
@@ -215,8 +215,8 @@ export function checkNumber (number, min, max) {
 
 /**
  * Pluralizes given product category
- * @param {String} category type/category of a product
- * @returns plural form of the category
+ * @param {String} category Type/category of a product
+ * @returns Plural form of the category
  */
 export function pluralizeCategory (category) {
   if (!category) return null
@@ -226,9 +226,9 @@ export function pluralizeCategory (category) {
 
 /**
  * Calculates total price for each item in the cart
- * @param {Number} itemPrice unit price of a given item
- * @param {Number} itemQuantity quantity of each item from the cart
- * @returns {Number} a number representing total price for each item in cart
+ * @param {Number} itemPrice Unit price of a given item
+ * @param {Number} itemQuantity Quantity of each item from the cart
+ * @returns {Number} A number representing total price for each item in cart
  */
 export function calculateItemTotal (itemPrice, itemQuantity) {
   return parseInt(itemPrice * itemQuantity)
@@ -236,7 +236,7 @@ export function calculateItemTotal (itemPrice, itemQuantity) {
 
 /**
  * Calculates total number and total price of items in the cart
- * @returns {Object} an object with total number of items in the cart and the total price of the said items
+ * @returns {Object} An object with total number of items in the cart and the total price of the said items
  */
 export function calculateCartTotals () {
   const { cart } = useGlobalContext()
