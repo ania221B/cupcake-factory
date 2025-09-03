@@ -1,0 +1,1 @@
+import{j as r,L as t,b as s}from"./index-DY_Dh2-z.js";function d({items:i}){return r.jsx("nav",{"aria-label":"Breadcrumb",className:"breadcrumb",children:r.jsx("ol",{role:"list",children:i.map((l,n)=>{const{label:a,path:e}=l;return r.jsx("li",{children:e?r.jsx(t,{to:e,children:s(a)}):r.jsx("span",{"aria-current":"page",children:s(a)})},n)})})})}export{d as B};
