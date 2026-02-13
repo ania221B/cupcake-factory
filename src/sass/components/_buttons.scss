@@ -21,12 +21,12 @@
   overflow: hidden;
 
   &:not(
-      .btn--thumbnail,
-      .btn--invisible,
-      .btn--invisible-w-arrow,
-      .btn--menu,
-      .btn--icon
-    ) {
+    .btn--thumbnail,
+    .btn--invisible,
+    .btn--invisible-w-arrow,
+    .btn--menu,
+    .btn--icon
+  ) {
     padding: 0.85em 1.5em;
   }
 
@@ -112,7 +112,9 @@
       opacity: 0;
       transform: scaleX(0);
       transform-origin: right;
-      transition: opacity 300ms ease-in-out, transform 300ms ease;
+      transition:
+        opacity 300ms ease-in-out,
+        transform 300ms ease;
     }
 
     &:focus,
