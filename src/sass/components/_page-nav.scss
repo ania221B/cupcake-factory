@@ -21,7 +21,7 @@
       justify-content: unset;
       background-color: clr(neutral, 100);
 
-      padding-inline-end: $container-padding-inline;
+      padding-inline: $container-padding-inline;
 
       padding-block: 1em;
       width: 90%;
@@ -49,14 +49,22 @@
       }
 
       ul {
-        padding-inline-start: calc($container-padding-inline * 1.75);
+        justify-self: center;
+        li {
+          align-self: center;
+        }
       }
     }
-    @include mq(medium, max-width) {
+    @include mq(small, max-width) {
       padding-inline: calc($container-padding-inline);
 
       ul {
         padding-inline-start: 0;
+        justify-self: start;
+
+        li {
+          align-self: start;
+        }
       }
     }
   }
