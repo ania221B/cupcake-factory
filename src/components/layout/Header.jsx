@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { useGlobalContext } from '../../context'
 import Logo from '../ui/Logo'
 import Navigation from './Navigation'
@@ -13,7 +13,7 @@ function Header () {
   const sentinelRef = useRef(null)
   const { setHeaderHeight } = useGlobalContext()
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     function updateHeraderHeight () {
       if (headerRef.current) {
         const height = headerRef.current.getBoundingClientRect().height
@@ -32,7 +32,7 @@ function Header () {
 
     updateHeraderHeight()
     window.addEventListener('resize', debouncedResize)
-    return () => window.removeEventListener('resize', updateHeraderHeight)
+    return () => window.removeEventListener('resize', debouncedResize)
   }, [])
 
   useEffect(() => {
